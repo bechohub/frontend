@@ -7,7 +7,7 @@ export default function PostRFQ() {
         <div className="min-h-screen bg-slate-950 font-sans text-white">
             <Navbar />
 
-            <main className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+            <main className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-24 pb-12">
                 <div className="text-center mb-10">
                     <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl font-heading">
                         Post a Request for Quote

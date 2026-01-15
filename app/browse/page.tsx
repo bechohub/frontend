@@ -9,7 +9,7 @@ export default function BrowseSuppliers() {
         <div className="min-h-screen bg-slate-950 font-sans text-white">
             <Navbar />
 
-            <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+            <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-8">
                 <div className="flex flex-col md:flex-row gap-8">
 
                     {/* Sidebar Filters - Hidden on mobile for now, can add toggle later */}
