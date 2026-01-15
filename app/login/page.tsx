@@ -24,7 +24,7 @@ export default function Login() {
                         <CheckCircle2 className="h-7 w-7 text-white" />
                     </div>
                     <blockquote className="text-3xl font-medium leading-tight tracking-tight">
-                        &quot;Becho.com has transformed how we source raw materials. The verification process is top-notch, and we&apos;ve saved 20% on procurement costs.&quot;
+                        &quot;bechoHub.com has transformed how we source raw materials. The verification process is top-notch, and we&apos;ve saved 20% on procurement costs.&quot;
                     </blockquote>
                     <div>
                         <p className="font-bold text-lg">Rajesh Kumar</p>

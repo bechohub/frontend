@@ -30,7 +30,7 @@ export default function SignUp() {
                         <CheckCircle2 className="h-7 w-7 text-white" />
                     </div>
                     <blockquote className="text-3xl font-medium leading-tight tracking-tight">
-                        &quot;Finding reliable suppliers used to take weeks. With Becho.com, we posted an RFQ and closed the deal in 3 days.&quot;
+                        &quot;Finding reliable suppliers used to take weeks. With bechoHub.com, we posted an RFQ and closed the deal in 3 days.&quot;
                     </blockquote>
                     <div>
                         <p className="font-bold text-lg">Anita Desai</p>

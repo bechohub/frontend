@@ -111,10 +111,11 @@ export default function HowItWorksPage() {
                     <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
                         <FadeIn>
-                            <h1 className="text-5xl font-bold tracking-tight sm:text-7xl mb-8 leading-tight">
-                                Trade with <br /> confidence.
+                            <h1 className="text-4xl font-bold tracking-tight mb-6 font-heading">
+                                How <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">bechoHub.com</span> Works
                             </h1>
-                            <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                                A simple, secure, and transparent process designed for modern B2B trade.
                                 The most secure and efficient way to source from verified Indian manufacturers.
                                 No ambiguity, just business.
                             </p>

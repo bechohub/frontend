@@ -15,8 +15,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Becho.com | Premium B2B Marketplace",
-  description: "India's most trusted B2B marketplace for manufacturers and wholesalers.",
+  title: "bechoHub.com | B2B Marketplace",
+  description: "India's leading B2B marketplace for industrial goods.",
 };
 
 export default function RootLayout({

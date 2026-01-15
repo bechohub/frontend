@@ -37,9 +37,9 @@ export default function Footer() {
                 <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                     <div className="space-y-8">
                         <div className="flex items-center gap-2">
-                            <span className="text-2xl font-bold tracking-tight text-white font-heading">
-                                becho.com
-                            </span>
+                            <Link href="/" className="text-2xl font-bold text-white font-heading">
+                                bechoHub.com
+                            </Link>
                         </div>
                         <p className="text-sm leading-6 text-gray-400">
                             Empowering Indian MSMEs with technology. Connect, source, and grow with India&apos;s most trusted B2B marketplace.

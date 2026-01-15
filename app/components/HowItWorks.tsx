@@ -3,30 +3,27 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeIn, SlideUp } from "./Animators";
+import { FileText, UserCheck, ShieldCheck } from "lucide-react"; // Added for new icons
 
 export default function HowItWorks() {
     const steps = [
         {
             id: 1,
             title: "Post Your Requirement",
-            description:
-                "Specify product details, quantity, and budget. It takes less than 2 minutes.",
-            bg: "bg-orange-500",
+            description: "Create a detailed range of buying requests. bechoHub.com's AI helps you specify grades, quantities, and delivery terms.",
+            icon: FileText,
         },
         {
             id: 2,
-            title: "Receive Quotes",
-            description:
-                "Get competitive quotes from verified suppliers within 24 hours.",
-            bg: "border border-teal-500 text-teal-600",
-            textColor: "text-teal-600",
+            title: "Get Verified Quotes",
+            description: "Receive competitive quotes from GST-verified suppliers within 24 hours. Compare prices and supplier ratings.",
+            icon: UserCheck,
         },
         {
             id: 3,
-            title: "Select & Pay Securely",
-            description:
-                "Choose the best offer, pay via secure gateway, and track your shipment.",
-            bg: "bg-green-500",
+            title: "Secure Payment & Delivery",
+            description: "Pay via vibrant bechoHub.com Escrow. Funds are released only after you approve the goods. End-to-end tracking included.",
+            icon: ShieldCheck,
         },
     ];
 
