@@ -5,12 +5,27 @@ import Image from "next/image";
 import { Search, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "../utils/cn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const isActive = (path: string) => pathname === path;
 
@@ -22,7 +37,10 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="border-b border-white/10 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/5 shadow-sm saturate-200' : 'bg-transparent'}`}>
+      {/* Gradient Line at Bottom */}
+      {isScrolled && <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-teal-500/50 to-transparent"></div>}
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}

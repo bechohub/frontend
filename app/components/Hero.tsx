@@ -10,10 +10,10 @@ export default function Hero() {
     return (
         <div className="relative overflow-hidden pt-24 pb-16 sm:pt-32 sm:pb-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Aurora Gradients */}
-                <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
-                <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-slate-100/50 rounded-full blur-[120px] pointer-events-none -z-10" />
+                {/* Aurora Gradients - Vibrant & Deep */}
+                <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/30 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+                <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
                 <div className="lg:grid lg:grid-cols-12 lg:gap-16 items-center relative z-10">
 
@@ -29,7 +29,7 @@ export default function Hero() {
                         <FadeIn delay={0.2}>
                             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] font-heading">
                                 Sourcing made <br className="hidden lg:block" />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-200 to-teal-500">intelligent</span>.
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-blue-500 to-violet-500">intelligent</span>.
                             </h1>
                         </FadeIn>
 
@@ -45,18 +45,18 @@ export default function Hero() {
                             <div className="w-full sm:w-auto">
                                 <Link
                                     href="/rfq"
-                                    className="group flex w-full items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-slate-950 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:bg-slate-200 hover:scale-[1.02] transition-all duration-300 active:scale-95"
+                                    className="group flex w-full items-center justify-center rounded-full bg-gradient-to-r from-teal-500 to-blue-600 px-8 py-4 text-base font-semibold text-white shadow-[0_0_20px_rgba(45,212,191,0.3)] hover:shadow-[0_0_30px_rgba(45,212,191,0.5)] hover:scale-[1.02] transition-all duration-300 active:scale-95 border border-transparent hover:border-white/20"
                                 >
                                     Post Request
-                                    <ArrowRight className="ml-2 h-4 w-4 opacity-70 group-hover:translate-x-1 group-hover:opacity-100 transition-all text-slate-950" />
+                                    <ArrowRight className="ml-2 h-4 w-4 opacity-70 group-hover:translate-x-1 group-hover:opacity-100 transition-all text-white" />
                                 </Link>
                             </div>
                             <div className="mt-4 sm:mt-0 w-full sm:w-auto">
                                 <Link
                                     href="/browse"
-                                    className="flex w-full items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-white/10 hover:border-white/20 transition-all duration-300 active:scale-95"
+                                    className="flex w-full items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-white/10 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] transition-all duration-300 active:scale-95"
                                 >
-                                    <LayoutGrid className="mr-2 h-4 w-4 text-slate-400 group-hover:text-white" />
+                                    <LayoutGrid className="mr-2 h-4 w-4 text-slate-400 group-hover:text-blue-400 transition-colors" />
                                     Browse Suppliers
                                 </Link>
                             </div>

@@ -18,5 +18,5 @@ html {
 }
 
 ::selection {
-  @apply bg-slate-900 text-white;
+  @apply bg-fuchsia-500/30 text-fuchsia-200;
 }
