@@ -36,7 +36,7 @@ function SignUpForm() {
         companyName: "",
         gstNumber: "",
         category: "",
-        sourcingVolume: "",
+        businessScale: "",
         password: "",
     });
 
@@ -53,7 +53,7 @@ function SignUpForm() {
     const isStepValid = () => {
         if (step === 1) return true; // Role is already selected
         if (step === 2) return formData.firstName && formData.email && formData.phone;
-        if (step === 3) return formData.companyName;
+        if (step === 3) return formData.companyName && formData.category && formData.businessScale;
         if (step === 4) return formData.password.length >= 8;
         return true;
     };
@@ -247,8 +247,8 @@ function SignUpForm() {
                                                 {['< 10L', '10L - 1Cr', '1Cr - 10Cr', '10Cr+'].map((vol) => (
                                                     <button
                                                         key={vol}
-                                                        onClick={() => setFormData(prev => ({ ...prev, sourcingVolume: vol }))}
-                                                        className={`py-3 px-4 rounded-xl border text-[10px] font-bold uppercase transition-all ${formData.sourcingVolume === vol
+                                                        onClick={() => setFormData(prev => ({ ...prev, businessScale: vol }))}
+                                                        className={`py-3 px-4 rounded-xl border text-[10px] font-bold uppercase transition-all ${formData.businessScale === vol
                                                             ? 'bg-cyan-500 border-cyan-500 text-slate-950'
                                                             : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10'
                                                             }`}
@@ -262,7 +262,7 @@ function SignUpForm() {
                                 ) : (
                                     <>
                                         <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Primary Manufacturing Expertise</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Product Category</label>
                                             <div className="relative group">
                                                 <Factory className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
                                                 <select
@@ -271,12 +271,30 @@ function SignUpForm() {
                                                     onChange={handleInputChange}
                                                     className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-4 focus:bg-white/10 focus:border-cyan-500/50 outline-none transition-all text-white appearance-none"
                                                 >
-                                                    <option value="" className="bg-slate-900">Select Expertise</option>
-                                                    <option value="oem" className="bg-slate-900">OEM Manufacturing</option>
-                                                    <option value="contract" className="bg-slate-900">Contract Manufacturing</option>
-                                                    <option value="raw" className="bg-slate-900">Raw Material Production</option>
-                                                    <option value="assembly" className="bg-slate-900">Assembly & Testing</option>
+                                                    <option value="" className="bg-slate-900">Select Category</option>
+                                                    <option value="footwear" className="bg-slate-900">Footwear & Leather</option>
+                                                    <option value="tea_coffee" className="bg-slate-900">Tea & Coffee</option>
+                                                    <option value="grains" className="bg-slate-900">Grains & Rice</option>
+                                                    <option value="apparel" className="bg-slate-900">Apparel & Textiles</option>
+                                                    <option value="electronics" className="bg-slate-900">Consumer Electronics</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Supply Capacity</label>
+                                            <div className="grid grid-cols-2 gap-3 mt-2">
+                                                {['Retail Orders', 'Small Wholesale', 'Bulk Supplier', 'Large Enterprise'].map((cap) => (
+                                                    <button
+                                                        key={cap}
+                                                        onClick={() => setFormData(prev => ({ ...prev, businessScale: cap }))}
+                                                        className={`py-3 px-4 rounded-xl border text-[10px] font-bold uppercase transition-all ${formData.businessScale === cap
+                                                            ? 'bg-indigo-500 border-indigo-500 text-white'
+                                                            : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10'
+                                                            }`}
+                                                    >
+                                                        {cap}
+                                                    </button>
+                                                ))}
                                             </div>
                                         </div>
                                         <div className="space-y-2">
