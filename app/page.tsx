@@ -115,7 +115,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto text-center relative">
             <FadeIn>
               <h1 className="text-[42px] sm:text-7xl md:text-8xl lg:text-[110px] font-black tracking-tightest leading-[1] sm:leading-[0.85] mb-8 sm:mb-12 font-heading text-slate-900">
-                The Future of <br className="sm:hidden" />
+                The Future of <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-600">Indian B2B.</span>
               </h1>
 
