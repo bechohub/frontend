@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -18,6 +18,15 @@ import { FadeIn, SlideUp, StaggerContainer, StaggerItem } from "./components/Ani
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const words = ["certainty.", "speed.", "trust.", "bechoHub."];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % 4);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-cyan-100 selection:text-cyan-900 overflow-x-hidden">
@@ -57,35 +66,34 @@ export default function Home() {
               <div className="relative mb-8">
                 <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-[1.1] pb-2 font-heading">
                   Trade with <br className="sm:hidden" />
-                  <span className="relative inline-block overflow-hidden h-[1.2em] align-top text-left min-w-[300px]">
-                    <motion.span
-                      animate={{ y: ["0%", "-25%", "-50%", "-75%"] }}
-                      transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "circInOut",
-                        times: [0, 0.33, 0.66, 1]
-                      }}
-                      className="flex flex-col text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600"
-                    >
-                      <span>certainty.</span>
-                      <span>speed.</span>
-                      <span>trust.</span>
-                      <span>bechoHub.</span>
-                    </motion.span>
-                  </span>
+                  <div className="inline-block relative md:min-w-[460px] text-center align-middle">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={wordIndex}
+                        initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600"
+                      >
+                        {words[wordIndex]}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
                 </h1>
               </div>
 
               <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-                Connect directly with India&apos;s most reliable manufacturers. <br className="hidden md:block" />
-                Zero guesswork, verified partners, and secured escrow fulfillment.
+                Connect directly with India&apos;s manufacturers. <br className="hidden md:block" />
+                Verified partners, secured escrow, and guaranteed fulfillment.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Link href="#onboarding" className="group w-full sm:w-auto px-10 py-5 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all hover:translate-y-[-4px] shadow-2xl shadow-slate-300 active:scale-95 flex items-center justify-center gap-2">
-                  Get Started Free
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <Link href="#onboarding" className="group w-full sm:w-auto px-10 py-5 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all hover:translate-y-[-4px] shadow-2xl shadow-slate-300 active:scale-95 flex flex-col items-center">
+                  <div className="flex items-center gap-2">
+                    Get Started Free
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </Link>
                 <Link href="#how-it-works" className="w-full sm:w-auto px-10 py-5 bg-white text-slate-900 border border-slate-200 rounded-full font-bold text-lg hover:bg-slate-50 transition-all active:scale-95">
                   See the Process
