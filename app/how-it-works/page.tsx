@@ -5,177 +5,161 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { FadeIn, StaggerContainer, StaggerItem } from "../components/Animators";
 import {
-    Search,
-    ShoppingCart,
-    Truck,
-    CreditCard,
     Factory,
-    UploadCloud,
-    BadgeCheck,
-    DollarSign,
-    ChevronDown,
-    ChevronUp,
+    Truck,
+    ShieldCheck,
+    Zap,
     ArrowRight,
     Target,
-    ShieldCheck,
-    Zap
+    Sparkles,
+    Shield,
+    Globe2,
+    Cpu
 } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function HowItWorksPage() {
-    const [userType, setUserType] = useState<'buyer' | 'supplier'>('buyer');
-
-    const buyerSteps = [
+    const chapters = [
         {
             id: "01",
-            title: "Project Definition",
-            description: "Define your sourcing needs, material specs, and target landing price. Our engine suggests the best matching clusters.",
-            icon: Target,
-            color: "text-cyan-400",
-        },
-        {
-            id: "02",
-            title: "Quote Aggregation",
-            description: "Verified manufacturers submit competitive bids. We normalize these quotes to help you compare apples-to-apples.",
-            icon: DollarSign,
-            color: "text-blue-400",
-        },
-        {
-            id: "03",
-            title: "Escrow Funding",
-            description: "Fund your order through our secure payment bridge. Capital is protected until QC reports are approved.",
-            icon: ShieldCheck,
-            color: "text-indigo-400",
-        },
-        {
-            id: "04",
-            title: "Doorstep Logistics",
-            description: "Full visibility from factory floor to your warehouse. Customs, duties, and port-clearance handled.",
-            icon: Truck,
-            color: "text-fuchsia-400",
-        },
-    ];
-
-    const supplierSteps = [
-        {
-            id: "01",
-            title: "Capacity Listing",
-            description: "List your available floor time and machine capabilities. Get verified through our 3-tier audit process.",
+            label: "The Renaissance",
+            title: "Rebuilding the Backbone.",
+            description: "Traditional B2B is broken. Hidden middlemen, manual QC, and opaque pricing have held back Indian manufacturing for decades. We're here to rewrite the protocol.",
             icon: Factory,
-            color: "text-cyan-400",
+            bg: "bg-cyan-50"
         },
         {
             id: "02",
-            title: "Lead Intelligence",
-            description: "Access high-intent RFQs that match your specific machine setup and expertise level.",
-            icon: Zap,
-            color: "text-blue-400",
+            label: "The Protocol",
+            title: "Direct Digital Sourcing.",
+            description: "We connect high-intent global buyers directly to the factory floor. No noise, no brokers. Just verified capacity and primary pricing, unlocked by data.",
+            icon: Cpu,
+            bg: "bg-indigo-50"
         },
         {
             id: "03",
-            title: "Smart Quoting",
-            description: "Use our data-backed pricing tools to submit bids that win without sacrificing your margins.",
-            icon: UploadCloud,
-            color: "text-indigo-400",
+            label: "Verification",
+            title: "Trust at Scale.",
+            description: "Every factory on bechoHub undergoes a rigorous 3-tier audit. We track live production benchmarks to ensure quality is a guarantee, not a gamble.",
+            icon: ShieldCheck,
+            bg: "bg-blue-50"
         },
         {
             id: "04",
-            title: "Rapid Settlement",
-            description: "Payments are triggered automatically upon shipment verification. Zero-delay capital rotation.",
-            icon: BadgeCheck,
-            color: "text-fuchsia-400",
-        },
+            label: "The Mission",
+            title: "Global Scale from Bharat.",
+            description: "Empowering 63 million MSMEs to compete on the global stage. From local clusters to international shipments, we handle the infrastructure, you build the future.",
+            icon: Globe2,
+            bg: "bg-fuchsia-50"
+        }
     ];
-
-    const currentSteps = userType === 'buyer' ? buyerSteps : supplierSteps;
 
     return (
-        <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-cyan-500/30 overflow-x-hidden">
+        <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-cyan-100 selection:text-cyan-950 overflow-x-hidden">
             <Navbar />
 
-            <main className="pt-32 pb-20">
-                {/* Hero section with high-impact typography */}
-                <section className="px-6 relative mb-24 md:mb-40">
-                    <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+            {/* Ambient Backgrounds */}
+            <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-cyan-50/40 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-50/40 rounded-full blur-[120px]" />
+            </div>
 
-                    <div className="max-w-5xl mx-auto text-center relative z-10">
+            <main className="pt-64 pb-32">
+                {/* Hero section - Cinematic Narrative */}
+                <section className="px-6 relative mb-40 lg:mb-64">
+                    <div className="max-w-7xl mx-auto text-center relative z-10">
                         <FadeIn>
-                            <h1 className="text-5xl md:text-8xl font-black tracking-tightest mb-8 uppercase leading-[0.9]">
-                                The Trade <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600">Operating System.</span>
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 mb-10">
+                                <Sparkles className="h-4 w-4 text-cyan-600" />
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Our Manifest</span>
+                            </div>
+
+                            <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tightest mb-12 uppercase leading-[0.85] text-slate-950">
+                                Trade is <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700">Evolution.</span>
                             </h1>
-                            <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed mb-12">
-                                We've engineered every friction point out of the B2B journey. <br className="hidden md:block" />
-                                Faster, deeper, and completely verified.
+                            <p className="text-xl md:text-3xl text-slate-500 max-w-3xl mx-auto font-light leading-relaxed mb-16">
+                                We're not just a marketplace. We're a technology protocol built to accelerate the Indian manufacturing renaissance.
                             </p>
 
-                            <div className="flex justify-center p-1.5 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 w-fit mx-auto">
-                                <button
-                                    onClick={() => setUserType('buyer')}
-                                    className={`px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all ${userType === 'buyer'
-                                            ? 'bg-cyan-500 text-slate-950 shadow-[0_0_20px_rgba(6,182,212,0.4)]'
-                                            : 'text-slate-400 hover:text-white'
-                                        }`}
-                                >
-                                    Buyer Path
-                                </button>
-                                <button
-                                    onClick={() => setUserType('supplier')}
-                                    className={`px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all ${userType === 'supplier'
-                                            ? 'bg-indigo-500 text-white shadow-[0_0_20px_rgba(99,102,241,0.4)]'
-                                            : 'text-slate-400 hover:text-white'
-                                        }`}
-                                >
-                                    Seller Path
-                                </button>
-                            </div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5, duration: 1 }}
+                                className="flex justify-center"
+                            >
+                                <div className="h-24 w-px bg-gradient-to-b from-cyan-500 to-transparent" />
+                            </motion.div>
                         </FadeIn>
                     </div>
                 </section>
 
-                {/* Vertical Process Steps */}
+                {/* The Chapters - Interactive Storytelling */}
                 <section className="px-6 max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-                        <div className="sticky top-40 hidden md:block">
-                            <h2 className="text-6xl font-black tracking-tightest uppercase text-slate-900 border-l-8 border-cyan-500 pl-8">
-                                Step by <br /> step.
-                            </h2>
-                            <p className="text-slate-500 text-lg mt-8 max-w-sm font-light">
-                                Our platform handles the complexity so you can focus on building your business.
-                            </p>
-                        </div>
-
-                        <StaggerContainer className="space-y-12">
-                            {currentSteps.map((step, index) => (
-                                <StaggerItem key={step.id}>
-                                    <div className="group relative p-10 rounded-[40px] bg-white/[0.03] border border-white/5 hover:bg-white/[0.07] hover:border-white/10 transition-all">
-                                        <div className="flex justify-between items-start mb-8">
-                                            <div className={`h-14 w-14 rounded-2xl bg-white/5 flex items-center justify-center ${step.color} border border-white/5`}>
-                                                <step.icon className="h-7 w-7" />
-                                            </div>
-                                            <span className="text-5xl font-black text-white/5 group-hover:text-white/10 transition-colors">{step.id}</span>
-                                        </div>
-                                        <h3 className="text-2xl font-bold mb-4 tracking-tight text-white">{step.title}</h3>
-                                        <p className="text-slate-400 leading-relaxed font-light">{step.description}</p>
+                    <StaggerContainer className="space-y-40 lg:space-y-64">
+                        {chapters.map((chapter, index) => (
+                            <StaggerItem key={chapter.id}>
+                                <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 lg:gap-24`}>
+                                    {/* Visual Side */}
+                                    <div className="flex-1 w-full flex justify-center">
+                                        <motion.div
+                                            whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
+                                            className={`relative w-full aspect-[4/3] max-w-md rounded-[64px] ${chapter.bg} border-2 border-slate-50 flex items-center justify-center shadow-2xl shadow-slate-200/50 group overflow-hidden`}
+                                        >
+                                            <div className="absolute inset-0 bg-white/50 backdrop-blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                            <chapter.icon className="h-32 w-32 text-slate-950 group-hover:scale-110 transition-transform duration-700 relative z-10" strokeWidth={1} />
+                                            <span className="absolute bottom-12 right-12 text-9xl font-black text-slate-950/5 select-none">{chapter.id}</span>
+                                        </motion.div>
                                     </div>
-                                </StaggerItem>
-                            ))}
-                        </StaggerContainer>
-                    </div>
+
+                                    {/* Content Side */}
+                                    <div className="flex-1 text-center md:text-left">
+                                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-600 mb-6 block">Chapter {chapter.id}: {chapter.label}</span>
+                                        <h2 className="text-4xl lg:text-7xl font-black tracking-tightest uppercase mb-8 text-slate-950 leading-none">
+                                            {chapter.title}
+                                        </h2>
+                                        <p className="text-lg lg:text-xl text-slate-500 font-light leading-relaxed mb-10 max-w-lg mx-auto md:mx-0">
+                                            {chapter.description}
+                                        </p>
+                                        <div className="flex justify-center md:justify-start">
+                                            <button className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-slate-950 group">
+                                                Learn more <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+                        ))}
+                    </StaggerContainer>
                 </section>
 
-                {/* Final CTA */}
-                <section className="mt-40 px-6">
+                {/* Final Vision CTA */}
+                <section className="mt-64 px-6 overflow-hidden">
                     <FadeIn>
-                        <div className="max-w-6xl mx-auto p-12 md:p-24 rounded-[64px] bg-gradient-to-br from-slate-900 to-slate-950 border border-white/5 text-center relative overflow-hidden">
-                            <div className="absolute inset-0 bg-cyan-500/5 blur-[120px] -z-10" />
-                            <h2 className="text-4xl md:text-7xl font-black tracking-tightest uppercase mb-12">Ready to <span className="text-cyan-400">Scale?</span></h2>
-                            <Link
-                                href="/signup"
-                                className="inline-flex items-center gap-4 px-12 py-6 bg-white text-slate-950 rounded-full font-black text-xl uppercase tracking-widest hover:bg-slate-200 transition-all hover:scale-105 active:scale-95"
-                            >
-                                Get Started Now <ArrowRight className="h-6 w-6" />
-                            </Link>
+                        <div className="max-w-6xl mx-auto p-12 md:p-32 rounded-[64px] bg-slate-950 text-white text-center relative overflow-hidden group">
+                            {/* Animated Background Sparks */}
+                            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none" />
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-cyan-500/10 blur-[150px] -z-10 group-hover:bg-cyan-500/20 transition-all duration-1000" />
+
+                            <h2 className="text-5xl md:text-8xl lg:text-[100px] font-black tracking-tightest uppercase mb-16 leading-[0.85]">
+                                Become part <br /> of the story.
+                            </h2>
+
+                            <div className="flex flex-col sm:flex-row justify-center gap-6">
+                                <Link
+                                    href="/signup"
+                                    className="px-16 py-6 bg-white text-slate-950 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-cyan-400 transition-all active:scale-95 shadow-2xl"
+                                >
+                                    Join the Protocol
+                                </Link>
+                                <Link
+                                    href="/signup"
+                                    className="px-16 py-6 bg-transparent border border-white/20 text-white rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-white/5 transition-all active:scale-95"
+                                >
+                                    Partner with Us
+                                </Link>
+                            </div>
                         </div>
                     </FadeIn>
                 </section>
@@ -185,3 +169,4 @@ export default function HowItWorksPage() {
         </div>
     );
 }
+
