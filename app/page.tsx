@@ -13,7 +13,8 @@ import {
   ChevronRight,
   Menu,
   X,
-  Plus
+  Plus,
+  Zap
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "./components/Animators";
 import Footer from "./components/Footer";
@@ -56,14 +57,18 @@ export default function Home() {
         <section className="relative pt-32 pb-20 px-6 overflow-hidden">
           <div className="max-w-7xl mx-auto text-center relative">
             <FadeIn>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-12">
+                <Zap className="h-3 w-3 text-cyan-500 fill-cyan-500" /> Currently in Public Beta
+              </div>
+
               <h1 className="text-6xl md:text-[110px] font-black tracking-tightest leading-[0.85] mb-12 font-heading text-slate-900">
-                India&apos;s Premiere <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-600">B2B Network.</span>
+                The Future of <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-600">Indian B2B.</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto mb-16 font-light leading-relaxed">
-                Connect directly with 5,000+ verified Indian manufacturers. <br className="hidden md:block" />
-                Secure payments, verified logistics, and zero-risk trade.
+                We are building the infrastructure for a million manufacturers. <br className="hidden md:block" />
+                Verified trade, secure payments, and frictionless logistics.
               </p>
 
               {/* Directly Accessible Registration CTAs */}
@@ -72,7 +77,7 @@ export default function Home() {
                   href="/signup?type=buyer"
                   className="group w-full sm:w-auto px-10 py-5 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all hover:scale-[1.05] active:scale-95 shadow-2xl shadow-slate-200 flex items-center justify-center gap-3"
                 >
-                  Join as Buyer
+                  Register as Buyer
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
@@ -80,7 +85,7 @@ export default function Home() {
                   className="w-full sm:w-auto px-10 py-5 bg-white text-slate-900 border border-slate-200 rounded-full font-bold text-lg hover:bg-slate-50 transition-all active:scale-95 hover:border-slate-300 shadow-sm flex items-center justify-center gap-3"
                 >
                   <Plus className="h-5 w-5 text-slate-400 group-hover:rotate-90 transition-transform" />
-                  Register as Seller
+                  Join as Seller
                 </Link>
               </div>
 
@@ -91,8 +96,8 @@ export default function Home() {
                     <CheckCircle2 className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900">Verified MSMEs</h3>
-                    <p className="text-sm text-slate-500 mt-1">100% GST-verified trade network.</p>
+                    <h3 className="font-bold text-slate-900">Direct Access</h3>
+                    <p className="text-sm text-slate-500 mt-1">Connect directly with verified Indian factories.</p>
                   </div>
                 </StaggerItem>
                 <StaggerItem className="flex items-start gap-4 text-left">
@@ -100,8 +105,8 @@ export default function Home() {
                     <ShieldCheck className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900">Zero-Risk Payments</h3>
-                    <p className="text-sm text-slate-500 mt-1">Escrow protection for every order.</p>
+                    <h3 className="font-bold text-slate-900">Secure Trade</h3>
+                    <p className="text-sm text-slate-500 mt-1">Escrow protection for high-value orders.</p>
                   </div>
                 </StaggerItem>
                 <StaggerItem className="flex items-start gap-4 text-left">
@@ -109,29 +114,29 @@ export default function Home() {
                     <TrendingUp className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900">Live Logistics</h3>
-                    <p className="text-sm text-slate-500 mt-1">End-to-end tracking and fulfillment.</p>
+                    <h3 className="font-bold text-slate-900">Built for Growth</h3>
+                    <p className="text-sm text-slate-500 mt-1">Scale your manufacturing volume with ease.</p>
                   </div>
                 </StaggerItem>
               </StaggerContainer>
             </FadeIn>
           </div>
 
-          {/* Activity Ticker - Social Proof */}
+          {/* Activity Ticker - Onboarding Proof */}
           <div className="mt-32 max-w-full overflow-hidden border-y border-slate-100 py-6 bg-slate-50/50">
             <motion.div
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
               className="flex gap-16 whitespace-nowrap text-[10px] font-bold text-slate-400 uppercase tracking-widest px-8"
             >
-              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-cyan-500" /> ORDER: INDUSTRIAL BEARINGS (12K UNITS) TO PUNE</div>
-              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-blue-500" /> RFQ: MEDICAL TEXTILES (50 TONS) FROM SURAT</div>
-              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-indigo-500" /> PAYMENT: BANGALORE MSME HUB (₹12,40,000)</div>
-              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-cyan-500" /> ORDER: PRECISION GEARS (5K UNITS) TO GURUGRAM</div>
+              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-cyan-500" /> NETWORK BUILDING: 24 MANUFACTURERS VERIFIED TODAY</div>
+              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-blue-500" /> QUALITY CHECK: ISO-COMPLIANCE AUDITS UNDERWAY</div>
+              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-indigo-500" /> LOGISTICS: HYDERABAD-NCR LANE NOW ACTIVE</div>
+              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-cyan-500" /> BETA ACCESS: NEW SUPPLIER SLOTS OPEN IN GUJARAT</div>
               {/* Duplicate for seamless scroll */}
-              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-cyan-500" /> ORDER: INDUSTRIAL BEARINGS (12K UNITS) TO PUNE</div>
-              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-blue-500" /> RFQ: MEDICAL TEXTILES (50 TONS) FROM SURAT</div>
-              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-indigo-500" /> PAYMENT: BANGALORE MSME HUB (₹12,40,000)</div>
+              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-cyan-500" /> NETWORK BUILDING: 24 MANUFACTURERS VERIFIED TODAY</div>
+              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-blue-500" /> QUALITY CHECK: ISO-COMPLIANCE AUDITS UNDERWAY</div>
+              <div className="flex gap-4 items-center"><span className="h-2 w-2 rounded-full bg-indigo-500" /> LOGISTICS: HYDERABAD-NCR LANE NOW ACTIVE</div>
             </motion.div>
           </div>
         </section>
@@ -141,8 +146,8 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[160px] -z-10" />
           <div className="max-w-6xl mx-auto text-center mb-24">
             <FadeIn>
-              <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">Ready to Trade?</h2>
-              <p className="text-slate-400 text-xl font-light">Join the network and start growing today.</p>
+              <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">Day One is here.</h2>
+              <p className="text-slate-400 text-xl font-light">Join the builders shaping the future of Indian trade.</p>
             </FadeIn>
           </div>
 
@@ -153,10 +158,10 @@ export default function Home() {
                   <ArrowRight className="h-10 w-10 -rotate-45" />
                 </div>
                 <Users2 className="h-14 w-14 text-cyan-400 mb-8" />
-                <h3 className="text-3xl font-bold mb-6 tracking-tight">Register as Buyer</h3>
-                <p className="text-slate-400 text-lg mb-12 font-light leading-relaxed">Source industrial goods with guaranteed quality and payment security.</p>
+                <h3 className="text-3xl font-bold mb-6 tracking-tight">Access as Buyer</h3>
+                <p className="text-slate-400 text-lg mb-12 font-light leading-relaxed">Secure your supply chain with the next generation of Indian manufacturers.</p>
                 <div className="inline-flex items-center text-sm font-black uppercase tracking-[0.2em] text-cyan-400 gap-2">
-                  Get Started <ChevronRight className="h-4 w-4" />
+                  Apply for Beta <ChevronRight className="h-4 w-4" />
                 </div>
               </Link>
             </FadeIn>
@@ -167,10 +172,10 @@ export default function Home() {
                   <ArrowRight className="h-10 w-10 -rotate-45" />
                 </div>
                 <Building2 className="h-14 w-14 text-indigo-400 mb-8" />
-                <h3 className="text-3xl font-bold mb-6 tracking-tight">Register as Seller</h3>
-                <p className="text-slate-400 text-lg mb-12 font-light leading-relaxed">Expose your manufacturing capacity to verified buyers and grow your order book.</p>
+                <h3 className="text-3xl font-bold mb-6 tracking-tight">Scale as Seller</h3>
+                <p className="text-slate-400 text-lg mb-12 font-light leading-relaxed">Get your manufacturing capacity verified and reach high-intent global buyers.</p>
                 <div className="inline-flex items-center text-sm font-black uppercase tracking-[0.2em] text-indigo-400 gap-2">
-                  Get Started <ChevronRight className="h-4 w-4" />
+                  List Capacity <ChevronRight className="h-4 w-4" />
                 </div>
               </Link>
             </FadeIn>
