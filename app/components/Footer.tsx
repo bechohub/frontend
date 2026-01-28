@@ -46,28 +46,42 @@ export default function Footer() {
                         <div className="space-y-6">
                             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">Explore</h4>
                             <ul className="space-y-4">
-                                {['How it works', 'Find Suppliers', 'About'].map((link) => (
-                                    <li key={link}>
-                                        <Link href="#" className="text-slate-400 hover:text-white transition-colors text-sm font-medium flex items-center group">
-                                            {link}
-                                            <ArrowUpRight className="h-3 w-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                                        </Link>
-                                    </li>
-                                ))}
+                                <li>
+                                    <Link href="/how-it-works" className="text-slate-400 hover:text-white transition-colors text-sm font-medium flex items-center group">
+                                        How it works
+                                        <ArrowUpRight className="h-3 w-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/browse" className="text-slate-400 hover:text-white transition-colors text-sm font-medium flex items-center group">
+                                        Find Suppliers
+                                        <ArrowUpRight className="h-3 w-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/about" className="text-slate-400 hover:text-white transition-colors text-sm font-medium flex items-center group">
+                                        About
+                                        <ArrowUpRight className="h-3 w-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
 
                         <div className="space-y-6">
                             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">Legal</h4>
                             <ul className="space-y-4">
-                                {['Privacy Policy', 'Terms of Use'].map((link) => (
-                                    <li key={link}>
-                                        <Link href="#" className="text-slate-400 hover:text-white transition-colors text-sm font-medium flex items-center group">
-                                            {link}
-                                            <ArrowUpRight className="h-3 w-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                                        </Link>
-                                    </li>
-                                ))}
+                                <li>
+                                    <Link href="/privacy" className="text-slate-400 hover:text-white transition-colors text-sm font-medium flex items-center group">
+                                        Privacy Policy
+                                        <ArrowUpRight className="h-3 w-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/terms" className="text-slate-400 hover:text-white transition-colors text-sm font-medium flex items-center group">
+                                        Terms of Use
+                                        <ArrowUpRight className="h-3 w-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -87,7 +101,7 @@ export default function Footer() {
                     </div>
 
                     <div className="text-[10px] font-bold text-slate-700 uppercase tracking-[0.3em]">
-                        &copy; 2025 BECHOHUB.
+                        &copy; 2026 BECHOHUB.
                     </div>
                 </div>
             </div>
