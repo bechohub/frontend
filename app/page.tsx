@@ -50,25 +50,48 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-20 pb-32 px-6">
+        <section className="relative pt-24 pb-32 px-6">
           <div className="max-w-5xl mx-auto text-center">
             <FadeIn>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-100 text-sm font-medium text-slate-600 mb-8">
                 <span className="flex h-2 w-2 rounded-full bg-cyan-500 animate-pulse" />
-                India's Premiere B2B Trade Network
+                Trusted by 5,000+ Verified MSMEs
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] mb-8 font-heading">
-                Trade with <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600">certainty</span>.
-              </h1>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                Connect directly with verified Indian manufacturers. Minimal friction, Maximum growth.
-                Secure payments and end-to-end logistics, simplified.
+
+              <div className="relative mb-8">
+                <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-[1.1] pb-2 font-heading">
+                  Trade with <br className="sm:hidden" />
+                  <span className="relative inline-block overflow-hidden h-[1.2em] align-top text-left min-w-[300px]">
+                    <motion.span
+                      animate={{ y: ["0%", "-25%", "-50%", "-75%"] }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "circInOut",
+                        times: [0, 0.33, 0.66, 1]
+                      }}
+                      className="flex flex-col text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600"
+                    >
+                      <span>certainty.</span>
+                      <span>speed.</span>
+                      <span>trust.</span>
+                      <span>bechoHub.</span>
+                    </motion.span>
+                  </span>
+                </h1>
+              </div>
+
+              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+                Connect directly with India&apos;s most reliable manufacturers. <br className="hidden md:block" />
+                Zero guesswork, verified partners, and secured escrow fulfillment.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="#onboarding" className="w-full sm:w-auto px-10 py-4 bg-slate-900 text-white rounded-full font-semibold text-lg hover:bg-slate-800 transition-all hover:translate-y-[-2px] shadow-2xl shadow-slate-200 active:scale-95">
-                  Launch Growth
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Link href="#onboarding" className="group w-full sm:w-auto px-10 py-5 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all hover:translate-y-[-4px] shadow-2xl shadow-slate-300 active:scale-95 flex items-center justify-center gap-2">
+                  Get Started Free
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="#how-it-works" className="w-full sm:w-auto px-10 py-4 bg-white text-slate-900 border border-slate-200 rounded-full font-semibold text-lg hover:bg-slate-50 transition-all active:scale-95">
+                <Link href="#how-it-works" className="w-full sm:w-auto px-10 py-5 bg-white text-slate-900 border border-slate-200 rounded-full font-bold text-lg hover:bg-slate-50 transition-all active:scale-95">
                   See the Process
                 </Link>
               </div>
