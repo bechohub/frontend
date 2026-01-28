@@ -15,7 +15,8 @@ import {
     ChevronLeft,
     Briefcase,
     Smartphone,
-    Check
+    Check,
+    BadgeCheck
 } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense } from "react";
@@ -35,6 +36,7 @@ function SignUpForm() {
         companyName: "",
         gstNumber: "",
         category: "",
+        sourcingVolume: "",
         password: "",
     });
 
@@ -190,7 +192,7 @@ function SignUpForm() {
                         </motion.div>
                     )}
 
-                    {/* Step 3: Business Identity */}
+                    {/* Step 3: Business Identity - Diverged by Role */}
                     {step === 3 && (
                         <motion.div
                             key="step3"
@@ -213,25 +215,86 @@ function SignUpForm() {
                                             name="companyName"
                                             value={formData.companyName}
                                             onChange={handleInputChange}
-                                            placeholder="Acme Manufacturing Ltd"
+                                            placeholder="Acme Corporation Ltd"
                                             className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-4 focus:bg-white/10 focus:border-cyan-500/50 outline-none transition-all text-white placeholder:text-slate-600"
                                         />
                                     </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">GST Number (Optional)</label>
-                                    <div className="relative group">
-                                        <CheckCircle2 className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
-                                        <input
-                                            name="gstNumber"
-                                            value={formData.gstNumber}
-                                            onChange={handleInputChange}
-                                            placeholder="22AAAAA0000A1Z5"
-                                            className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-4 focus:bg-white/10 focus:border-cyan-500/50 outline-none transition-all text-white placeholder:text-slate-600"
-                                        />
-                                    </div>
-                                    <p className="text-[10px] text-slate-600 font-bold tracking-tight">Verified businesses get 3x higher visibility.</p>
-                                </div>
+
+                                {userType === 'buyer' ? (
+                                    <>
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Sourcing Category</label>
+                                            <div className="relative group">
+                                                <ShoppingBag className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
+                                                <select
+                                                    name="category"
+                                                    value={formData.category}
+                                                    onChange={handleInputChange}
+                                                    className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-4 focus:bg-white/10 focus:border-cyan-500/50 outline-none transition-all text-white appearance-none"
+                                                >
+                                                    <option value="" className="bg-slate-900">Select Category</option>
+                                                    <option value="textiles" className="bg-slate-900">Textiles & Apparel</option>
+                                                    <option value="electronics" className="bg-slate-900">Electronics & Electrical</option>
+                                                    <option value="industrial" className="bg-slate-900">Industrial Machinery</option>
+                                                    <option value="raw_materials" className="bg-slate-900">Raw Materials & Chemicals</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Monthly Sourcing Volume</label>
+                                            <div className="grid grid-cols-2 gap-3 mt-2">
+                                                {['< 10L', '10L - 1Cr', '1Cr - 10Cr', '10Cr+'].map((vol) => (
+                                                    <button
+                                                        key={vol}
+                                                        onClick={() => setFormData(prev => ({ ...prev, sourcingVolume: vol }))}
+                                                        className={`py-3 px-4 rounded-xl border text-[10px] font-bold uppercase transition-all ${formData.sourcingVolume === vol
+                                                            ? 'bg-cyan-500 border-cyan-500 text-slate-950'
+                                                            : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10'
+                                                            }`}
+                                                    >
+                                                        {vol}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Primary Manufacturing Expertise</label>
+                                            <div className="relative group">
+                                                <Factory className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
+                                                <select
+                                                    name="category"
+                                                    value={formData.category}
+                                                    onChange={handleInputChange}
+                                                    className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-4 focus:bg-white/10 focus:border-cyan-500/50 outline-none transition-all text-white appearance-none"
+                                                >
+                                                    <option value="" className="bg-slate-900">Select Expertise</option>
+                                                    <option value="oem" className="bg-slate-900">OEM Manufacturing</option>
+                                                    <option value="contract" className="bg-slate-900">Contract Manufacturing</option>
+                                                    <option value="raw" className="bg-slate-900">Raw Material Production</option>
+                                                    <option value="assembly" className="bg-slate-900">Assembly & Testing</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">GST Number (Required for Verification)</label>
+                                            <div className="relative group">
+                                                <BadgeCheck className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
+                                                <input
+                                                    name="gstNumber"
+                                                    value={formData.gstNumber}
+                                                    onChange={handleInputChange}
+                                                    placeholder="22AAAAA0000A1Z5"
+                                                    className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-4 focus:bg-white/10 focus:border-cyan-500/50 outline-none transition-all text-white placeholder:text-slate-600"
+                                                />
+                                            </div>
+                                            <p className="text-[10px] text-cyan-400/60 font-medium tracking-tight">Verified sellers receive 4x more buyer queries.</p>
+                                        </div>
+                                    </>
+                                )}
                             </div>
 
                             <button
