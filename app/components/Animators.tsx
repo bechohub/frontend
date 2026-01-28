@@ -118,5 +118,87 @@ export const ScaleOnHover = ({
             {children}
         </motion.div>
     )
-
 }
+
+import { useState, useEffect, useRef } from "react";
+
+export const TextScramble = ({
+    text,
+    className,
+    delay = 0
+}: {
+    text: string;
+    className?: string;
+    delay?: number;
+}) => {
+    const [displayText, setDisplayText] = useState("");
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const duration = 2000;
+    const speed = 50;
+
+    useEffect(() => {
+        let frame = 0;
+        let timeout: NodeJS.Timeout;
+
+        const startScramble = () => {
+            const interval = setInterval(() => {
+                setDisplayText(
+                    text
+                        .split("")
+                        .map((char, index) => {
+                            if (char === " ") return " ";
+                            if (index < frame / 2) return text[index];
+                            return characters[Math.floor(Math.random() * characters.length)];
+                        })
+                        .join("")
+                );
+
+                if (frame >= text.length * 2) {
+                    clearInterval(interval);
+                    setDisplayText(text);
+                }
+                frame++;
+            }, speed);
+        };
+
+        timeout = setTimeout(startScramble, delay * 1000);
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [text, delay]);
+
+    return <span className={className}>{displayText}</span>;
+};
+
+export const Magnetic = ({
+    children,
+    intensity = 0.5
+}: {
+    children: React.ReactElement;
+    intensity?: number;
+}) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        const { clientX, clientY } = e;
+        const { left, top, width, height } = ref.current!.getBoundingClientRect();
+        const middleX = clientX - (left + width / 2);
+        const middleY = clientY - (top + height / 2);
+        setPosition({ x: middleX * intensity, y: middleY * intensity });
+    };
+
+    const reset = () => setPosition({ x: 0, y: 0 });
+
+    return (
+        <motion.div
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={reset}
+            animate={{ x: position.x, y: position.y }}
+            transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+        >
+            {children}
+        </motion.div>
+    );
+};

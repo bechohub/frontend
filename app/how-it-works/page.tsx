@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { FadeIn, StaggerContainer, StaggerItem } from "../components/Animators";
+import { FadeIn, StaggerContainer, StaggerItem, TextScramble, Magnetic } from "../components/Animators";
 import {
     Factory,
     Truck,
@@ -77,7 +77,9 @@ export default function HowItWorksPage() {
 
                             <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tightest mb-12 uppercase leading-[0.85] text-slate-950">
                                 Trade is <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700">Evolution.</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700">
+                                    <TextScramble text="Evolution." delay={0.5} />
+                                </span>
                             </h1>
                             <p className="text-xl md:text-3xl text-slate-500 max-w-3xl mx-auto font-light leading-relaxed mb-16">
                                 We're not just a marketplace. We're a technology protocol built to accelerate the Indian manufacturing renaissance.
@@ -147,18 +149,22 @@ export default function HowItWorksPage() {
                             </h2>
 
                             <div className="flex flex-col sm:flex-row justify-center gap-6">
-                                <Link
-                                    href="/signup"
-                                    className="px-16 py-6 bg-white text-slate-950 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-cyan-400 transition-all active:scale-95 shadow-2xl"
-                                >
-                                    Join the Protocol
-                                </Link>
-                                <Link
-                                    href="/signup"
-                                    className="px-16 py-6 bg-transparent border border-white/20 text-white rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-white/5 transition-all active:scale-95"
-                                >
-                                    Partner with Us
-                                </Link>
+                                <Magnetic intensity={0.2}>
+                                    <Link
+                                        href="/signup"
+                                        className="px-16 py-6 bg-white text-slate-950 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-cyan-400 transition-all active:scale-95 shadow-2xl block"
+                                    >
+                                        Join the Protocol
+                                    </Link>
+                                </Magnetic>
+                                <Magnetic intensity={0.2}>
+                                    <Link
+                                        href="/signup"
+                                        className="px-16 py-6 bg-transparent border border-white/20 text-white rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-white/5 transition-all active:scale-95 block"
+                                    >
+                                        Partner with Us
+                                    </Link>
+                                </Magnetic>
                             </div>
                         </div>
                     </FadeIn>
