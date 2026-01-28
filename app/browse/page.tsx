@@ -26,7 +26,7 @@ export default function BrowseSuppliers() {
             <main className="pt-40 pb-32">
                 <div className="mx-auto max-w-7xl px-6">
                     {/* Coming Soon Hero */}
-                    <div className="text-center mb-24 max-w-4xl mx-auto">
+                    <div className="text-center mb-24 max-w-6xl mx-auto">
                         <FadeIn>
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 mb-8 pointer-events-none">
                                 <span className="relative flex h-2 w-2">
@@ -36,7 +36,7 @@ export default function BrowseSuppliers() {
                                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Under Construction</span>
                             </div>
 
-                            <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tightest uppercase mb-8 leading-[0.9] text-slate-950">
+                            <h1 className="text-5xl md:text-8xl lg:text-[120px] font-black tracking-tightest uppercase mb-8 leading-[0.9] text-slate-950">
                                 The Marketplace <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700">is Awakening.</span>
                             </h1>
