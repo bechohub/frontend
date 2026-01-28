@@ -23,7 +23,7 @@ export default function BrowseSuppliers() {
                 <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-50/50 rounded-full blur-[120px]" />
             </div>
 
-            <main className="pt-40 pb-32">
+            <main className="pt-64 pb-32">
                 <div className="mx-auto max-w-7xl px-6">
                     {/* Coming Soon Hero */}
                     <div className="text-center mb-24 max-w-6xl mx-auto">

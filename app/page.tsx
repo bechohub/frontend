@@ -30,7 +30,7 @@ export default function Home() {
 
       <main>
         {/* Hero Section - Clean Light */}
-        <section className="relative pt-20 pb-20 sm:pt-32 sm:pb-32 px-6 overflow-hidden">
+        <section className="relative pt-40 pb-20 sm:pt-64 sm:pb-32 px-6 overflow-hidden">
           {/* Ambient Backgrounds - Lightened */}
           <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-50/50 rounded-full blur-[120px] pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-50/50 rounded-full blur-[120px] pointer-events-none" />
