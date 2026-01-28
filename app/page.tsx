@@ -37,14 +37,6 @@ export default function Home() {
 
           <div className="max-w-7xl mx-auto text-center relative z-10">
             <FadeIn>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 mb-10">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-600"></span>
-                </span>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">The New Standard for B2B</span>
-              </div>
-
               <h1 className="text-[44px] sm:text-7xl md:text-8xl lg:text-[120px] font-black tracking-tightest leading-[1] sm:leading-[0.85] mb-10 font-heading text-slate-950">
                 The Future of <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700">Indian B2B.</span>

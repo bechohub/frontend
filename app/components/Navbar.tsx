@@ -57,12 +57,10 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Center Navigation - Discrete & Elegant */}
         <div className="hidden md:flex items-center gap-8">
           {[
             { name: "Browse", href: "/browse" },
             { name: "Story", href: "/how-it-works" },
-            { name: "Network", href: "/signup" },
           ].map((link) => (
             <Link
               key={link.name}
@@ -109,7 +107,7 @@ export default function Navbar() {
             className="fixed top-24 left-6 right-6 p-8 bg-white border border-slate-100 rounded-[32px] shadow-2xl flex flex-col gap-6 md:hidden pointer-events-auto"
           >
             <div className="flex flex-col gap-4">
-              {["Browse", "Story", "Network"].map((item) => (
+              {["Browse", "Story"].map((item) => (
                 <Link
                   key={item}
                   href={`/${item.toLowerCase()}`}
