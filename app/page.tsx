@@ -16,6 +16,7 @@ import {
   Plus
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "./components/Animators";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -177,18 +178,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="py-24 border-t border-slate-100 px-6 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-          <div className="text-2xl font-black tracking-tighter text-slate-900">bechoHub</div>
-          <div className="flex gap-12 text-sm font-bold text-slate-400">
-            <Link href="#" className="hover:text-slate-900 transition-colors uppercase tracking-widest">Privacy</Link>
-            <Link href="#" className="hover:text-slate-900 transition-colors uppercase tracking-widest">Terms</Link>
-          </div>
-          <div className="text-[10px] font-bold text-slate-300 uppercase tracking-[0.3em]">
-            &copy; 2025 BECHOHUB GLOBAL.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
