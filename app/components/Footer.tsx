@@ -21,7 +21,7 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="space-y-6 max-w-sm">
                         <Link href="/" className="text-3xl font-black tracking-tighter text-slate-950">
-                            bechoHub
+                            becho<span className="text-cyan-600">Hub</span>
                         </Link>
                         <p className="text-slate-500 text-lg font-light leading-relaxed">
                             India&apos;s premiere B2B network. <br />

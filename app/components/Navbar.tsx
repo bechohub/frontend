@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className="flex-1 flex items-center">
           <Link href="/" className="group flex items-center gap-2">
             <span className="text-lg md:text-xl font-black tracking-tighter text-slate-950 font-heading group-hover:opacity-70 transition-opacity">
-              bechoHub
+              becho<span className="text-cyan-600">Hub</span>
             </span>
           </Link>
         </div>
