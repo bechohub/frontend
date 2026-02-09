@@ -11,8 +11,7 @@
 - **Secure Authentication**: Powered by Supabase Auth with Row Level Security (RLS) to ensure strict data isolation.
 - **RFQ System**: Real-time Request for Quotation engine for dynamic buyer-supplier negotiations.
 
-### **Admin Console (`/admin`)**
-- **Gatekeeper Security**: Hardcoded credential access layer (`Adminhumein` / `Chalhatmaalikhu`) protecting the dashboard.
+### **Admin Console (`/admin`)**.
 - **Real-Time Analytics**: Live tracking of User Signups, Active Buyers, and Verified Suppliers.
 - **Data Export**: Automated PDF generation for user data exports using `jspdf`.
 - **User Management**: Role-based filtering and status monitoring.
