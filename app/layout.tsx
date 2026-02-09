@@ -58,6 +58,7 @@ export const metadata: Metadata = {
   },
 };
 
+import { Analytics } from "@vercel/analytics/react";
 import Preloader from "./components/Preloader";
 
 export default function RootLayout({
@@ -73,6 +74,7 @@ export default function RootLayout({
       >
         <Preloader />
         {children}
+        <Analytics />
       </body>
     </html>
   );
