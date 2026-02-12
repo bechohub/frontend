@@ -37,10 +37,29 @@ export default function Home() {
 
           <div className="max-w-7xl mx-auto text-center relative z-10">
             <FadeIn>
-              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[120px] font-black tracking-tightest leading-[0.95] sm:leading-[0.85] mb-8 font-heading text-slate-950">
+              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-black tracking-tightest leading-[0.95] sm:leading-[0.9] mb-4 font-heading text-slate-950">
                 The Future of <br className="hidden sm:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700">Indian B2B.</span>
+                Indian B2B.
               </h1>
+
+              <div className="mb-12 flex justify-center gap-3 sm:gap-4 md:gap-5 flex-wrap">
+                {["Connect.", "Trade.", "Grow."].map((word, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: 0.2 + i * 0.2,
+                      duration: 0.8,
+                      ease: [0.2, 0.65, 0.3, 0.9],
+                    }}
+                    className="text-3xl sm:text-4xl md:text-6xl font-space font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 drop-shadow-sm selection:text-fuchsia-900"
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </div>
 
               <p className="text-lg sm:text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto mb-12 font-light leading-relaxed px-2 md:px-0">
                 Connect directly with the next generation of verified manufacturers.

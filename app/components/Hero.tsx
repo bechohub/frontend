@@ -28,9 +28,12 @@ export default function Hero() {
                         </FadeIn>
 
                         <FadeIn delay={0.2}>
-                            <h1 className="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] sm:leading-[1.1] font-heading">
-                                Sourcing made <br className="hidden lg:block" />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600">frictionless</span>.
+                            <h1 className="text-5xl font-black tracking-tight text-slate-900 sm:text-6xl md:text-7xl lg:text-8xl leading-[1.0] sm:leading-[0.95] font-heading mb-6">
+                                <span className="block text-slate-700">Banega.</span>
+                                <span className="block text-slate-800">Bikega.</span>
+                                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 drop-shadow-sm">
+                                    Badhega.
+                                </span>
                             </h1>
                         </FadeIn>
 

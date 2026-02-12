@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Outfit, Space_Grotesk } from "next/font/google"; // Import Space Grotesk
 import "./globals.css";
 
 const inter = Inter({
@@ -14,13 +14,19 @@ const outfit = Outfit({
   display: "swap",
 });
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://bechohub.com'),
   title: {
     default: "bechoHub | India's Premiere B2B Network",
     template: "%s | bechoHub"
   },
-  description: "India's leading B2B marketplace connecting verified manufacturers with high-intent buyers. Source smarter, grow faster.",
+  description: "Connect. Trade. Grow. India's leading B2B marketplace connecting verified manufacturers with high-intent buyers. Source smarter, grow faster.",
   keywords: ["B2B Marketplace", "India Manufacturing", "Industrial Goods", "Supply Chain", "Wholesale", "Sourcing", "Factory Direct"],
   authors: [{ name: "bechoHub Team" }],
   creator: "bechoHub",
@@ -70,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${outfit.variable} antialiased font-sans bg-slate-50 text-slate-900 selection:bg-cyan-200 selection:text-cyan-900`}
+        className={`${inter.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased font-sans bg-slate-50 text-slate-900 selection:bg-cyan-200 selection:text-cyan-900`}
         suppressHydrationWarning
       >
         <ClientProtection />

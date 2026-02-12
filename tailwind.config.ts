@@ -11,6 +11,7 @@ const config: Config = {
             fontFamily: {
                 sans: ["var(--font-inter)", "sans-serif"],
                 heading: ["var(--font-outfit)", "sans-serif"],
+                space: ["var(--font-space)", "sans-serif"],
             },
             colors: {
                 slate: {
