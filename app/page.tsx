@@ -132,47 +132,36 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Brand New: Escrow Simplified Section */}
-        <section className="py-24 md:py-48 px-6 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <FadeIn>
-              <div className="text-center mb-20">
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-500 mb-6 block">The Trust Bridge</span>
-                <h2 className="text-4xl md:text-7xl font-black tracking-tightest uppercase text-slate-950 mb-8">What is <br /> Escrow?</h2>
-                <p className="text-xl text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
-                  Think of it as a neutral middle-ground. We hold your payment safe until the factory delivers exactly what you ordered.
-                </p>
-              </div>
+            {/* Protocol Matrix - Proper Full Width & Heavy visibility */}
+            <FadeIn delay={0.4}>
+              <div className="mt-32 p-8 md:p-12 rounded-[40px] bg-white/[0.02] border border-white/5 backdrop-blur-md relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                {/* Connection Line */}
-                <div className="hidden md:block absolute top-[60px] left-[15%] right-[15%] h-px bg-slate-100 -z-10" />
-
-                <div className="group text-center">
-                  <div className="h-24 w-24 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform bg-white shadow-xl shadow-slate-200/50">
-                    <ShieldCheck className="h-10 w-10 text-cyan-600" />
+                <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+                  <div className="shrink-0 text-center lg:text-left">
+                    <div className="h-20 w-20 rounded-[24px] bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mb-6 mx-auto lg:mx-0 shadow-lg shadow-cyan-500/20">
+                      <ShieldCheck className="h-10 w-10 text-white" />
+                    </div>
+                    <span className="text-[10px] font-black uppercase tracking-[0.5em] text-cyan-500 block mb-2">Verified Protocol</span>
+                    <h4 className="text-3xl font-black tracking-tightest uppercase text-white leading-[0.8]">The Trade <br /> Matrix.</h4>
                   </div>
-                  <h4 className="text-xs font-black uppercase tracking-widest text-slate-950 mb-4">1. Fund Lock</h4>
-                  <p className="text-slate-500 text-sm font-light leading-relaxed px-6">Buyer deposits funds. Money is 100% secured by bechoHub, but the factory can't touch it yet.</p>
-                </div>
 
-                <div className="group text-center">
-                  <div className="h-24 w-24 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform bg-white shadow-xl shadow-slate-200/50">
-                    <Factory className="h-10 w-10 text-indigo-600" />
+                  <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {[
+                      { label: "01 / Lock", sub: "Payment secured in neutral digital bridge.", icon: <Zap className="h-5 w-5" /> },
+                      { label: "02 / Verify", sub: "QC Audit performed on factory floor.", icon: <Factory className="h-5 w-5" /> },
+                      { label: "03 / Clear", sub: "Funds released on verified delivery.", icon: <CheckCircle2 className="h-5 w-5" /> }
+                    ].map((step, i) => (
+                      <div key={i} className="bg-slate-900/50 p-8 rounded-[32px] border border-white/5 flex flex-col items-center text-center hover:bg-slate-900 hover:border-white/10 transition-all">
+                        <div className="h-12 w-12 rounded-full bg-white/5 flex items-center justify-center mb-6 text-cyan-500">
+                          {step.icon}
+                        </div>
+                        <h5 className="text-[11px] font-black uppercase tracking-widest text-white mb-3">{step.label}</h5>
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-relaxed">{step.sub}</p>
+                      </div>
+                    ))}
                   </div>
-                  <h4 className="text-xs font-black uppercase tracking-widest text-slate-950 mb-4">2. Factory Ships</h4>
-                  <p className="text-slate-500 text-sm font-light leading-relaxed px-6">The factory builds the order knowing the money is ready. bechoHub verifies the quality at the source.</p>
-                </div>
-
-                <div className="group text-center">
-                  <div className="h-24 w-24 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform bg-white shadow-xl shadow-slate-200/50">
-                    <Zap className="h-10 w-10 text-emerald-600" />
-                  </div>
-                  <h4 className="text-xs font-black uppercase tracking-widest text-slate-950 mb-4">3. Safe Release</h4>
-                  <p className="text-slate-500 text-sm font-light leading-relaxed px-6">Once QC is verified and delivery is confirmed, funds are released to the factory. Zero risk trade.</p>
                 </div>
               </div>
             </FadeIn>
