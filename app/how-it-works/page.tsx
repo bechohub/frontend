@@ -124,16 +124,82 @@ export default function HowItWorksPage() {
                                         <p className="text-lg lg:text-xl text-slate-500 font-light leading-relaxed mb-10 max-w-lg mx-auto md:mx-0">
                                             {chapter.description}
                                         </p>
-                                        <div className="flex justify-center md:justify-start">
-                                            <button className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-slate-950 group">
-                                                Learn more <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
-                                            </button>
-                                        </div>
                                     </div>
                                 </div>
                             </StaggerItem>
                         ))}
                     </StaggerContainer>
+                </section>
+
+                {/* Technical & Legal Deep Dive */}
+                <section className="mt-32 md:mt-64 px-6 bg-slate-50 py-24 md:py-48 border-y border-slate-100">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32">
+                            <FadeIn>
+                                <div className="space-y-12">
+                                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-cyan-600 text-white shadow-xl shadow-cyan-200 mb-6">
+                                        <ShieldCheck className="h-8 w-8" />
+                                    </div>
+                                    <h2 className="text-4xl md:text-6xl font-black tracking-tightest uppercase text-slate-950">Escrow <br className="hidden md:block" /> Protocol.</h2>
+                                    <div className="space-y-8">
+                                        <div className="flex gap-6">
+                                            <div className="h-8 w-8 rounded-full bg-cyan-100 text-cyan-700 font-bold flex items-center justify-center flex-shrink-0 text-sm">1</div>
+                                            <div>
+                                                <h4 className="font-bold text-lg mb-2">Fund Lock</h4>
+                                                <p className="text-slate-500 font-light leading-relaxed">Buyers deposit contract funds into a secure, neutral bridge. Funds are visible but locked until verified milestones are met.</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-6">
+                                            <div className="h-8 w-8 rounded-full bg-cyan-100 text-cyan-700 font-bold flex items-center justify-center flex-shrink-0 text-sm">2</div>
+                                            <div>
+                                                <h4 className="font-bold text-lg mb-2">Milestone Release</h4>
+                                                <p className="text-slate-500 font-light leading-relaxed">Payment triggers are tied to quality checks: 30% on raw material procurement, 40% on production completion, and 30% on bill of lading.</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-6">
+                                            <div className="h-8 w-8 rounded-full bg-cyan-100 text-cyan-700 font-bold flex items-center justify-center flex-shrink-0 text-sm">3</div>
+                                            <div>
+                                                <h4 className="font-bold text-lg mb-2">Dispute Mediation</h4>
+                                                <p className="text-slate-500 font-light leading-relaxed">In case of quality mismatch, our QC data acts as the single source of truth for immediate mediation and refund processing.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </FadeIn>
+
+                            <FadeIn delay={0.2}>
+                                <div className="space-y-12">
+                                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-xl shadow-slate-200 mb-6">
+                                        <Shield className="h-8 w-8" />
+                                    </div>
+                                    <h2 className="text-4xl md:text-6xl font-black tracking-tightest uppercase text-slate-950">Legal <br className="hidden md:block" /> Framework.</h2>
+                                    <div className="space-y-8">
+                                        <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden group">
+                                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
+                                                <Target className="h-12 w-12" />
+                                            </div>
+                                            <h4 className="font-bold text-lg mb-3">Governing Law</h4>
+                                            <p className="text-slate-500 text-sm font-light leading-relaxed">Operated under the jurisdiction of Indian Commercial Law. All trade on the platform is bound by standardized digital contracts recognized by Indian courts.</p>
+                                        </div>
+                                        <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden group">
+                                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
+                                                <Globe2 className="h-12 w-12" />
+                                            </div>
+                                            <h4 className="font-bold text-lg mb-3">Anti-Circumvention</h4>
+                                            <p className="text-slate-500 text-sm font-light leading-relaxed">To protect the trust ecosystem, direct side-deals between platform-connected users are strictly prohibited and monitored via trade lane behavior.</p>
+                                        </div>
+                                        <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden group">
+                                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
+                                                <Sparkles className="h-12 w-12" />
+                                            </div>
+                                            <h4 className="font-bold text-lg mb-3">IP Protection</h4>
+                                            <p className="text-slate-500 text-sm font-light leading-relaxed">Suppliers sign ironclad Non-Disclosure Agreements (NDAs) before receiving detailed technical drawings or proprietary design documents.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </FadeIn>
+                        </div>
+                    </div>
                 </section>
 
                 <section className="mt-32 md:mt-64 px-6 overflow-hidden">

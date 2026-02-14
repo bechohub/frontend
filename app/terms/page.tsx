@@ -21,10 +21,16 @@ export default function TermsPage() {
                         </div>
 
                         <div className="prose prose-invert prose-indigo max-w-none space-y-12">
-                            <section>
-                                <p className="text-xl text-slate-400 leading-relaxed font-light">
-                                    By using bechoHub, you agree to these professional standards and legal frameworks designed to protect the integrity of the Indian B2B ecosystem.
+                            <section className="bg-white/5 p-8 rounded-[32px] border border-white/10">
+                                <h2 className="text-xl font-bold mb-4 uppercase tracking-widest text-indigo-400">Legal Framework</h2>
+                                <p className="text-lg text-slate-400 leading-relaxed font-light">
+                                    bechoHub operates as a **Technology Facilitator** under the Information Technology Act (India), providing a secure, audited environment for B2B commerce. Our legal architecture is built on three pillars:
                                 </p>
+                                <ul className="mt-6 space-y-4 text-slate-400 font-light">
+                                    <li><strong className="text-white">Commercial Jurisdiction:</strong> All agreements initiated on the platform are governed by the laws of India and are enforceable in Indian Commercial Courts.</li>
+                                    <li><strong className="text-white">Standardized Digital Contracts:</strong> We utilize legally binding digital templates that comply with the Indian Evidence Act for electronic signatures.</li>
+                                    <li><strong className="text-white">Dispute Resolution:</strong> Mandatory arbitration in accordance with the Arbitration and Conciliation Act, providing a faster alternative to traditional litigation.</li>
+                                </ul>
                             </section>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-16">

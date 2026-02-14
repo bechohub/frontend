@@ -17,7 +17,9 @@ import {
   Zap,
   Star,
   Globe,
-  ArrowUpRight
+  ArrowUpRight,
+  Gavel,
+  Factory
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "./components/Animators";
 import Footer from "./components/Footer";
@@ -189,6 +191,60 @@ export default function Home() {
                 </div>
               </div>
             </FadeIn>
+          </div>
+        </section>
+
+        {/* Brand New: USP & Infrastructure Deep-Dive */}
+        <section className="py-24 md:py-48 px-6 bg-slate-950 text-white overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+              <div>
+                <FadeIn>
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-500 mb-8 block">Zero Risk Trade</span>
+                  <h2 className="text-5xl md:text-8xl font-black tracking-tightest uppercase mb-12 leading-none">
+                    Reliability <br /> as a Service.
+                  </h2>
+                  <p className="text-xl text-slate-400 font-light leading-relaxed mb-16 max-w-xl">
+                    We've built a multi-layered security protocol to ensure your capital and your reputation are always protected.
+                  </p>
+
+                  <Link
+                    href="/how-it-works"
+                    className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-widest text-white group"
+                  >
+                    View Technical Manifest <ArrowRight className="h-4 w-4 group-hover:translate-x-3 transition-transform text-cyan-500" />
+                  </Link>
+                </FadeIn>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
+                    <ShieldCheck className="h-10 w-10 text-cyan-500 mb-6" />
+                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Escrow 2.0</h4>
+                    <p className="text-slate-500 text-sm leading-relaxed font-light">Milestone-based fund release. Pay only when QC is verified.</p>
+                  </div>
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
+                    <Gavel className="h-10 w-10 text-indigo-500 mb-6" />
+                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Legal Shield</h4>
+                    <p className="text-slate-500 text-sm leading-relaxed font-light">Binding digital contracts recognized under Indian commercial law.</p>
+                  </div>
+                </div>
+                <div className="space-y-4 pt-8 md:pt-16">
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
+                    <Factory className="h-10 w-10 text-blue-500 mb-6" />
+                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Direct Access</h4>
+                    <p className="text-slate-500 text-sm leading-relaxed font-light">Bypass traders. Direct factory transparency from day zero.</p>
+                  </div>
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
+                    <TrendingUp className="h-10 w-10 text-fuchsia-500 mb-6" />
+                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Trade OS</h4>
+                    <p className="text-slate-500 text-sm leading-relaxed font-light">Everything from discovery to delivery in one unified protocol.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
