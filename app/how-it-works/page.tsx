@@ -72,7 +72,7 @@ export default function HowItWorksPage() {
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-600 mb-8 block">01 / Source</span>
                                 <h3 className="text-3xl font-black tracking-tighter uppercase mb-4 text-slate-950 leading-[0.9]">Straight to <br /> Factory.</h3>
                                 <p className="text-slate-500 text-sm font-light leading-relaxed">
-                                    Your order goes directly to the factory floor. No middlemen, no hidden brokers, just the best direct price.
+                                    No middlemen. We connect your order directly to the factory floor for the best price.
                                 </p>
                             </div>
 
@@ -81,7 +81,7 @@ export default function HowItWorksPage() {
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-600 mb-8 block">02 / Trust</span>
                                 <h3 className="text-3xl font-black tracking-tighter uppercase mb-4 text-slate-950 leading-[0.9]">Fully <br /> Checked.</h3>
                                 <p className="text-slate-500 text-sm font-light leading-relaxed">
-                                    We don't take risks. We physically visit and audit every factory to make sure they can deliver what they promise.
+                                    We physically audit every factory to ensure they can deliver exactly what they promise.
                                 </p>
                             </div>
 
@@ -90,7 +90,7 @@ export default function HowItWorksPage() {
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-600 mb-8 block">03 / Security</span>
                                 <h3 className="text-3xl font-black tracking-tighter uppercase mb-4 text-slate-950 leading-[0.9]">Safe <br /> Payments.</h3>
                                 <p className="text-slate-500 text-sm font-light leading-relaxed">
-                                    We hold your money safely. The factory only gets paid once we visit and verify the quality of your goods.
+                                    We hold your money safely and only pay the factory after our team verifies the quality.
                                 </p>
                             </div>
 
@@ -99,7 +99,7 @@ export default function HowItWorksPage() {
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-900 mb-8 block">04 / Law</span>
                                 <h3 className="text-3xl font-black tracking-tighter uppercase mb-4 text-slate-950 leading-[0.9]">Real <br /> Contracts.</h3>
                                 <p className="text-slate-500 text-sm font-light leading-relaxed">
-                                    Every trade is backed by strong legal contracts that work in India. We make sure your business stays protected.
+                                    Every trade is protected by strong legal contracts under Indian commercial jurisdiction.
                                 </p>
                             </div>
 

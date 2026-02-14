@@ -108,21 +108,21 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
                     <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-cyan-500">Safe Escrow</h4>
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Pay with confidence. Money is released only after your order passes quality checks.</p>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">We hold your money safely. Pay only after you verify the quality.</p>
                   </div>
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
                     <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-indigo-500">Legal Cover</h4>
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Don't worry about disputes. Every trade is protected by strong, legally-binding contracts.</p>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Every trade is protected by strong, Indian-law contracts.</p>
                   </div>
                 </div>
                 <div className="space-y-4 pt-8 md:pt-16">
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
                     <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-blue-500">Buy Direct</h4>
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Cut out the middleman. We connect your order straight to the factory to get you the lowest possible price.</p>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Skip the middlemen. We connect you straight to the factory floor.</p>
                   </div>
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
-                    <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-fuchsia-500">Total Logistics</h4>
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">We handle the hard part. From factory quality checks to shipping right to your door.</p>
+                    <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-fuchsia-500">Done For You</h4>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">We handle quality checks and shipping to your doorstep.</p>
                   </div>
                 </div>
               </div>
@@ -141,9 +141,9 @@ export default function Home() {
 
                   <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-6">
                     {[
-                      { label: "01 / You Pay", sub: "You pay us, and we hold your money safely. The factory knows the funds are ready but can't touch them yet." },
-                      { label: "02 / We Check", sub: "We visit the factory to inspect your goods. We make sure everything is perfect before it ships." },
-                      { label: "03 / They Get Paid", sub: "Once the quality is confirmed and the goods are on their way, we release the money to the factory." }
+                      { label: "01 / You Pay", sub: "We hold your money safely until delivery." },
+                      { label: "02 / We Check", sub: "We inspect the goods at the factory floor." },
+                      { label: "03 / Release", sub: "Factory is paid only after quality is verified." }
                     ].map((step, i) => (
                       <div key={i} className="bg-white/[0.03] p-10 rounded-[32px] border border-white/5 flex flex-col items-center lg:items-start text-center lg:text-left hover:bg-white/[0.05] transition-all">
                         <h5 className="text-sm font-black uppercase tracking-widest text-cyan-500 mb-4">{step.label}</h5>
