@@ -44,12 +44,6 @@ export default function Footer() {
                             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 font-heading">Explore</h4>
                             <ul className="space-y-4">
                                 <li>
-                                    <Link href="/how-it-works" className="text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium flex items-center group">
-                                        How it works
-                                        <ArrowUpRight className="h-3 w-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                                    </Link>
-                                </li>
-                                <li>
                                     <Link href="/browse" className="text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium flex items-center group">
                                         Find Suppliers
                                         <ArrowUpRight className="h-3 w-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />

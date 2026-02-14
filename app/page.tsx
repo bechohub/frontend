@@ -96,7 +96,7 @@ export default function Home() {
                   </p>
 
                   <Link
-                    href="/how-it-works"
+                    href="/about"
                     className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-widest text-white group"
                   >
                     View Technical Manifest <ArrowRight className="h-4 w-4 group-hover:translate-x-3 transition-transform text-cyan-500" />

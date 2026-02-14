@@ -42,22 +42,34 @@ export default function AboutPage() {
                     </StaggerContainer>
 
                     <FadeIn>
-                        <div className="bg-gradient-to-br from-cyan-500/10 to-indigo-500/10 rounded-[32px] md:rounded-[64px] px-6 py-16 md:p-24 border border-white/5 relative overflow-hidden text-center">
+                        <div className="bg-gradient-to-br from-cyan-500/10 to-indigo-500/10 rounded-[32px] md:rounded-[64px] px-6 py-16 md:p-24 border border-white/5 relative overflow-hidden text-center mb-40">
                             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
-                            <h2 className="text-4xl md:text-6xl font-black tracking-tightest uppercase mb-12 relative z-10">Built by <span className="text-cyan-400">Builders.</span></h2>
+                            <h2 className="text-4xl md:text-6xl font-black tracking-tightest uppercase mb-20 relative z-10">The <span className="text-cyan-400">Founders.</span></h2>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
-                                <div>
-                                    <div className="text-4xl font-black text-white mb-2 tracking-tighter">24K+</div>
-                                    <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Verified Sellers</div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10 max-w-4xl mx-auto">
+                                <div className="group">
+                                    <div className="aspect-[4/5] rounded-[24px] overflow-hidden mb-8 border border-white/10 group-hover:border-white/20 transition-all shadow-2xl">
+                                        <img
+                                            src="/founders/founder1.png"
+                                            alt="Founder 1"
+                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                                        />
+                                    </div>
+                                    <h4 className="text-2xl font-black uppercase tracking-tighter mb-2">Founder A</h4>
+                                    <p className="text-slate-500 text-xs font-black uppercase tracking-[0.2em] mb-4">Co-Founder • Product</p>
+                                    <p className="text-slate-400 text-lg font-light leading-relaxed">"Solving the trust gap for Bharat's manufacturers."</p>
                                 </div>
-                                <div>
-                                    <div className="text-4xl font-black text-white mb-2 tracking-tighter">100Cr+</div>
-                                    <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Trade Volume</div>
-                                </div>
-                                <div>
-                                    <div className="text-4xl font-black text-white mb-2 tracking-tighter">150+</div>
-                                    <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Industry Lanes</div>
+                                <div className="group">
+                                    <div className="aspect-[4/5] rounded-[24px] overflow-hidden mb-8 border border-white/10 group-hover:border-white/20 transition-all shadow-2xl">
+                                        <img
+                                            src="/founders/founder2.png"
+                                            alt="Founder 2"
+                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                                        />
+                                    </div>
+                                    <h4 className="text-2xl font-black uppercase tracking-tighter mb-2">Founder B</h4>
+                                    <p className="text-slate-500 text-xs font-black uppercase tracking-[0.2em] mb-4">Co-Founder • Strategy</p>
+                                    <p className="text-slate-400 text-lg font-light leading-relaxed">"Building the trade operating system for the world."</p>
                                 </div>
                             </div>
                         </div>
