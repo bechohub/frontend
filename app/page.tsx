@@ -64,7 +64,7 @@ export default function Home() {
               </div>
 
               <p className="text-lg sm:text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto mb-12 font-light leading-relaxed px-2 md:px-0">
-                The safest way to buy directly from the source. Connect with verified factories across India with <span className="text-slate-900 font-medium italic">guaranteed payment safety</span>.
+                The safest way to buy directly from the source. We connect you with verified factories across India with <span className="text-slate-900 font-medium italic">guaranteed payment safety</span>.
               </p>
 
               <div className="flex justify-center mb-16 sm:mb-24 px-4">
@@ -118,7 +118,7 @@ export default function Home() {
                 <div className="space-y-4 pt-8 md:pt-16">
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
                     <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-blue-500">Buy Direct</h4>
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Cut out the middleman. Talk straight to the factory and get the lowest possible price.</p>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Cut out the middleman. We connect your order straight to the factory to get you the lowest possible price.</p>
                   </div>
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
                     <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-fuchsia-500">Total Logistics</h4>
