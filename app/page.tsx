@@ -64,7 +64,7 @@ export default function Home() {
               </div>
 
               <p className="text-lg sm:text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto mb-12 font-light leading-relaxed px-2 md:px-0">
-                Connect directly with the next generation of verified manufacturers.
+                Secure your supply chain with our <span className="text-slate-900 font-medium italic">Escrow-backed</span>, factory-direct protocol.
                 Full-stack infrastructure built for global scale.
               </p>
 
@@ -77,108 +77,11 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Trust Strip - Mobile Cards */}
-              <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 pt-12 md:pt-16 md:border-t border-slate-100">
-                <div className="flex flex-col items-center md:items-start text-center md:text-left bg-slate-50 md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none border border-slate-100 md:border-none">
-                  <div className="h-10 w-10 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-4 border border-cyan-100">
-                    <CheckCircle2 className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-bold text-lg text-slate-900 mb-2">Verified Factories</h3>
-                  <p className="text-sm text-slate-500 font-light">Direct access to audited manufacturing clusters across India.</p>
-                </div>
-                <div className="flex flex-col items-center md:items-start text-center md:text-left bg-slate-50 md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none border border-slate-100 md:border-none">
-                  <div className="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4 border border-blue-100">
-                    <ShieldCheck className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-bold text-lg text-slate-900 mb-2">Secure Escrow</h3>
-                  <p className="text-sm text-slate-500 font-light">Protection for high-value orders through our secure payment bridge.</p>
-                </div>
-                <div className="flex flex-col items-center md:items-start text-center md:text-left bg-slate-50 md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none border border-slate-100 md:border-none">
-                  <div className="h-10 w-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-4 border border-indigo-100">
-                    <TrendingUp className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-bold text-lg text-slate-900 mb-2">Built for Scale</h3>
-                  <p className="text-sm text-slate-500 font-light">Scale production seamlessly from prototyping to bulk export.</p>
-                </div>
-              </div>
+
             </FadeIn>
           </div>
         </section>
-
-
-
-        {/* Comparison Section - High Impact */}
-        <section className="py-16 md:py-32 px-6 bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto">
-            <FadeIn>
-              <div className="text-center mb-16 md:mb-24">
-                <h2 className="text-3xl md:text-6xl font-black tracking-tightest uppercase mb-6 text-slate-950">Why bechoHub?</h2>
-                <p className="text-slate-500 text-lg max-w-2xl mx-auto font-light">
-                  A complete infrastructure rewrite of the Indian manufacturing ecosystem.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 relative">
-                {/* Vertical Divider for Desktop */}
-                <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-100 -translate-x-1/2" />
-
-                {/* Traditional Side */}
-                <div className="space-y-12 p-6 md:p-0 bg-slate-50 md:bg-transparent rounded-2xl md:rounded-none">
-                  <div className="flex items-center gap-4 mb-8 md:mb-12">
-                    <div className="h-2 w-12 bg-slate-200 rounded-full" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Traditional Marketplaces</span>
-                  </div>
-
-                  <div className="space-y-8 md:space-y-10">
-                    <div className="group">
-                      <h4 className="text-lg md:text-xl font-bold text-slate-400 mb-2 md:mb-3 group-hover:text-slate-950 transition-colors">Fragmented Search</h4>
-                      <p className="text-slate-400 text-sm leading-relaxed">Endless scrolling through unverified listings with zero data on actual factory capacity.</p>
-                    </div>
-                    <div className="group">
-                      <h4 className="text-lg md:text-xl font-bold text-slate-400 mb-2 md:mb-3 group-hover:text-slate-950 transition-colors">Hidden Intermediaries</h4>
-                      <p className="text-slate-400 text-sm leading-relaxed">Multiple layers of traders inflating costs without adding manufacturing value.</p>
-                    </div>
-                    <div className="group">
-                      <h4 className="text-lg md:text-xl font-bold text-slate-400 mb-2 md:mb-3 group-hover:text-slate-950 transition-colors">Manual QC & Risk</h4>
-                      <p className="text-slate-400 text-sm leading-relaxed">Verification is purely manual, prone to error, and payments are often unprotected.</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* bechoHub Side */}
-                <div className="space-y-12 p-6 md:p-0 bg-white md:bg-transparent rounded-2xl md:rounded-none shadow-xl md:shadow-none border border-slate-100 md:border-none relative z-10">
-                  <div className="flex items-center gap-4 mb-8 md:mb-12">
-                    <div className="h-2 w-12 bg-cyan-500 rounded-full" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-600">The bechoHub Advantage</span>
-                  </div>
-
-                  <div className="space-y-8 md:space-y-10">
-                    <div className="group">
-                      <h4 className="text-xl font-black text-slate-950 mb-2 md:mb-3 flex items-center gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-cyan-600" /> Real-time Capacity
-                      </h4>
-                      <p className="text-slate-500 text-sm leading-relaxed font-light">Direct visibility into live assembly lines and verified production benchmarks.</p>
-                    </div>
-                    <div className="group">
-                      <h4 className="text-xl font-black text-slate-950 mb-2 md:mb-3 flex items-center gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-cyan-600" /> Direct-to-Factory
-                      </h4>
-                      <p className="text-slate-500 text-sm leading-relaxed font-light">Eliminate middlemen. Our protocol connects you straight to the factory floor floor for primary pricing.</p>
-                    </div>
-                    <div className="group">
-                      <h4 className="text-xl font-black text-slate-950 mb-2 md:mb-3 flex items-center gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-cyan-600" /> Automated Trust
-                      </h4>
-                      <p className="text-slate-500 text-sm leading-relaxed font-light">Smart-escrow and IoT-enabled quality tracking built into every production cycle.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* Brand New: USP & Infrastructure Deep-Dive */}
+        {/* Brand New: USP & Infrastructure Deep-Dive - Moved Up for Visibility */}
         <section className="py-24 md:py-48 px-6 bg-slate-950 text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
           <div className="max-w-7xl mx-auto relative z-10">
@@ -206,31 +109,79 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
                     <ShieldCheck className="h-10 w-10 text-cyan-500 mb-6" />
-                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Escrow 2.0</h4>
-                    <p className="text-slate-500 text-sm leading-relaxed font-light">Milestone-based fund release. Pay only when QC is verified.</p>
+                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">escrow</h4>
+                    <p className="text-slate-500 text-xs font-black uppercase tracking-widest">Milestone Release • Verified QC</p>
                   </div>
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
                     <Gavel className="h-10 w-10 text-indigo-500 mb-6" />
                     <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Legal Shield</h4>
-                    <p className="text-slate-500 text-sm leading-relaxed font-light">Binding digital contracts recognized under Indian commercial law.</p>
+                    <p className="text-slate-500 text-xs font-black uppercase tracking-widest">Digital Contracts • Indian Law</p>
                   </div>
                 </div>
                 <div className="space-y-4 pt-8 md:pt-16">
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
                     <Factory className="h-10 w-10 text-blue-500 mb-6" />
                     <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Direct Access</h4>
-                    <p className="text-slate-500 text-sm leading-relaxed font-light">Bypass traders. Direct factory transparency from day zero.</p>
+                    <p className="text-slate-500 text-xs font-black uppercase tracking-widest">No Middleman • Primary Pricing</p>
                   </div>
                   <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
                     <TrendingUp className="h-10 w-10 text-fuchsia-500 mb-6" />
                     <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Trade OS</h4>
-                    <p className="text-slate-500 text-sm leading-relaxed font-light">Everything from discovery to delivery in one unified protocol.</p>
+                    <p className="text-slate-500 text-xs font-black uppercase tracking-widest">Discovery • Logistics • Audit</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Brand New: Escrow Simplified Section */}
+        <section className="py-24 md:py-48 px-6 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <FadeIn>
+              <div className="text-center mb-20">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-500 mb-6 block">The Trust Bridge</span>
+                <h2 className="text-4xl md:text-7xl font-black tracking-tightest uppercase text-slate-950 mb-8">What is <br /> Escrow?</h2>
+                <p className="text-xl text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
+                  Think of it as a neutral middle-ground. We hold your payment safe until the factory delivers exactly what you ordered.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                {/* Connection Line */}
+                <div className="hidden md:block absolute top-[60px] left-[15%] right-[15%] h-px bg-slate-100 -z-10" />
+
+                <div className="group text-center">
+                  <div className="h-24 w-24 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform bg-white shadow-xl shadow-slate-200/50">
+                    <ShieldCheck className="h-10 w-10 text-cyan-600" />
+                  </div>
+                  <h4 className="text-xs font-black uppercase tracking-widest text-slate-950 mb-4">1. Fund Lock</h4>
+                  <p className="text-slate-500 text-sm font-light leading-relaxed px-6">Buyer deposits funds. Money is 100% secured by bechoHub, but the factory can't touch it yet.</p>
+                </div>
+
+                <div className="group text-center">
+                  <div className="h-24 w-24 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform bg-white shadow-xl shadow-slate-200/50">
+                    <Factory className="h-10 w-10 text-indigo-600" />
+                  </div>
+                  <h4 className="text-xs font-black uppercase tracking-widest text-slate-950 mb-4">2. Factory Ships</h4>
+                  <p className="text-slate-500 text-sm font-light leading-relaxed px-6">The factory builds the order knowing the money is ready. bechoHub verifies the quality at the source.</p>
+                </div>
+
+                <div className="group text-center">
+                  <div className="h-24 w-24 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform bg-white shadow-xl shadow-slate-200/50">
+                    <Zap className="h-10 w-10 text-emerald-600" />
+                  </div>
+                  <h4 className="text-xs font-black uppercase tracking-widest text-slate-950 mb-4">3. Safe Release</h4>
+                  <p className="text-slate-500 text-sm font-light leading-relaxed px-6">Once QC is verified and delivery is confirmed, funds are released to the factory. Zero risk trade.</p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+
+
+
 
         {/* Final CTA - Ultra Minimal */}
         <section className="py-20 md:pt-32 md:pb-32 px-6">
