@@ -30,6 +30,7 @@ export default function Navbar() {
   const isActive = (path: string) => pathname === path;
 
   const navLinks = [
+    { name: "Home", href: "/" },
     { name: "Browse", href: "/browse" },
     { name: "Story", href: "/how-it-works" },
   ];
