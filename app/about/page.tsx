@@ -7,82 +7,77 @@ import { Zap, Globe, Users, TrendingUp } from "lucide-react";
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-cyan-500/30">
+        <div className="min-h-screen bg-white text-slate-950 font-sans selection:bg-cyan-500/10">
             <Navbar />
 
-            <main className="pt-32 pb-20 px-6">
+            <main className="pt-32 md:pt-48 pb-20 px-6">
                 <div className="max-w-6xl mx-auto">
                     <FadeIn>
-                        <div className="text-center mb-24">
-                            <h1 className="text-5xl md:text-8xl font-black tracking-tightest uppercase mb-8">
-                                Scaling <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-indigo-600">Indian</span> <br />
+                        <div className="text-center mb-32">
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-600 mb-6 block">Our Mission</span>
+                            <h1 className="text-5xl md:text-8xl font-black tracking-tightest uppercase mb-12 text-slate-950 leading-[0.85]">
+                                Scaling <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 to-indigo-700">Indian</span> <br />
                                 Trade.
                             </h1>
-                            <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed">
+                            <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-light leading-relaxed">
                                 We are building the digital infrastructure for the next billion manufacturers in India. Our mission is to eliminate the friction in B2B trade.
                             </p>
                         </div>
                     </FadeIn>
 
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
-                        <StaggerItem className="p-8 md:p-12 rounded-[32px] md:rounded-[48px] bg-white/[0.03] border border-white/5">
-                            <Zap className="h-12 w-12 text-cyan-400 mb-8" />
-                            <h2 className="text-3xl font-bold mb-6 tracking-tight">The Vision.</h2>
-                            <p className="text-slate-400 leading-relaxed text-lg font-light">
-                                For too long, Indian manufacturers have been limited by local networks. We are breaking those boundaries by providing a hyper-verified, high-speed digital bridge to high-intent buyers globally and domestically.
+                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-40">
+                        <StaggerItem className="p-10 md:p-16 rounded-[48px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500">
+                            <div className="h-14 w-14 rounded-2xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-10 border border-cyan-100">
+                                <Zap className="h-7 w-7" />
+                            </div>
+                            <h2 className="text-3xl font-black tracking-tight uppercase mb-6 text-slate-950">The Vision.</h2>
+                            <p className="text-slate-500 leading-relaxed text-lg font-light">
+                                For too long, Indian manufacturers have been limited by local networks. We are breaking those boundaries by providing a hyper-verified digital bridge to high-intent buyers globally.
                             </p>
                         </StaggerItem>
-                        <StaggerItem className="p-8 md:p-12 rounded-[32px] md:rounded-[48px] bg-white/[0.03] border border-white/5">
-                            <Globe className="h-12 w-12 text-indigo-400 mb-8" />
-                            <h2 className="text-3xl font-bold mb-6 tracking-tight">The Ecosystem.</h2>
-                            <p className="text-slate-400 leading-relaxed text-lg font-light">
-                                bechoHub isn't just a directory; it's a trade OS. We handle everything from discovery and verification to secure escrow payments and quality-controlled logistics.
+                        <StaggerItem className="p-10 md:p-16 rounded-[48px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500">
+                            <div className="h-14 w-14 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-10 border border-indigo-100">
+                                <Globe className="h-7 w-7" />
+                            </div>
+                            <h2 className="text-3xl font-black tracking-tight uppercase mb-6 text-slate-950">The Ecosystem.</h2>
+                            <p className="text-slate-500 leading-relaxed text-lg font-light">
+                                bechoHub represents a trade OS. We handle everything from discovery and verification to secure escrow payments and quality-controlled logistics.
                             </p>
                         </StaggerItem>
                     </StaggerContainer>
 
                     <FadeIn>
-                        <div className="bg-gradient-to-br from-cyan-500/10 to-indigo-500/10 rounded-[32px] md:rounded-[64px] px-6 py-16 md:p-24 border border-white/5 relative overflow-hidden text-center mb-40">
-                            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
-                            <h2 className="text-4xl md:text-6xl font-black tracking-tightest uppercase mb-20 relative z-10">The <span className="text-cyan-400">Founders.</span></h2>
+                        <div className="bg-slate-950 rounded-[48px] md:rounded-[80px] px-6 py-20 md:p-32 relative overflow-hidden text-center mb-40 shadow-2xl shadow-slate-200">
+                            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none" />
+                            <h2 className="text-4xl md:text-7xl font-black tracking-tightest uppercase mb-20 relative z-10 text-white leading-none">Built for <br /><span className="text-cyan-400">Industry Scale.</span></h2>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10 max-w-4xl mx-auto">
-                                <div className="group">
-                                    <div className="aspect-[4/5] rounded-[24px] overflow-hidden mb-8 border border-white/10 group-hover:border-white/20 transition-all shadow-2xl">
-                                        <img
-                                            src="/founders/founder1.png"
-                                            alt="Founder 1"
-                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
-                                        />
-                                    </div>
-                                    <h4 className="text-2xl font-black uppercase tracking-tighter mb-2">Founder A</h4>
-                                    <p className="text-slate-500 text-xs font-black uppercase tracking-[0.2em] mb-4">Co-Founder • Product</p>
-                                    <p className="text-slate-400 text-lg font-light leading-relaxed">"Solving the trust gap for Bharat's manufacturers."</p>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative z-10">
+                                <div>
+                                    <div className="text-5xl font-black text-white mb-3 tracking-tighter">24K+</div>
+                                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Verified Sellers</div>
                                 </div>
-                                <div className="group">
-                                    <div className="aspect-[4/5] rounded-[24px] overflow-hidden mb-8 border border-white/10 group-hover:border-white/20 transition-all shadow-2xl">
-                                        <img
-                                            src="/founders/founder2.png"
-                                            alt="Founder 2"
-                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
-                                        />
-                                    </div>
-                                    <h4 className="text-2xl font-black uppercase tracking-tighter mb-2">Founder B</h4>
-                                    <p className="text-slate-500 text-xs font-black uppercase tracking-[0.2em] mb-4">Co-Founder • Strategy</p>
-                                    <p className="text-slate-400 text-lg font-light leading-relaxed">"Building the trade operating system for the world."</p>
+                                <div>
+                                    <div className="text-5xl font-black text-white mb-3 tracking-tighter">100Cr+</div>
+                                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Trade Volume</div>
+                                </div>
+                                <div>
+                                    <div className="text-5xl font-black text-white mb-3 tracking-tighter">150+</div>
+                                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Industry Lanes</div>
                                 </div>
                             </div>
                         </div>
                     </FadeIn>
 
-                    <div className="mt-40 text-center">
+                    <div className="text-center mb-20">
                         <FadeIn>
-                            <h3 className="text-2xl font-bold mb-8 uppercase tracking-widest">Join the Future</h3>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button className="px-10 py-5 bg-white text-slate-950 rounded-full font-black uppercase tracking-widest hover:bg-slate-200 transition-all active:scale-95 shadow-2xl shadow-white/10">
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-indigo-600 mb-8 block">Join the Future</span>
+                            <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tightest mb-12 text-slate-950">Ready to <br /> scale?</h3>
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                                <button className="px-12 py-6 bg-slate-950 text-white rounded-full font-black uppercase tracking-widest text-xs hover:bg-slate-800 transition-all active:scale-95 shadow-2xl">
                                     Become a Buyer
                                 </button>
-                                <button className="px-10 py-5 bg-slate-900 text-white border border-white/10 rounded-full font-black uppercase tracking-widest hover:bg-slate-800 transition-all active:scale-95">
+                                <button className="px-12 py-6 bg-white text-slate-950 border-2 border-slate-950 rounded-full font-black uppercase tracking-widest text-xs hover:bg-slate-50 transition-all active:scale-95">
                                     Partner as Supplier
                                 </button>
                             </div>
