@@ -64,7 +64,7 @@ export default function Home() {
               </div>
 
               <p className="text-lg sm:text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto mb-12 font-light leading-relaxed px-2 md:px-0">
-                The safest way to buy directly from the source. We connect you with verified factories across India with <span className="text-slate-900 font-medium italic">guaranteed payment safety</span>.
+                The safest way to buy directly from the source. We connect you with verified factories across India via our <span className="text-slate-900 font-medium italic">escrow-backed</span> security protocol.
               </p>
 
               <div className="flex justify-center mb-16 sm:mb-24 px-4">
