@@ -105,23 +105,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Dynamic Activity Strip */}
-        <section className="py-8 md:py-12 bg-slate-50 border-y border-slate-100 overflow-hidden">
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="flex gap-12 sm:gap-20 whitespace-nowrap text-[11px] sm:text-xs font-black text-slate-400 uppercase tracking-[0.2em] md:tracking-[0.3em] px-4"
-          >
-            <div className="flex gap-4 items-center">NETWORK: 24 FACTORIES VERIFIED IN SURAT CLUSTER</div>
-            <div className="flex gap-4 items-center">LOGISTICS: NEW DELHI-NCR TRADE LANE ACTIVE</div>
-            <div className="flex gap-4 items-center">QUALITY: ISO-9001 COMPLIANCE PORTAL UPDATED</div>
-            <div className="flex gap-4 items-center">RFQ: 120CR+ QUOTES PROCESSED THIS WEEK</div>
-            {/* Duplicates */}
-            <div className="flex gap-4 items-center">NETWORK: 24 FACTORIES VERIFIED IN SURAT CLUSTER</div>
-            <div className="flex gap-4 items-center">LOGISTICS: NEW DELHI-NCR TRADE LANE ACTIVE</div>
-            <div className="flex gap-4 items-center">QUALITY: ISO-9001 COMPLIANCE PORTAL UPDATED</div>
-          </motion.div>
-        </section>
+
 
         {/* Comparison Section - High Impact */}
         <section className="py-16 md:py-32 px-6 bg-white overflow-hidden">
