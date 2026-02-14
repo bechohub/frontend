@@ -20,41 +20,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function HowItWorksPage() {
-    const chapters = [
-        {
-            id: "01",
-            label: "The Renaissance",
-            title: "Rebuilding the Backbone.",
-            description: "Traditional B2B is broken. Hidden middlemen, manual QC, and opaque pricing have held back Indian manufacturing for decades. We're here to rewrite the protocol.",
-            icon: Factory,
-            bg: "bg-cyan-50"
-        },
-        {
-            id: "02",
-            label: "The Protocol",
-            title: "Direct Digital Sourcing.",
-            description: "We connect high-intent global buyers directly to the factory floor. No noise, no brokers. Just verified capacity and primary pricing, unlocked by data.",
-            icon: Cpu,
-            bg: "bg-indigo-50"
-        },
-        {
-            id: "03",
-            label: "Verification",
-            title: "Trust at Scale.",
-            description: "Every factory on bechoHub undergoes a rigorous 3-tier audit. We track live production benchmarks to ensure quality is a guarantee, not a gamble.",
-            icon: ShieldCheck,
-            bg: "bg-blue-50"
-        },
-        {
-            id: "04",
-            label: "The Mission",
-            title: "Global Scale from Bharat.",
-            description: "Empowering 63 million MSMEs to compete on the global stage. From local clusters to international shipments, we handle the infrastructure, you build the future.",
-            icon: Globe2,
-            bg: "bg-fuchsia-50"
-        }
-    ];
-
     return (
         <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-cyan-100 selection:text-cyan-950 overflow-x-hidden">
             <Navbar />
@@ -97,111 +62,76 @@ export default function HowItWorksPage() {
                     </div>
                 </section>
 
-                {/* The Chapters - Interactive Storytelling */}
+                {/* The Unified Protocol Matrix - Sharp, Technical, Compact */}
                 <section className="px-6 max-w-7xl mx-auto">
-                    <StaggerContainer className="space-y-20 md:space-y-40 lg:space-y-64">
-                        {chapters.map((chapter, index) => (
-                            <StaggerItem key={chapter.id}>
-                                <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 lg:gap-24`}>
-                                    {/* Visual Side */}
-                                    <div className="flex-1 w-full flex justify-center">
-                                        <motion.div
-                                            whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
-                                            className={`relative w-full aspect-[4/3] max-w-md rounded-[32px] md:rounded-[64px] ${chapter.bg} border-2 border-slate-50 flex items-center justify-center shadow-2xl shadow-slate-200/50 group overflow-hidden`}
-                                        >
-                                            <div className="absolute inset-0 bg-white/50 backdrop-blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                                            <chapter.icon className="h-32 w-32 text-slate-950 group-hover:scale-110 transition-transform duration-700 relative z-10" strokeWidth={1} />
-                                            <span className="absolute bottom-12 right-12 text-9xl font-black text-slate-950/5 select-none">{chapter.id}</span>
-                                        </motion.div>
-                                    </div>
+                    <FadeIn>
+                        <div className="border border-slate-200 rounded-[32px] overflow-hidden bg-white shadow-2xl shadow-slate-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 
-                                    {/* Content Side */}
-                                    <div className="flex-1 text-center md:text-left">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-600 mb-6 block">Chapter {chapter.id}: {chapter.label}</span>
-                                        <h2 className="text-4xl lg:text-7xl font-black tracking-tightest uppercase mb-8 text-slate-950 leading-none">
-                                            {chapter.title}
-                                        </h2>
-                                        <p className="text-lg lg:text-xl text-slate-500 font-light leading-relaxed mb-10 max-w-lg mx-auto md:mx-0">
-                                            {chapter.description}
-                                        </p>
+                            {/* Cell 1: Direct Access */}
+                            <div className="p-10 border-b md:border-r border-slate-100 hover:bg-slate-50 transition-colors group">
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-600 mb-8 block">01 / Source</span>
+                                <h3 className="text-3xl font-black tracking-tighter uppercase mb-4 text-slate-950 leading-[0.9]">Straight to <br /> Factory.</h3>
+                                <p className="text-slate-500 text-sm font-light leading-relaxed">
+                                    Your order goes directly to the factory floor. No middlemen, no hidden brokers, just the best direct price.
+                                </p>
+                            </div>
+
+                            {/* Cell 2: 3-Tier Audit */}
+                            <div className="p-10 border-b lg:border-r border-slate-100 hover:bg-slate-50 transition-colors group">
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-600 mb-8 block">02 / Trust</span>
+                                <h3 className="text-3xl font-black tracking-tighter uppercase mb-4 text-slate-950 leading-[0.9]">Fully <br /> Checked.</h3>
+                                <p className="text-slate-500 text-sm font-light leading-relaxed">
+                                    We don't take risks. We physically visit and audit every factory to make sure they can deliver what they promise.
+                                </p>
+                            </div>
+
+                            {/* Cell 3: Secure Escrow */}
+                            <div className="p-10 border-b md:border-r border-slate-100 hover:bg-slate-50 transition-colors group">
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-600 mb-8 block">03 / Security</span>
+                                <h3 className="text-3xl font-black tracking-tighter uppercase mb-4 text-slate-950 leading-[0.9]">Safe <br /> Payments.</h3>
+                                <p className="text-slate-500 text-sm font-light leading-relaxed">
+                                    We hold your money safely. The factory only gets paid once we visit and verify the quality of your goods.
+                                </p>
+                            </div>
+
+                            {/* Cell 4: Legal Shield */}
+                            <div className="p-10 border-b border-slate-100 hover:bg-slate-50 transition-colors group">
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-900 mb-8 block">04 / Law</span>
+                                <h3 className="text-3xl font-black tracking-tighter uppercase mb-4 text-slate-950 leading-[0.9]">Real <br /> Contracts.</h3>
+                                <p className="text-slate-500 text-sm font-light leading-relaxed">
+                                    Every trade is backed by strong legal contracts that work in India. We make sure your business stays protected.
+                                </p>
+                            </div>
+
+                            {/* Full Width Metric Row */}
+                            <div className="lg:col-span-4 bg-slate-950 p-8 md:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8">
+                                <div className="flex-1 text-center md:text-left">
+                                    <h4 className="text-3xl md:text-5xl font-black tracking-tightest uppercase leading-none mb-4">Scale from Bharat.</h4>
+                                    <p className="text-slate-400 font-light text-sm max-w-md">Empowering 63M+ MSMEs to compete on the global stage.</p>
+                                </div>
+                                <div className="flex gap-8 md:gap-16 border-l border-white/10 pl-8 md:pl-16 hidden md:flex">
+                                    <div>
+                                        <div className="text-2xl font-black text-cyan-400 tracking-tight">100%</div>
+                                        <div className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Verified</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-2xl font-black text-indigo-400 tracking-tight">Zero</div>
+                                        <div className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Middlemen</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-2xl font-black text-fuchsia-400 tracking-tight">Iron</div>
+                                        <div className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Escrow</div>
                                     </div>
                                 </div>
-                            </StaggerItem>
-                        ))}
-                    </StaggerContainer>
-                </section>
-
-                {/* Technical & Legal Deep Dive */}
-                <section className="mt-32 md:mt-64 px-6 bg-slate-50 py-24 md:py-48 border-y border-slate-100">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32">
-                            <FadeIn>
-                                <div className="space-y-12">
-                                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-cyan-600 text-white shadow-xl shadow-cyan-200 mb-6">
-                                        <ShieldCheck className="h-8 w-8" />
-                                    </div>
-                                    <h2 className="text-4xl md:text-6xl font-black tracking-tightest uppercase text-slate-950">Escrow <br className="hidden md:block" /> Protocol.</h2>
-                                    <div className="space-y-8">
-                                        <div className="flex gap-6">
-                                            <div className="h-8 w-8 rounded-full bg-cyan-100 text-cyan-700 font-bold flex items-center justify-center flex-shrink-0 text-sm">1</div>
-                                            <div>
-                                                <h4 className="font-bold text-lg mb-2">Fund Lock</h4>
-                                                <p className="text-slate-500 font-light leading-relaxed">Buyers deposit contract funds into a secure, neutral bridge. Funds are visible but locked until verified milestones are met.</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-6">
-                                            <div className="h-8 w-8 rounded-full bg-cyan-100 text-cyan-700 font-bold flex items-center justify-center flex-shrink-0 text-sm">2</div>
-                                            <div>
-                                                <h4 className="font-bold text-lg mb-2">Milestone Release</h4>
-                                                <p className="text-slate-500 font-light leading-relaxed">Payment triggers are tied to quality checks: 30% on raw material procurement, 40% on production completion, and 30% on bill of lading.</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-6">
-                                            <div className="h-8 w-8 rounded-full bg-cyan-100 text-cyan-700 font-bold flex items-center justify-center flex-shrink-0 text-sm">3</div>
-                                            <div>
-                                                <h4 className="font-bold text-lg mb-2">Dispute Mediation</h4>
-                                                <p className="text-slate-500 font-light leading-relaxed">In case of quality mismatch, our QC data acts as the single source of truth for immediate mediation and refund processing.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </FadeIn>
-
-                            <FadeIn delay={0.2}>
-                                <div className="space-y-12">
-                                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-xl shadow-slate-200 mb-6">
-                                        <Shield className="h-8 w-8" />
-                                    </div>
-                                    <h2 className="text-4xl md:text-6xl font-black tracking-tightest uppercase text-slate-950">Legal <br className="hidden md:block" /> Framework.</h2>
-                                    <div className="space-y-8">
-                                        <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden group">
-                                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
-                                                <Target className="h-12 w-12" />
-                                            </div>
-                                            <h4 className="font-bold text-lg mb-3">Governing Law</h4>
-                                            <p className="text-slate-500 text-sm font-light leading-relaxed">Operated under the jurisdiction of Indian Commercial Law. All trade on the platform is bound by standardized digital contracts recognized by Indian courts.</p>
-                                        </div>
-                                        <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden group">
-                                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
-                                                <Globe2 className="h-12 w-12" />
-                                            </div>
-                                            <h4 className="font-bold text-lg mb-3">Anti-Circumvention</h4>
-                                            <p className="text-slate-500 text-sm font-light leading-relaxed">To protect the trust ecosystem, direct side-deals between platform-connected users are strictly prohibited and monitored via trade lane behavior.</p>
-                                        </div>
-                                        <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden group">
-                                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
-                                                <Sparkles className="h-12 w-12" />
-                                            </div>
-                                            <h4 className="font-bold text-lg mb-3">IP Protection</h4>
-                                            <p className="text-slate-500 text-sm font-light leading-relaxed">Suppliers sign ironclad Non-Disclosure Agreements (NDAs) before receiving detailed technical drawings or proprietary design documents.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </FadeIn>
+                                <Link href="/signup" className="px-10 py-5 bg-white text-slate-950 rounded-full font-black text-xs uppercase tracking-[0.2em] hover:bg-cyan-400 transition-all shadow-xl whitespace-nowrap">
+                                    Join Beta
+                                </Link>
+                            </div>
                         </div>
-                    </div>
+                    </FadeIn>
                 </section>
 
+                {/* Become part of the story */}
                 <section className="mt-32 md:mt-64 px-6 overflow-hidden">
                     <FadeIn>
                         <div className="max-w-6xl mx-auto px-6 py-20 md:p-32 rounded-[32px] md:rounded-[64px] bg-slate-950 text-white text-center relative overflow-hidden group">
@@ -232,4 +162,3 @@ export default function HowItWorksPage() {
         </div>
     );
 }
-

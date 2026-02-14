@@ -64,8 +64,7 @@ export default function Home() {
               </div>
 
               <p className="text-lg sm:text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto mb-12 font-light leading-relaxed px-2 md:px-0">
-                Secure your supply chain with our <span className="text-slate-900 font-medium italic">Escrow-backed</span>, factory-direct protocol.
-                Full-stack infrastructure built for global scale.
+                The safest way to buy directly from the source. Connect with verified factories across India with <span className="text-slate-900 font-medium italic">guaranteed payment safety</span>.
               </p>
 
               <div className="flex justify-center mb-16 sm:mb-24 px-4">
@@ -107,27 +106,23 @@ export default function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
-                    <ShieldCheck className="h-10 w-10 text-cyan-500 mb-6" />
-                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">escrow</h4>
-                    <p className="text-slate-500 text-xs font-black uppercase tracking-widest">Milestone Release • Verified QC</p>
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
+                    <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-cyan-500">Safe Escrow</h4>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Pay with confidence. Money is released only after your order passes quality checks.</p>
                   </div>
-                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
-                    <Gavel className="h-10 w-10 text-indigo-500 mb-6" />
-                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Legal Shield</h4>
-                    <p className="text-slate-500 text-xs font-black uppercase tracking-widest">Digital Contracts • Indian Law</p>
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
+                    <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-indigo-500">Legal Cover</h4>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Don't worry about disputes. Every trade is protected by strong, legally-binding contracts.</p>
                   </div>
                 </div>
                 <div className="space-y-4 pt-8 md:pt-16">
-                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
-                    <Factory className="h-10 w-10 text-blue-500 mb-6" />
-                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Direct Access</h4>
-                    <p className="text-slate-500 text-xs font-black uppercase tracking-widest">No Middleman • Primary Pricing</p>
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
+                    <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-blue-500">Buy Direct</h4>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Cut out the middleman. Talk straight to the factory and get the lowest possible price.</p>
                   </div>
-                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm">
-                    <TrendingUp className="h-10 w-10 text-fuchsia-500 mb-6" />
-                    <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Trade OS</h4>
-                    <p className="text-slate-500 text-xs font-black uppercase tracking-widest">Discovery • Logistics • Audit</p>
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
+                    <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-fuchsia-500">Total Logistics</h4>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">We handle the hard part. From factory quality checks to shipping right to your door.</p>
                   </div>
                 </div>
               </div>
@@ -140,25 +135,19 @@ export default function Home() {
 
                 <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
                   <div className="shrink-0 text-center lg:text-left">
-                    <div className="h-20 w-20 rounded-[24px] bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mb-6 mx-auto lg:mx-0 shadow-lg shadow-cyan-500/20">
-                      <ShieldCheck className="h-10 w-10 text-white" />
-                    </div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.5em] text-cyan-500 block mb-2">Verified Protocol</span>
-                    <h4 className="text-3xl font-black tracking-tightest uppercase text-white leading-[0.8]">The Trade <br /> Matrix.</h4>
+                    <span className="text-[10px] font-black uppercase tracking-[0.5em] text-cyan-500 block mb-4">How it works</span>
+                    <h4 className="text-4xl md:text-5xl font-black tracking-tightest uppercase text-white leading-[0.8]">Trade <br /> Steps.</h4>
                   </div>
 
-                  <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-6">
                     {[
-                      { label: "01 / Lock", sub: "Payment secured in neutral digital bridge.", icon: <Zap className="h-5 w-5" /> },
-                      { label: "02 / Verify", sub: "QC Audit performed on factory floor.", icon: <Factory className="h-5 w-5" /> },
-                      { label: "03 / Clear", sub: "Funds released on verified delivery.", icon: <CheckCircle2 className="h-5 w-5" /> }
+                      { label: "01 / You Pay", sub: "You pay us, and we hold your money safely. The factory knows the funds are ready but can't touch them yet." },
+                      { label: "02 / We Check", sub: "We visit the factory to inspect your goods. We make sure everything is perfect before it ships." },
+                      { label: "03 / They Get Paid", sub: "Once the quality is confirmed and the goods are on their way, we release the money to the factory." }
                     ].map((step, i) => (
-                      <div key={i} className="bg-slate-900/50 p-8 rounded-[32px] border border-white/5 flex flex-col items-center text-center hover:bg-slate-900 hover:border-white/10 transition-all">
-                        <div className="h-12 w-12 rounded-full bg-white/5 flex items-center justify-center mb-6 text-cyan-500">
-                          {step.icon}
-                        </div>
-                        <h5 className="text-[11px] font-black uppercase tracking-widest text-white mb-3">{step.label}</h5>
-                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-relaxed">{step.sub}</p>
+                      <div key={i} className="bg-white/[0.03] p-10 rounded-[32px] border border-white/5 flex flex-col items-center lg:items-start text-center lg:text-left hover:bg-white/[0.05] transition-all">
+                        <h5 className="text-sm font-black uppercase tracking-widest text-cyan-500 mb-4">{step.label}</h5>
+                        <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider leading-relaxed">{step.sub}</p>
                       </div>
                     ))}
                   </div>
