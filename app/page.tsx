@@ -33,9 +33,9 @@ export default function Home() {
       <main>
         {/* Hero Section - Clean Light */}
         <section className="relative pt-32 pb-16 sm:pt-64 sm:pb-32 px-6 overflow-hidden">
-          {/* Ambient Backgrounds - Lightened */}
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-50/50 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-50/50 rounded-full blur-[120px] pointer-events-none" />
+          {/* Ambient Backgrounds - Lightened & Disabled on Mobile for Performance */}
+          <div className="hidden md:block absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-50/50 rounded-full blur-[120px] pointer-events-none" />
+          <div className="hidden md:block absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-50/50 rounded-full blur-[120px] pointer-events-none" />
 
           <div className="max-w-7xl mx-auto text-center relative z-10">
             <FadeIn>
@@ -82,7 +82,7 @@ export default function Home() {
         </section>
         {/* Brand New: USP & Infrastructure Deep-Dive - Moved Up for Visibility */}
         <section className="py-24 md:py-48 px-6 bg-slate-950 text-white overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
               <div>
@@ -106,21 +106,21 @@ export default function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 md:backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
                     <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-cyan-500">Safe Escrow</h4>
                     <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">We hold your money safely. Pay only after you verify the quality.</p>
                   </div>
-                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 md:backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
                     <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-indigo-500">Legal Cover</h4>
                     <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Every trade is protected by strong, Indian-law contracts.</p>
                   </div>
                 </div>
                 <div className="space-y-4 pt-8 md:pt-16">
-                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 md:backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
                     <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-blue-500">Buy Direct</h4>
                     <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Skip the middlemen. We connect you straight to the factory floor.</p>
                   </div>
-                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
+                  <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 md:backdrop-blur-sm group hover:bg-white/[0.05] transition-all">
                     <h4 className="text-2xl font-black mb-3 uppercase tracking-tight text-fuchsia-500">Done For You</h4>
                     <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">We handle quality checks and shipping to your doorstep.</p>
                   </div>
@@ -130,7 +130,7 @@ export default function Home() {
 
             {/* Protocol Matrix - Proper Full Width & Heavy visibility */}
             <FadeIn delay={0.4}>
-              <div className="mt-32 p-8 md:p-12 rounded-[40px] bg-white/[0.02] border border-white/5 backdrop-blur-md relative overflow-hidden group">
+              <div className="mt-32 p-8 md:p-12 rounded-[40px] bg-white/[0.02] border border-white/5 md:backdrop-blur-md relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
                 <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
