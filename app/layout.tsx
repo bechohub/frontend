@@ -67,6 +67,7 @@ export const metadata: Metadata = {
 import { Analytics } from "@vercel/analytics/react";
 import Preloader from "./components/Preloader";
 import ClientProtection from "./components/ClientProtection";
+import SmoothScroll from "./components/SmoothScroll";
 
 export default function RootLayout({
   children,
@@ -79,10 +80,12 @@ export default function RootLayout({
         className={`${inter.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased font-sans bg-slate-50 text-slate-900 selection:bg-cyan-200 selection:text-cyan-900`}
         suppressHydrationWarning
       >
-        <ClientProtection />
-        <Preloader />
-        {children}
-        <Analytics />
+        <SmoothScroll>
+          <ClientProtection />
+          <Preloader />
+          {children}
+          <Analytics />
+        </SmoothScroll>
       </body>
     </html>
   );

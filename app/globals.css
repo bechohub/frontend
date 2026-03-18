@@ -5,11 +5,14 @@
   --foreground: #f8fafc;
 }
 
-/* Smooth scrolling only for desktop to avoid mobile performance issues */
-@media (min-width: 768px) {
-  html {
-    scroll-behavior: smooth;
-  }
+/* Hide scrollbar for awwwards smooth sexy vibe */
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 @layer base {
