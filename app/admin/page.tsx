@@ -189,11 +189,12 @@ export default function AdminDashboard() {
             const tableRows: any[] = [];
 
             filteredProfiles.forEach(profile => {
+                const displayRole = profile.role === 'supplier' ? 'seller' : profile.role;
                 const profileData = [
                     `${profile.first_name} ${profile.last_name}`,
                     profile.email,
                     profile.company_name,
-                    profile.role.toUpperCase(),
+                    displayRole.toUpperCase(),
                     new Date(profile.created_at).toLocaleDateString()
                 ];
                 tableRows.push(profileData);
@@ -308,7 +309,7 @@ export default function AdminDashboard() {
                         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
                             <Factory className="h-16 w-16 text-indigo-600" />
                         </div>
-                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">Verified Suppliers</div>
+                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">Verified Sellers</div>
                         <div className="text-4xl font-black text-slate-900">{suppliers}</div>
                         <div className="text-xs text-slate-400 mt-2">
                             {totalUsers > 0 ? ((suppliers / totalUsers) * 100).toFixed(0) : 0}% of userbase
@@ -338,7 +339,7 @@ export default function AdminDashboard() {
                                     onClick={() => setFilterRole('supplier')}
                                     className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${filterRole === 'supplier' ? 'bg-white shadow-sm text-indigo-700' : 'text-slate-500 hover:text-slate-900'}`}
                                 >
-                                    Suppliers
+                                    Sellers
                                 </button>
                             </div>
                         </div>
@@ -395,7 +396,7 @@ export default function AdminDashboard() {
                                                     profile.role === 'supplier' ? 'bg-indigo-50 text-indigo-700 border border-indigo-100' :
                                                         'bg-purple-50 text-purple-700 border border-purple-100'} 
                                             `}>
-                                                {profile.role === 'both' ? 'Hybrid' : profile.role}
+                                                {profile.role === 'both' ? 'Hybrid' : profile.role === 'supplier' ? 'seller' : profile.role}
                                             </span>
                                         </td>
                                         <td className="px-6 py-4">
