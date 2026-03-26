@@ -1,88 +1,244 @@
 "use client";
+
+import { useState, useMemo } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Factory, Globe, ShieldCheck, Zap, ArrowRight, Star, Users2, Sparkles } from "lucide-react";
-import { FadeIn, SlideUp, StaggerContainer, StaggerItem } from "../components/Animators";
+import { Search, Filter, Star, MapPin, ArrowUpRight, Package, PhoneCall, Mail, CheckCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+// New Centralized Imports
+import { INDUSTRY_CATEGORIES, getIndustryIcon } from "@/constants";
+import { MOCK_SELLERS } from "@/lib/mock-data";
+import { FadeIn, StaggerContainer, StaggerItem } from "../components/Animators";
 import Link from "next/link";
 
-export default function BrowseSuppliers() {
-    const industrialGlimpse = [
-        { name: "Electronics & Tech", icon: <Zap className="h-5 w-5" />, count: "42+ Manufacturers Enrolling" },
-        { name: "Textiles & Apparel", icon: <Users2 className="h-5 w-5" />, count: "120+ Clusters Mapping" },
-        { name: "Raw Materials", icon: <Factory className="h-5 w-5" />, count: "85+ Verified Bulk Suppliers" },
-        { name: "Industrial Components", icon: <ShieldCheck className="h-5 w-5" />, count: "60+ Precision Units Joining" }
-    ];
+export default function BrowsePage() {
+    const [searchQuery, setSearchQuery] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("all");
+
+    const filteredSellers = useMemo(() => {
+        const query = searchQuery.trim().toLowerCase();
+        return MOCK_SELLERS.filter((seller) => {
+            const matchesSearch =
+                !query ||
+                seller.name?.toLowerCase().includes(query) ||
+                seller.tags.some((t) => t.toLowerCase().includes(query));
+            const matchesCategory = selectedCategory === "all" || seller.category === selectedCategory;
+            return matchesSearch && matchesCategory;
+        });
+    }, [searchQuery, selectedCategory]);
 
     return (
-        <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-cyan-100 selection:text-cyan-950 overflow-x-hidden">
+        <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-cyan-100 selection:text-cyan-950">
             <Navbar />
 
-            {/* Background Ambience */}
-            <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-                <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-cyan-50/50 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-50/50 rounded-full blur-[120px]" />
-            </div>
-
-            <main className="pt-32 md:pt-64 pb-20 md:pb-32">
-                <div className="mx-auto max-w-7xl px-6">
-                    {/* Coming Soon Hero */}
-                    <div className="text-center mb-12 md:mb-24 max-w-6xl mx-auto">
-                        <FadeIn>
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 mb-8 pointer-events-none">
-                                <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-600"></span>
-                                </span>
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Under Construction</span>
+            <main className="pt-24 md:pt-32 pb-24">
+                <div className="max-w-7xl mx-auto px-6">
+                    {/* Simplified Persistent Search Bar */}
+                    <div className="sticky top-20 z-40 bg-white/80 backdrop-blur-xl py-6 border-b border-slate-100 mb-12">
+                        <div className="flex flex-col gap-6">
+                            {/* Search Input - Full Width for better UX */}
+                            <div className="relative group w-full">
+                                <Search className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-cyan-600 transition-colors" />
+                                <input
+                                    type="text"
+                                    placeholder="Search products, sellers or industries..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    className="w-full bg-slate-50 border border-slate-200 rounded-3xl py-5 pl-16 pr-6 outline-none focus:bg-white focus:border-cyan-500 transition-all font-medium text-lg shadow-sm"
+                                />
                             </div>
 
-                            <h1 className="text-5xl md:text-8xl lg:text-[120px] font-black tracking-tightest uppercase mb-8 leading-[0.9] text-slate-950">
-                                The Marketplace <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700">is Awakening.</span>
-                            </h1>
-                            <p className="text-xl md:text-2xl text-slate-500 font-light max-w-2xl mx-auto mb-12">
-                                We are currently auditing and onboarding India's most elite manufacturers.
-                                The vault opens soon.
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row justify-center gap-4">
-                                <Link
-                                    href="/signup"
-                                    className="px-12 py-5 bg-slate-950 text-white rounded-full font-black text-xs uppercase tracking-[0.2em] hover:bg-slate-800 transition-all active:scale-95 shadow-2xl shadow-slate-200"
-                                >
-                                    Join the Waitlist
-                                </Link>
-                                <button className="px-12 py-5 bg-white text-slate-950 border border-slate-200 rounded-full font-black text-xs uppercase tracking-[0.2em] hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
-                                    Explore Road-map <ArrowRight className="h-4 w-4" />
-                                </button>
+                            {/* Categories - Scrollable underneath */}
+                            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
+                                <div className="flex items-center gap-2">
+                                    {INDUSTRY_CATEGORIES.map((cat) => {
+                                        const Icon = getIndustryIcon(cat.icon);
+                                        return (
+                                            <button
+                                                key={cat.id}
+                                                onClick={() => setSelectedCategory(cat.id)}
+                                                className={`flex items-center gap-2 px-6 py-4 rounded-2xl border transition-all whitespace-nowrap text-[10px] font-black uppercase tracking-widest ${
+                                                    selectedCategory === cat.id
+                                                        ? "bg-slate-900 border-slate-900 text-white shadow-xl"
+                                                        : "bg-white border-slate-200 text-slate-400 hover:border-slate-950 hover:text-slate-950"
+                                                }`}
+                                            >
+                                                <Icon className="h-4 w-4" />
+                                                {cat.name}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
                             </div>
-                        </FadeIn>
+                        </div>
                     </div>
 
-                    {/* Industrial Sneak Peek */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                        <StaggerContainer className="contents">
-                            {industrialGlimpse.map((item, idx) => (
-                                <StaggerItem key={idx}>
-                                    <div className="group p-5 md:p-8 rounded-[24px] md:rounded-[40px] bg-slate-50 border border-slate-100 hover:bg-white hover:border-cyan-200 hover:shadow-2xl hover:shadow-cyan-500/5 transition-all duration-500 relative overflow-hidden h-full">
-                                        <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-100/20 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-cyan-200/30 transition-all" />
+                    {/* Quick Action RFQ Bar */}
+                    <FadeIn delay={0.1}>
+                        <div className="bg-gradient-to-r from-cyan-600 to-blue-700 rounded-3xl p-6 md:p-10 mb-16 flex flex-col md:flex-row items-center justify-between text-white shadow-2xl shadow-cyan-500/10">
+                            <div className="mb-6 md:mb-0">
+                                <h2 className="text-2xl md:text-3xl font-black mb-2 flex items-center gap-3 tracking-tighter">
+                                    <Package className="h-8 w-8" /> Can&apos;t find what you need?
+                                </h2>
+                                <p className="text-cyan-100 font-medium">
+                                    Post a request and let verified manufacturers find you. It&apos;s faster.
+                                </p>
+                            </div>
+                            <Link
+                                href="/rfq"
+                                className="bg-white text-slate-900 px-10 py-5 rounded-full font-black text-xs uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-xl"
+                            >
+                                Post RFQ Now
+                            </Link>
+                        </div>
+                    </FadeIn>
 
-                                        <div className="h-10 w-10 md:h-14 md:w-14 rounded-xl md:rounded-2xl bg-white flex items-center justify-center text-slate-950 mb-4 md:mb-8 border border-slate-100 group-hover:bg-cyan-600 group-hover:text-white transition-all shadow-sm">
-                                            {item.icon}
+                    {/* Result Header */}
+                    <div className="mb-10 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                            <h2 className="text-sm font-black uppercase tracking-[0.2em] text-slate-400">
+                                Verified Sellers
+                            </h2>
+                            <div className="h-1.5 w-1.5 rounded-full bg-slate-200" />
+                            <span className="text-xs font-bold text-slate-950">{filteredSellers.length} Results</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs font-bold text-cyan-600">
+                            <Filter className="h-4 w-4" /> Filter Advanced
+                        </div>
+                    </div>
+
+                    {/* Minimal & Efficient List-View Listing (The "Beater" Layout) */}
+                    <AnimatePresence>
+                        {filteredSellers.length > 0 ? (
+                            <StaggerContainer key={`results-${selectedCategory}-${searchQuery}`} className="space-y-6">
+                                {filteredSellers.map((seller) => (
+                                    <StaggerItem key={seller.id}>
+                                        <div className="group bg-white rounded-[40px] border border-slate-100 hover:bg-slate-50 hover:border-slate-200 transition-all duration-300 overflow-hidden p-6 md:p-10 relative">
+                                            {/* Grid layout for info */}
+                                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                                {/* Left: Branding & Core Info */}
+                                                <div className="lg:col-span-4 border-b border-slate-100 lg:border-none pb-6 lg:pb-0">
+                                                    <div className="flex items-center gap-3 mb-4">
+                                                        <div className="h-14 w-14 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-black text-2xl tracking-tighter">
+                                                            {seller.name?.charAt(0)}
+                                                        </div>
+                                                        <div>
+                                                            <div className="flex items-center gap-2 mb-1 group/name">
+                                                                <Link href={`/seller/${seller.id}`}>
+                                                                    <h3 className="text-2xl font-black text-slate-900 tracking-tight leading-none group-hover/name:text-cyan-600 transition-colors uppercase">
+                                                                        {seller.name}
+                                                                    </h3>
+                                                                </Link>
+                                                                {seller.verified && (
+                                                                    <div
+                                                                        className="h-5 w-5 bg-cyan-600 rounded-full flex items-center justify-center"
+                                                                        title="Verified Manufacturer"
+                                                                    >
+                                                                        <CheckCircle className="h-3 w-3 text-white" />
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                            <div className="flex items-center gap-1.5 text-xs text-slate-400 font-bold uppercase tracking-widest">
+                                                                <MapPin className="h-3 w-3" /> {seller.location}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p className="text-sm text-slate-500 font-medium leading-relaxed line-clamp-2 pr-6">
+                                                        {seller.description}
+                                                    </p>
+                                                </div>
+
+                                                {/* Center: Specs (Simplified for speed) */}
+                                                <div className="lg:col-span-5 grid grid-cols-2 md:grid-cols-3 gap-6">
+                                                    <div className="space-y-1">
+                                                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                                            MOQ
+                                                        </div>
+                                                        <div className="text-sm font-black text-slate-900">
+                                                            {seller.moq}
+                                                        </div>
+                                                    </div>
+                                                    <div className="space-y-1">
+                                                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                                            Capacity
+                                                        </div>
+                                                        <div className="text-sm font-black text-slate-900">
+                                                            {seller.capacity}
+                                                        </div>
+                                                    </div>
+                                                    <div className="space-y-1">
+                                                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                                            Rating
+                                                        </div>
+                                                        <div className="flex items-center gap-1 text-sm font-black text-slate-900">
+                                                            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />{" "}
+                                                            {seller.rating}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-span-full pt-2 flex flex-wrap gap-2">
+                                                        {seller.tags.map((tag) => (
+                                                            <span
+                                                                key={tag}
+                                                                className="px-3 py-1 bg-white border border-slate-100 rounded-lg text-[10px] font-bold text-slate-400 uppercase tracking-widest"
+                                                            >
+                                                                {tag}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+
+                                                {/* Right: Actions */}
+                                                <div className="lg:col-span-3 flex flex-col gap-3">
+                                                    <button className="w-full bg-slate-900 text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl group/btn overflow-hidden relative">
+                                                        <span className="relative z-10 flex items-center justify-center gap-2">
+                                                            Get Quotes{" "}
+                                                            <ArrowUpRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                                                        </span>
+                                                        <div className="absolute inset-0 bg-cyan-600 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
+                                                    </button>
+                                                    <div className="grid grid-cols-2 gap-3">
+                                                        <button className="flex items-center justify-center gap-2 border border-slate-200 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:border-slate-400 hover:text-slate-900 transition-all">
+                                                            <PhoneCall className="h-3 w-3" /> Call
+                                                        </button>
+                                                        <button className="flex items-center justify-center gap-2 border border-slate-200 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:border-slate-400 hover:text-slate-900 transition-all">
+                                                            <Mail className="h-3 w-3" /> Email
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        <h3 className="text-sm md:text-xl font-black mb-1 md:mb-2 text-slate-950">{item.name}</h3>
-                                        <p className="text-[10px] md:text-sm text-slate-500 font-light flex items-center gap-1.5 md:gap-2">
-                                            <Sparkles className="h-2.5 w-2.5 md:h-3 md:w-3 text-cyan-600 animate-pulse" />
-                                            {item.count.replace(/ (Manufacturers Enrolling|Clusters Mapping|Verified Bulk Suppliers|Precision Units Joining)/, '')}
-                                        </p>
-                                    </div>
-                                </StaggerItem>
-                            ))}
-                        </StaggerContainer>
-                    </div>
-
-
+                                    </StaggerItem>
+                                ))}
+                            </StaggerContainer>
+                        ) : (
+                            <motion.div
+                                key="empty"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="py-32 text-center"
+                            >
+                                <div className="inline-flex items-center justify-center h-24 w-24 rounded-full bg-slate-50 text-slate-300 mb-8 border-4 border-dashed border-slate-100">
+                                    <Search className="h-10 w-10 text-slate-200" />
+                                </div>
+                                <h3 className="text-2xl font-black text-slate-900 mb-2">
+                                    No results for your discovery
+                                </h3>
+                                <p className="text-slate-500 font-medium">
+                                    Try searching for a simpler term or a broader category.
+                                </p>
+                                <button
+                                    onClick={() => {
+                                        setSearchQuery("");
+                                        setSelectedCategory("all");
+                                    }}
+                                    className="mt-8 text-xs font-black uppercase tracking-widest text-cyan-600 hover:opacity-70 transition-opacity"
+                                >
+                                    Clear all filters
+                                </button>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </main>
 
@@ -90,4 +246,3 @@ export default function BrowseSuppliers() {
         </div>
     );
 }
-

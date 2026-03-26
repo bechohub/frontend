@@ -21,6 +21,7 @@ import {
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import FormSuccess from "../components/FormSuccess";
+import { INDUSTRY_CATEGORIES } from "@/constants";
 
 function SignUpForm() {
     const searchParams = useSearchParams();
@@ -364,10 +365,11 @@ function SignUpForm() {
                                                     className="w-full bg-slate-50 border border-slate-100 rounded-3xl py-5 pl-14 pr-5 focus:bg-white focus:border-cyan-500 focus:shadow-xl focus:shadow-cyan-500/5 outline-none transition-all text-slate-900 appearance-none"
                                                 >
                                                     <option value="">Select Category</option>
-                                                    <option value="textiles">Textiles & Apparel</option>
-                                                    <option value="electronics">Electronics & Electrical</option>
-                                                    <option value="industrial">Industrial Machinery</option>
-                                                    <option value="raw_materials">Raw Materials & Chemicals</option>
+                                                    {INDUSTRY_CATEGORIES.filter((c) => c.id !== "all").map((c) => (
+                                                        <option key={c.id} value={c.id}>
+                                                            {c.name}
+                                                        </option>
+                                                    ))}
                                                 </select>
                                             </div>
                                         </div>
@@ -409,11 +411,11 @@ function SignUpForm() {
                                                     className="w-full bg-slate-50 border border-slate-100 rounded-3xl py-5 pl-14 pr-5 focus:bg-white focus:border-cyan-500 focus:shadow-xl focus:shadow-cyan-500/5 outline-none transition-all text-slate-900 appearance-none"
                                                 >
                                                     <option value="">Select Category</option>
-                                                    <option value="footwear">Footwear & Leather</option>
-                                                    <option value="tea_coffee">Tea & Coffee</option>
-                                                    <option value="grains">Grains & Rice</option>
-                                                    <option value="apparel">Apparel & Textiles</option>
-                                                    <option value="electronics">Consumer Electronics</option>
+                                                    {INDUSTRY_CATEGORIES.filter((c) => c.id !== "all").map((c) => (
+                                                        <option key={c.id} value={c.id}>
+                                                            {c.name}
+                                                        </option>
+                                                    ))}
                                                 </select>
                                             </div>
                                         </div>
