@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { createClient } from "@/utils/supabase/client";
@@ -9,14 +7,11 @@ import {
     ShoppingBag,
     TrendingUp,
     Search,
-    Filter,
     MoreHorizontal,
     ShieldCheck,
-    CheckCircle2,
     Eye,
-    EyeOff
+    EyeOff,
 } from "lucide-react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type Profile = {
@@ -31,24 +26,24 @@ type Profile = {
 
 export default function AdminDashboard() {
     const [profiles, setProfiles] = useState<Profile[]>([]);
-    const [filterRole, setFilterRole] = useState<'all' | 'buyer' | 'supplier'>('all');
-    const [searchQuery, setSearchQuery] = useState('');
+    const [filterRole, setFilterRole] = useState<"all" | "buyer" | "seller">("all");
+    const [searchQuery, setSearchQuery] = useState("");
     const [loading, setLoading] = useState(true);
     const [errorMsg, setErrorMsg] = useState<string | null>(null);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
 
     // Auth State
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [authLoading, setAuthLoading] = useState(true); // Initial check
 
     const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
         // Check session storage on mount
-        const session = sessionStorage.getItem('admin_session');
-        if (session === 'active') {
+        const session = sessionStorage.getItem("admin_session");
+        if (session === "active") {
             setIsAuthenticated(true);
         }
         setAuthLoading(false);
@@ -60,9 +55,9 @@ export default function AdminDashboard() {
         const fetchProfiles = async () => {
             const supabase = createClient();
             const { data, error } = await supabase
-                .from('profiles')
-                .select('*')
-                .order('created_at', { ascending: false });
+                .from("profiles")
+                .select("*")
+                .order("created_at", { ascending: false });
 
             if (error) {
                 console.error("Supabase Error:", error);
@@ -78,7 +73,7 @@ export default function AdminDashboard() {
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
         if (username === "Adminhumein" && password === "Chalhatmaalikhu") {
-            sessionStorage.setItem('admin_session', 'active');
+            sessionStorage.setItem("admin_session", "active");
             setIsAuthenticated(true);
         } else {
             alert("Invalid Credentials! Access Denied.");
@@ -100,7 +95,9 @@ export default function AdminDashboard() {
                     </div>
                     <form onSubmit={handleLogin} className="space-y-4">
                         <div>
-                            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Admin ID</label>
+                            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                                Admin ID
+                            </label>
                             <input
                                 type="text"
                                 value={username}
@@ -109,7 +106,9 @@ export default function AdminDashboard() {
                             />
                         </div>
                         <div>
-                            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Password</label>
+                            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                                Password
+                            </label>
                             <div className="relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
@@ -139,16 +138,12 @@ export default function AdminDashboard() {
     }
 
     // Filter Logic
-    const filteredProfiles = profiles.filter(profile => {
-        const matchesRole = filterRole === 'all' ||
-            profile.role === filterRole ||
-            profile.role === 'both'; // Include 'both' in specific filters
-
+    const filteredProfiles = profiles.filter((profile) => {
         // Refined Logic:
         // If filter is 'buyer', show 'buyer' AND 'both'
-        // If filter is 'supplier', show 'supplier' AND 'both'
-        if (filterRole === 'buyer' && profile.role !== 'buyer' && profile.role !== 'both') return false;
-        if (filterRole === 'supplier' && profile.role !== 'supplier' && profile.role !== 'both') return false;
+        // If filter is 'seller', show 'seller' AND 'both'
+        if (filterRole === "buyer" && profile.role !== "buyer" && profile.role !== "both") return false;
+        if (filterRole === "seller" && profile.role !== "seller" && profile.role !== "both") return false;
 
         const searchLower = searchQuery.toLowerCase();
         const matchesSearch =
@@ -162,19 +157,19 @@ export default function AdminDashboard() {
 
     // Calculate Stats (Real Data)
     const totalUsers = profiles.length;
-    const buyers = profiles.filter(p => p.role === 'buyer' || p.role === 'both').length;
-    const suppliers = profiles.filter(p => p.role === 'supplier' || p.role === 'both').length;
+    const buyers = profiles.filter((p) => p.role === "buyer" || p.role === "both").length;
+    const sellers = profiles.filter((p) => p.role === "seller" || p.role === "both").length;
 
     // Calculate New Users This Week
     const now = new Date();
     const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    const newUsersCount = profiles.filter(p => new Date(p.created_at) > oneWeekAgo).length;
+    const newUsersCount = profiles.filter((p) => new Date(p.created_at) > oneWeekAgo).length;
 
     // Export Logic
     const handleExport = async () => {
         try {
-            const jsPDF = (await import('jspdf')).default;
-            const autoTable = (await import('jspdf-autotable')).default;
+            const jsPDF = (await import("jspdf")).default;
+            const autoTable = (await import("jspdf-autotable")).default;
 
             const doc = new jsPDF();
 
@@ -186,16 +181,16 @@ export default function AdminDashboard() {
 
             // Define Table Data
             const tableColumn = ["Name", "Email", "Company", "Role", "Joined Date"];
-            const tableRows: any[] = [];
+            const tableRows: string[][] = [];
 
-            filteredProfiles.forEach(profile => {
-                const displayRole = profile.role === 'supplier' ? 'seller' : profile.role;
+            filteredProfiles.forEach((profile) => {
+                const displayRole = profile.role === "seller" ? "seller" : profile.role;
                 const profileData = [
                     `${profile.first_name} ${profile.last_name}`,
                     profile.email,
                     profile.company_name,
                     displayRole.toUpperCase(),
-                    new Date(profile.created_at).toLocaleDateString()
+                    new Date(profile.created_at).toLocaleDateString(),
                 ];
                 tableRows.push(profileData);
             });
@@ -207,21 +202,19 @@ export default function AdminDashboard() {
                 startY: 40,
                 styles: { fontSize: 10, cellPadding: 3 },
                 headStyles: { fillColor: [15, 23, 42], textColor: [255, 255, 255] }, // Slate-900 like
-                alternateRowStyles: { fillColor: [248, 250, 252] } // Slate-50 like
+                alternateRowStyles: { fillColor: [248, 250, 252] }, // Slate-50 like
             });
 
             // Save PDF
-            doc.save(`bechohub_users_${new Date().toISOString().split('T')[0]}.pdf`);
+            doc.save(`bechohub_users_${new Date().toISOString().split("T")[0]}.pdf`);
         } catch (error) {
             console.error("Export Error:", error);
             alert("Failed to export PDF. Please try again.");
         }
     };
 
-
-
     const handleLogout = () => {
-        sessionStorage.removeItem('admin_session');
+        sessionStorage.removeItem("admin_session");
         setIsAuthenticated(false);
     };
 
@@ -289,7 +282,9 @@ export default function AdminDashboard() {
                         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
                             <Users className="h-16 w-16 text-slate-900" />
                         </div>
-                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">Total Users</div>
+                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">
+                            Total Users
+                        </div>
                         <div className="text-4xl font-black text-slate-900">{totalUsers}</div>
                         <div className="text-xs text-green-500 font-bold mt-2 flex items-center gap-1">
                             <TrendingUp className="h-3 w-3" /> +{newUsersCount} this week
@@ -299,7 +294,9 @@ export default function AdminDashboard() {
                         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
                             <ShoppingBag className="h-16 w-16 text-cyan-600" />
                         </div>
-                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">Active Buyers</div>
+                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">
+                            Active Buyers
+                        </div>
                         <div className="text-4xl font-black text-slate-900">{buyers}</div>
                         <div className="text-xs text-slate-400 mt-2">
                             {totalUsers > 0 ? ((buyers / totalUsers) * 100).toFixed(0) : 0}% of userbase
@@ -309,10 +306,12 @@ export default function AdminDashboard() {
                         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
                             <Factory className="h-16 w-16 text-indigo-600" />
                         </div>
-                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">Verified Sellers</div>
-                        <div className="text-4xl font-black text-slate-900">{suppliers}</div>
+                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">
+                            Verified Sellers
+                        </div>
+                        <div className="text-4xl font-black text-slate-900">{sellers}</div>
                         <div className="text-xs text-slate-400 mt-2">
-                            {totalUsers > 0 ? ((suppliers / totalUsers) * 100).toFixed(0) : 0}% of userbase
+                            {totalUsers > 0 ? ((sellers / totalUsers) * 100).toFixed(0) : 0}% of userbase
                         </div>
                     </div>
                 </div>
@@ -324,20 +323,20 @@ export default function AdminDashboard() {
                             <h2 className="font-bold text-lg text-slate-900">Registrations</h2>
                             <div className="flex bg-slate-100 p-1 rounded-lg">
                                 <button
-                                    onClick={() => setFilterRole('all')}
-                                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${filterRole === 'all' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-900'}`}
+                                    onClick={() => setFilterRole("all")}
+                                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${filterRole === "all" ? "bg-white shadow-sm text-slate-900" : "text-slate-500 hover:text-slate-900"}`}
                                 >
                                     All
                                 </button>
                                 <button
-                                    onClick={() => setFilterRole('buyer')}
-                                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${filterRole === 'buyer' ? 'bg-white shadow-sm text-cyan-700' : 'text-slate-500 hover:text-slate-900'}`}
+                                    onClick={() => setFilterRole("buyer")}
+                                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${filterRole === "buyer" ? "bg-white shadow-sm text-cyan-700" : "text-slate-500 hover:text-slate-900"}`}
                                 >
                                     Buyers
                                 </button>
                                 <button
-                                    onClick={() => setFilterRole('supplier')}
-                                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${filterRole === 'supplier' ? 'bg-white shadow-sm text-indigo-700' : 'text-slate-500 hover:text-slate-900'}`}
+                                    onClick={() => setFilterRole("seller")}
+                                    className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${filterRole === "seller" ? "bg-white shadow-sm text-indigo-700" : "text-slate-500 hover:text-slate-900"}`}
                                 >
                                     Sellers
                                 </button>
@@ -376,45 +375,60 @@ export default function AdminDashboard() {
                                             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-slate-200 border-r-slate-900 align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
                                         </td>
                                     </tr>
-                                ) : filteredProfiles.map((profile) => (
-                                    <tr key={profile.id} className="hover:bg-slate-50/50 transition-colors group">
-                                        <td className="px-6 py-4">
-                                            <div className="flex items-center gap-3">
-                                                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center font-bold text-slate-500 text-xs">
-                                                    {profile.first_name?.[0]}{profile.last_name?.[0]}
+                                ) : (
+                                    filteredProfiles.map((profile) => (
+                                        <tr key={profile.id} className="hover:bg-slate-50/50 transition-colors group">
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="h-8 w-8 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center font-bold text-slate-500 text-xs">
+                                                        {profile.first_name?.[0]}
+                                                        {profile.last_name?.[0]}
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-bold text-slate-900">
+                                                            {profile.first_name} {profile.last_name}
+                                                        </div>
+                                                        <div className="text-xs text-slate-400">{profile.email}</div>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <div className="font-bold text-slate-900">{profile.first_name} {profile.last_name}</div>
-                                                    <div className="text-xs text-slate-400">{profile.email}</div>
+                                            </td>
+                                            <td className="px-6 py-4 font-medium">{profile.company_name}</td>
+                                            <td className="px-6 py-4">
+                                                <span
+                                                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider
+                                                ${
+                                                    profile.role === "buyer"
+                                                        ? "bg-cyan-50 text-cyan-700 border border-cyan-100"
+                                                        : profile.role === "seller"
+                                                          ? "bg-indigo-50 text-indigo-700 border border-indigo-100"
+                                                          : "bg-purple-50 text-purple-700 border border-purple-100"
+                                                } 
+                                            `}
+                                                >
+                                                    {profile.role === "both"
+                                                        ? "Hybrid"
+                                                        : profile.role === "seller"
+                                                          ? "seller"
+                                                          : profile.role}
+                                                </span>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-center gap-1.5">
+                                                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
+                                                    <span className="text-xs font-semibold text-slate-700">Active</span>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-4 font-medium">{profile.company_name}</td>
-                                        <td className="px-6 py-4">
-                                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider
-                                                ${profile.role === 'buyer' ? 'bg-cyan-50 text-cyan-700 border border-cyan-100' :
-                                                    profile.role === 'supplier' ? 'bg-indigo-50 text-indigo-700 border border-indigo-100' :
-                                                        'bg-purple-50 text-purple-700 border border-purple-100'} 
-                                            `}>
-                                                {profile.role === 'both' ? 'Hybrid' : profile.role === 'supplier' ? 'seller' : profile.role}
-                                            </span>
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            <div className="flex items-center gap-1.5">
-                                                <div className="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
-                                                <span className="text-xs font-semibold text-slate-700">Active</span>
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-4 text-xs text-slate-400">
-                                            {new Date(profile.created_at).toLocaleDateString()}
-                                        </td>
-                                        <td className="px-6 py-4 text-right">
-                                            <button className="p-1 hover:bg-slate-200 rounded transition-colors text-slate-400 hover:text-slate-900">
-                                                <MoreHorizontal className="h-4 w-4" />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
+                                            </td>
+                                            <td className="px-6 py-4 text-xs text-slate-400">
+                                                {new Date(profile.created_at).toLocaleDateString()}
+                                            </td>
+                                            <td className="px-6 py-4 text-right">
+                                                <button className="p-1 hover:bg-slate-200 rounded transition-colors text-slate-400 hover:text-slate-900">
+                                                    <MoreHorizontal className="h-4 w-4" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                )}
 
                                 {!loading && filteredProfiles.length === 0 && (
                                     <tr>
@@ -423,7 +437,10 @@ export default function AdminDashboard() {
                                                 <div className="text-red-500 font-bold">
                                                     Error fetching data: {errorMsg}
                                                     <br />
-                                                    <span className="text-xs font-normal text-slate-400">Please run the 'fix_permissions.sql' script in Supabase.</span>
+                                                    <span className="text-xs font-normal text-slate-400">
+                                                        Please run the &apos;fix_permissions.sql&apos; script in
+                                                        Supabase.
+                                                    </span>
                                                 </div>
                                             ) : (
                                                 "No users found matching your criteria."
