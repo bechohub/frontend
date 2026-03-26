@@ -41,6 +41,10 @@ drop policy if exists "Users can insert their own profile." on public.profiles;
 drop policy if exists "Users can update own profile." on public.profiles;
 
 -- 4. APPLY PRODUCTION POLICIES
+drop policy if exists "Public Read Access" on public.profiles;
+drop policy if exists "Self Insert" on public.profiles;
+drop policy if exists "Self Update" on public.profiles;
+
 -- Read: Allowed for everyone (Marketplace Directory)
 create policy "Public Read Access" on public.profiles
   for select using (true);
