@@ -2,16 +2,13 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 
-export async function signup(prevState: any, formData: FormData) {
+export async function signup(prevState: unknown, formData: FormData) {
     const supabase = await createClient();
-    const origin = (await headers()).get("origin");
 
     const email = formData.get("email") as string;
     const password = formData.get("password") as string; // Optional password or set default/random
     const firstName = formData.get("firstName") as string;
-    const lastName = formData.get("lastName") as string;
     const companyName = formData.get("companyName") as string;
     const role = formData.get("role") as string;
     const category = formData.get("category") as string;
@@ -42,34 +39,35 @@ export async function signup(prevState: any, formData: FormData) {
             // Try to sign in to verify ownership
             const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
                 email,
-                password: password
+                password: password,
             });
 
             if (signInError) {
-                return { error: "This email is already registered. To add a new role (Buyer/Supplier) to your existing account, please enter your ORIGINAL password." };
+                return {
+                    error: "This email is already registered. To add a new role (Buyer/Supplier) to your existing account, please enter your ORIGINAL password.",
+                };
             }
 
             if (signInData.user) {
                 // Fetch existing profile
                 const { data: existingProfile } = await supabase
-                    .from('profiles')
-                    .select('role')
-                    .eq('id', signInData.user.id)
+                    .from("profiles")
+                    .select("role")
+                    .eq("id", signInData.user.id)
                     .single();
 
                 let newRole = role;
                 if (existingProfile) {
                     // If current role is different from new role, UPGRADE to 'both'
-                    if (existingProfile.role === 'buyer' && role === 'supplier') newRole = 'both';
-                    else if (existingProfile.role === 'supplier' && role === 'buyer') newRole = 'both';
-                    else if (existingProfile.role === 'both') newRole = 'both';
+                    if (existingProfile.role === "buyer" && role === "seller") newRole = "both";
+                    else if (existingProfile.role === "seller" && role === "buyer") newRole = "both";
+                    else if (existingProfile.role === "both") newRole = "both";
                     else if (existingProfile.role === role) newRole = role; // No change
                 }
 
                 // Update Profile with new role
-                const { error: updateError } = await supabase
-                    .from('profiles')
-                    .upsert({
+                const { error: updateError } = await supabase.from("profiles").upsert(
+                    {
                         id: signInData.user.id,
                         email: email,
                         // We update the fields to match the latest submission
@@ -80,14 +78,19 @@ export async function signup(prevState: any, formData: FormData) {
                         category: category,
                         business_scale: businessScale,
                         gst_number: gstNumber,
-                    }, { onConflict: 'id' });
+                    },
+                    { onConflict: "id" }
+                );
 
                 if (updateError) {
                     console.error("Profile Upgrade Error:", updateError);
                     return { error: "Failed to update profile role." };
                 }
 
-                return { success: true, message: "Profile updated! You now have access to both Buyer and Supplier features." };
+                return {
+                    success: true,
+                    message: "Profile updated! You now have access to both Buyer and Supplier features.",
+                };
             }
         }
 
@@ -105,9 +108,8 @@ export async function signup(prevState: any, formData: FormData) {
         const realFirstName = nameParts[0];
         const realLastName = nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
 
-        const { error: profileError } = await supabase
-            .from('profiles')
-            .upsert({
+        const { error: profileError } = await supabase.from("profiles").upsert(
+            {
                 id: data.user.id,
                 email: email,
                 first_name: realFirstName,
@@ -118,7 +120,9 @@ export async function signup(prevState: any, formData: FormData) {
                 business_scale: businessScale,
                 gst_number: gstNumber,
                 // We preserve created_at if it exists, roughly
-            }, { onConflict: 'id' });
+            },
+            { onConflict: "id" }
+        );
 
         if (profileError) {
             console.error("Profile Upsert Error:", profileError);

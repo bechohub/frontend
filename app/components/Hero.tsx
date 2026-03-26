@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, ShieldCheck, ArrowRight, LayoutGrid } from "lucide-react";
+import { CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeIn, SlideUp } from "./Animators";
@@ -17,13 +17,12 @@ export default function Hero() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-violet-300/20 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none -z-10" />
 
                 <div className="lg:grid lg:grid-cols-12 lg:gap-16 items-center relative z-10">
-
                     {/* Text Content */}
                     <div className="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:text-left">
                         <FadeIn delay={0.1}>
                             <div className="inline-flex items-center rounded-full bg-slate-50 border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-600 mb-6 tracking-wide uppercase">
                                 <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-500 mr-2 shadow-[0_0_8px_rgba(6,182,212,0.5)]"></span>
-                                India's Premiere B2B Network
+                                India&apos;s Premiere B2B Network
                             </div>
                         </FadeIn>
 
@@ -44,7 +43,10 @@ export default function Hero() {
                             </p>
                         </FadeIn>
 
-                        <SlideUp delay={0.4} className="mt-8 sm:mt-10 sm:mx-auto sm:max-w-lg sm:flex sm:justify-center lg:mx-0 lg:justify-start gap-3">
+                        <SlideUp
+                            delay={0.4}
+                            className="mt-8 sm:mt-10 sm:mx-auto sm:max-w-lg sm:flex sm:justify-center lg:mx-0 lg:justify-start gap-3"
+                        >
                             <div className="w-full sm:w-auto">
                                 <Link
                                     href="/signup?type=buyer"
@@ -56,7 +58,7 @@ export default function Hero() {
                             </div>
                             <div className="mt-3 sm:mt-0 w-full sm:w-auto">
                                 <Link
-                                    href="/signup?type=supplier"
+                                    href="/signup?type=seller"
                                     className="flex w-full items-center justify-center rounded-full border border-slate-200 bg-white px-8 py-4 text-sm sm:text-base font-semibold text-slate-900 shadow-sm hover:bg-slate-50 transition-all duration-300 active:scale-95"
                                 >
                                     Register as Seller
@@ -64,7 +66,10 @@ export default function Hero() {
                             </div>
                         </SlideUp>
 
-                        <FadeIn delay={0.5} className="mt-10 flex items-center justify-center lg:justify-start gap-8 border-t border-slate-100 pt-8">
+                        <FadeIn
+                            delay={0.5}
+                            className="mt-10 flex items-center justify-center lg:justify-start gap-8 border-t border-slate-100 pt-8"
+                        >
                             <div className="flex items-center gap-2.5">
                                 <CheckCircle2 className="h-5 w-5 text-cyan-500" />
                                 <span className="text-sm font-medium text-slate-600">GST Verified</span>
@@ -107,11 +112,15 @@ export default function Hero() {
                                 <div className="flex justify-between items-start mb-3">
                                     <div className="flex items-center gap-2">
                                         <span className="flex h-2 w-2 rounded-full bg-cyan-500 animate-pulse"></span>
-                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Active Order</span>
+                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                                            Active Order
+                                        </span>
                                     </div>
                                     <span className="text-[10px] text-slate-400 font-mono">Today</span>
                                 </div>
-                                <p className="font-semibold text-slate-900 text-sm mb-1 leading-snug">Precision Gears (Steel C45)</p>
+                                <p className="font-semibold text-slate-900 text-sm mb-1 leading-snug">
+                                    Precision Gears (Steel C45)
+                                </p>
                                 <div className="flex justify-between items-end mt-2">
                                     <p className="text-xs text-slate-500 font-medium">10,000 Pcs • Pune Hub</p>
                                     <div className="h-6 w-6 rounded-full bg-slate-100 flex items-center justify-center">
