@@ -29,27 +29,27 @@ export default function BrowsePage() {
     }, [searchQuery, selectedCategory]);
 
     return (
-        <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-cyan-100 selection:text-cyan-950">
+        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white">
             <Navbar />
 
-            <main className="pt-24 md:pt-32 pb-24">
+            <main className="pt-28 md:pt-36 pb-24">
                 <div className="max-w-7xl mx-auto px-6">
-                    {/* Simplified Persistent Search Bar */}
-                    <div className="sticky top-20 z-40 bg-white/80 backdrop-blur-xl py-6 border-b border-slate-100 mb-12">
+                    {/* Persistent Search Bar under Dark Theme */}
+                    <div className="sticky top-[88px] z-40 bg-black/90 backdrop-blur-md py-6 border-b border-zinc-900 mb-12">
                         <div className="flex flex-col gap-6">
-                            {/* Search Input - Full Width for better UX */}
+                            {/* Search Input */}
                             <div className="relative group w-full">
-                                <Search className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-cyan-600 transition-colors" />
+                                <Search className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-500 group-focus-within:text-cyan-500 transition-colors" />
                                 <input
                                     type="text"
-                                    placeholder="Search products, sellers or industries..."
+                                    placeholder="SEARCH NETWORK COMMAND..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full bg-slate-50 border border-slate-200 rounded-3xl py-5 pl-16 pr-6 outline-none focus:bg-white focus:border-cyan-500 transition-all font-medium text-lg shadow-sm"
+                                    className="w-full bg-zinc-950 border border-zinc-800 py-5 pl-16 pr-6 outline-none focus:bg-zinc-900 focus:border-cyan-600 transition-all font-black text-sm uppercase tracking-widest text-white placeholder:text-zinc-600"
                                 />
                             </div>
 
-                            {/* Categories - Scrollable underneath */}
+                            {/* Categories */}
                             <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
                                 <div className="flex items-center gap-2">
                                     {INDUSTRY_CATEGORIES.map((cat) => {
@@ -58,10 +58,10 @@ export default function BrowsePage() {
                                             <button
                                                 key={cat.id}
                                                 onClick={() => setSelectedCategory(cat.id)}
-                                                className={`flex items-center gap-2 px-6 py-4 rounded-2xl border transition-all whitespace-nowrap text-[10px] font-black uppercase tracking-widest ${
+                                                className={`flex items-center gap-3 px-6 py-4 uppercase tracking-widest text-[10px] font-black transition-colors ${
                                                     selectedCategory === cat.id
-                                                        ? "bg-slate-900 border-slate-900 text-white shadow-xl"
-                                                        : "bg-white border-slate-200 text-slate-400 hover:border-slate-950 hover:text-slate-950"
+                                                        ? "bg-cyan-700 text-white"
+                                                        : "bg-zinc-950 border border-zinc-900 text-zinc-500 hover:text-white hover:border-zinc-700"
                                                 }`}
                                             >
                                                 <Icon className="h-4 w-4" />
@@ -76,20 +76,21 @@ export default function BrowsePage() {
 
                     {/* Quick Action RFQ Bar */}
                     <FadeIn delay={0.1}>
-                        <div className="bg-gradient-to-r from-cyan-600 to-blue-700 rounded-3xl p-6 md:p-10 mb-16 flex flex-col md:flex-row items-center justify-between text-white shadow-2xl shadow-cyan-500/10">
-                            <div className="mb-6 md:mb-0">
-                                <h2 className="text-2xl md:text-3xl font-black mb-2 flex items-center gap-3 tracking-tighter">
-                                    <Package className="h-8 w-8" /> Can&apos;t find what you need?
+                        <div className="border border-zinc-800 bg-zinc-950/50 p-8 md:p-12 mb-16 flex flex-col md:flex-row items-center justify-between text-white relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-900/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-cyan-900/20 transition-colors" />
+                            <div className="mb-8 md:mb-0 relative z-10">
+                                <h2 className="text-3xl md:text-5xl font-black mb-4 flex items-center gap-4 tracking-tighter uppercase text-white">
+                                    <Package className="h-8 w-8 text-cyan-600" /> Unknown Entity?
                                 </h2>
-                                <p className="text-cyan-100 font-medium">
-                                    Post a request and let verified manufacturers find you. It&apos;s faster.
+                                <p className="text-zinc-400 font-bold uppercase tracking-widest text-sm">
+                                    Post an RFQ. Verified manufacturers will contact you instantly.
                                 </p>
                             </div>
                             <Link
                                 href="/rfq"
-                                className="bg-white text-slate-900 px-10 py-5 rounded-full font-black text-xs uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-xl"
+                                className="relative z-10 bg-cyan-700 text-white px-10 py-5 font-black text-xs uppercase tracking-[0.2em] hover:bg-cyan-600 transition-colors border-t border-cyan-500/50"
                             >
-                                Post RFQ Now
+                                Initiate RFQ
                             </Link>
                         </div>
                     </FadeIn>
@@ -97,90 +98,72 @@ export default function BrowsePage() {
                     {/* Result Header */}
                     <div className="mb-10 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <h2 className="text-sm font-black uppercase tracking-[0.2em] text-slate-400">
-                                Verified Sellers
+                            <h2 className="text-xs font-black uppercase tracking-[0.3em] text-zinc-500">
+                                Verified Entities
                             </h2>
-                            <div className="h-1.5 w-1.5 rounded-full bg-slate-200" />
-                            <span className="text-xs font-bold text-slate-950">{filteredSellers.length} Results</span>
+                            <div className="h-1.5 w-1.5 rounded-full bg-zinc-700" />
+                            <span className="text-xs font-black uppercase tracking-[0.3em] text-white">{filteredSellers.length} MATCHES</span>
                         </div>
-                        <div className="flex items-center gap-2 text-xs font-bold text-cyan-600">
-                            <Filter className="h-4 w-4" /> Filter Advanced
+                        <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-cyan-600 cursor-pointer hover:text-cyan-500 transition-colors">
+                            <Filter className="h-4 w-4" /> Parameters
                         </div>
                     </div>
 
-                    {/* Minimal & Efficient List-View Listing (The "Beater" Layout) */}
+                    {/* Industrial Listing View */}
                     <AnimatePresence>
                         {filteredSellers.length > 0 ? (
-                            <StaggerContainer key={`results-${selectedCategory}-${searchQuery}`} className="space-y-6">
+                            <StaggerContainer key={`results-${selectedCategory}-${searchQuery}`} className="space-y-4">
                                 {filteredSellers.map((seller) => (
                                     <StaggerItem key={seller.id}>
-                                        <div className="group bg-white rounded-[40px] border border-slate-100 hover:bg-slate-50 hover:border-slate-200 transition-all duration-300 overflow-hidden p-6 md:p-10 relative">
-                                            {/* Grid layout for info */}
-                                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                        <div className="group bg-black border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 p-6 md:p-8 relative">
+                                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-l-2 border-transparent group-hover:border-cyan-600 pl-4 md:pl-8 -ml-6 md:-ml-8 transition-colors">
                                                 {/* Left: Branding & Core Info */}
-                                                <div className="lg:col-span-4 border-b border-slate-100 lg:border-none pb-6 lg:pb-0">
-                                                    <div className="flex items-center gap-3 mb-4">
-                                                        <div className="h-14 w-14 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-black text-2xl tracking-tighter">
-                                                            {seller.name?.charAt(0)}
+                                                <div className="lg:col-span-4 border-b border-zinc-900 lg:border-none pb-6 lg:pb-0">
+                                                    <div className="flex flex-col items-start gap-4 mb-4">
+                                                        <div className="flex items-center gap-2 group/name">
+                                                            <Link href={`/seller/${seller.id}`}>
+                                                                <h3 className="text-2xl font-black text-white tracking-wider group-hover/name:text-cyan-500 transition-colors uppercase truncate max-w-xs">
+                                                                    {seller.name}
+                                                                </h3>
+                                                            </Link>
+                                                            {seller.verified && (
+                                                                <div className="bg-cyan-600/20 p-1 border border-cyan-600/50">
+                                                                    <CheckCircle className="h-3 w-3 text-cyan-600" />
+                                                                </div>
+                                                            )}
                                                         </div>
-                                                        <div>
-                                                            <div className="flex items-center gap-2 mb-1 group/name">
-                                                                <Link href={`/seller/${seller.id}`}>
-                                                                    <h3 className="text-2xl font-black text-slate-900 tracking-tight leading-none group-hover/name:text-cyan-600 transition-colors uppercase">
-                                                                        {seller.name}
-                                                                    </h3>
-                                                                </Link>
-                                                                {seller.verified && (
-                                                                    <div
-                                                                        className="h-5 w-5 bg-cyan-600 rounded-full flex items-center justify-center"
-                                                                        title="Verified Manufacturer"
-                                                                    >
-                                                                        <CheckCircle className="h-3 w-3 text-white" />
-                                                                    </div>
-                                                                )}
-                                                            </div>
-                                                            <div className="flex items-center gap-1.5 text-xs text-slate-400 font-bold uppercase tracking-widest">
-                                                                <MapPin className="h-3 w-3" /> {seller.location}
-                                                            </div>
+                                                        <div className="flex items-center gap-2 text-[10px] text-zinc-500 font-bold uppercase tracking-[0.2em] bg-zinc-950 px-3 py-1 border border-zinc-900">
+                                                            <MapPin className="h-3 w-3 text-cyan-600" /> {seller.location}
                                                         </div>
                                                     </div>
-                                                    <p className="text-sm text-slate-500 font-medium leading-relaxed line-clamp-2 pr-6">
+                                                    <p className="text-xs text-zinc-400 font-medium leading-relaxed uppercase tracking-wide line-clamp-2 pr-6 border-l border-zinc-800 pl-4">
                                                         {seller.description}
                                                     </p>
                                                 </div>
 
-                                                {/* Center: Specs (Simplified for speed) */}
-                                                <div className="lg:col-span-5 grid grid-cols-2 md:grid-cols-3 gap-6">
-                                                    <div className="space-y-1">
-                                                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-                                                            MOQ
+                                                {/* Center: Specs */}
+                                                <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+                                                    <div className="bg-zinc-950 border border-zinc-900 p-4">
+                                                        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 mb-1">
+                                                            MOQ Spec
                                                         </div>
-                                                        <div className="text-sm font-black text-slate-900">
+                                                        <div className="text-sm font-black text-white uppercase tracking-wider">
                                                             {seller.moq}
                                                         </div>
                                                     </div>
-                                                    <div className="space-y-1">
-                                                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-                                                            Capacity
+                                                    <div className="bg-zinc-950 border border-zinc-900 p-4">
+                                                        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 mb-1">
+                                                            Output Cap
                                                         </div>
-                                                        <div className="text-sm font-black text-slate-900">
+                                                        <div className="text-sm font-black text-white uppercase tracking-wider">
                                                             {seller.capacity}
-                                                        </div>
-                                                    </div>
-                                                    <div className="space-y-1">
-                                                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-                                                            Rating
-                                                        </div>
-                                                        <div className="flex items-center gap-1 text-sm font-black text-slate-900">
-                                                            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />{" "}
-                                                            {seller.rating}
                                                         </div>
                                                     </div>
                                                     <div className="col-span-full pt-2 flex flex-wrap gap-2">
                                                         {seller.tags.map((tag) => (
                                                             <span
                                                                 key={tag}
-                                                                className="px-3 py-1 bg-white border border-slate-100 rounded-lg text-[10px] font-bold text-slate-400 uppercase tracking-widest"
+                                                                className="px-3 py-1 bg-zinc-900 text-[10px] font-black text-zinc-400 uppercase tracking-widest"
                                                             >
                                                                 {tag}
                                                             </span>
@@ -190,19 +173,17 @@ export default function BrowsePage() {
 
                                                 {/* Right: Actions */}
                                                 <div className="lg:col-span-3 flex flex-col gap-3">
-                                                    <button className="w-full bg-slate-900 text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl group/btn overflow-hidden relative">
+                                                    <button className="w-full bg-cyan-700 text-white px-6 py-4 font-black text-[10px] uppercase tracking-[0.2em] hover:bg-cyan-600 transition-colors group/btn overflow-hidden relative border-t border-cyan-500/50">
                                                         <span className="relative z-10 flex items-center justify-center gap-2">
-                                                            Get Quotes{" "}
-                                                            <ArrowUpRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                                                            Request Data <ArrowUpRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
                                                         </span>
-                                                        <div className="absolute inset-0 bg-cyan-600 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
                                                     </button>
                                                     <div className="grid grid-cols-2 gap-3">
-                                                        <button className="flex items-center justify-center gap-2 border border-slate-200 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:border-slate-400 hover:text-slate-900 transition-all">
-                                                            <PhoneCall className="h-3 w-3" /> Call
+                                                        <button className="flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-950 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 hover:border-zinc-500 hover:text-white transition-colors">
+                                                            <PhoneCall className="h-3 w-3 text-cyan-600" /> Comm
                                                         </button>
-                                                        <button className="flex items-center justify-center gap-2 border border-slate-200 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:border-slate-400 hover:text-slate-900 transition-all">
-                                                            <Mail className="h-3 w-3" /> Email
+                                                        <button className="flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-950 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 hover:border-zinc-500 hover:text-white transition-colors">
+                                                            <Mail className="h-3 w-3 text-cyan-600" /> Ping
                                                         </button>
                                                     </div>
                                                 </div>
@@ -218,23 +199,23 @@ export default function BrowsePage() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 className="py-32 text-center"
                             >
-                                <div className="inline-flex items-center justify-center h-24 w-24 rounded-full bg-slate-50 text-slate-300 mb-8 border-4 border-dashed border-slate-100">
-                                    <Search className="h-10 w-10 text-slate-200" />
+                                <div className="inline-flex items-center justify-center h-24 w-24 bg-zinc-950 text-zinc-700 mb-8 border border-zinc-800">
+                                    <Search className="h-10 w-10 text-zinc-600" />
                                 </div>
-                                <h3 className="text-2xl font-black text-slate-900 mb-2">
-                                    No results for your discovery
+                                <h3 className="text-3xl font-black text-white uppercase tracking-wider mb-4">
+                                    Entity Missing
                                 </h3>
-                                <p className="text-slate-500 font-medium">
-                                    Try searching for a simpler term or a broader category.
+                                <p className="text-zinc-500 font-bold tracking-widest uppercase text-sm mb-8">
+                                    No parameters match your query in the network.
                                 </p>
                                 <button
                                     onClick={() => {
                                         setSearchQuery("");
                                         setSelectedCategory("all");
                                     }}
-                                    className="mt-8 text-xs font-black uppercase tracking-widest text-cyan-600 hover:opacity-70 transition-opacity"
+                                    className="text-xs font-black uppercase tracking-[0.3em] text-cyan-600 hover:text-cyan-500 transition-colors border-b border-transparent hover:border-cyan-500 pb-1"
                                 >
-                                    Clear all filters
+                                    Reset Protocol
                                 </button>
                             </motion.div>
                         )}
