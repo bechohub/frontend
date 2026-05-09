@@ -7,73 +7,115 @@ import { ShieldCheck, Lock, Eye, FileText } from "lucide-react";
 
 export default function PrivacyPage() {
     return (
-        <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-cyan-500/30">
+        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white">
             <Navbar />
 
-            <main className="pt-32 pb-20 px-6">
+            <main className="pt-32 md:pt-48 pb-20 px-6">
                 <div className="max-w-4xl mx-auto">
                     <FadeIn>
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="h-12 w-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20">
-                                <ShieldCheck className="h-6 w-6" />
+                        <div className="flex items-center gap-6 mb-12">
+                            <div className="h-16 w-16 bg-zinc-950 flex items-center justify-center text-cyan-600 border border-zinc-900">
+                                <ShieldCheck className="h-8 w-8" />
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-black tracking-tightest uppercase">Privacy <span className="text-cyan-400">Policy.</span></h1>
+                            <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-white">
+                                Privacy <br className="md:hidden" />
+                                <span className="text-cyan-600">Protocol.</span>
+                            </h1>
                         </div>
 
-                        <div className="prose prose-invert prose-cyan max-w-none space-y-12">
+                        <div className="prose prose-invert max-w-none space-y-16">
                             <section>
-                                <p className="text-xl text-slate-400 leading-relaxed font-light">
-                                    At bechoHub, we take your business data seriously. This policy outlines how we handle your identity, company information, and trade secrets with the highest level of security.
+                                <p className="text-lg md:text-xl text-zinc-400 leading-relaxed font-medium tracking-wide uppercase">
+                                    At bechoHub, we take your entity data seriously. This protocol outlines how we
+                                    handle your identity, operational information, and trade secrets with military-grade
+                                    security.
                                 </p>
                             </section>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-16">
-                                <div className="p-8 rounded-3xl bg-white/5 border border-white/5">
-                                    <Lock className="h-8 w-8 text-cyan-400 mb-4" />
-                                    <h3 className="text-lg font-bold mb-2">Encryption</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed">All transaction and business data is encrypted at rest and in transit.</p>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-900 border border-zinc-900 my-16">
+                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors">
+                                    <Lock className="h-8 w-8 text-cyan-600 mb-6" />
+                                    <h3 className="text-xl font-black mb-3 uppercase tracking-wider text-white">
+                                        Encryption
+                                    </h3>
+                                    <p className="text-xs text-zinc-500 leading-relaxed font-medium uppercase tracking-widest">
+                                        All transaction and entity data is encrypted at rest and in transit.
+                                    </p>
                                 </div>
-                                <div className="p-8 rounded-3xl bg-white/5 border border-white/5">
-                                    <Eye className="h-8 w-8 text-indigo-400 mb-4" />
-                                    <h3 className="text-lg font-bold mb-2">Transparency</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed">We never sell your contact leads to third-party marketing firms.</p>
+                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors">
+                                    <Eye className="h-8 w-8 text-cyan-600 mb-6" />
+                                    <h3 className="text-xl font-black mb-3 uppercase tracking-wider text-white">
+                                        Isolation
+                                    </h3>
+                                    <p className="text-xs text-zinc-500 leading-relaxed font-medium uppercase tracking-widest">
+                                        We strictly isolate data. No unsolicited sharing with third-party networks.
+                                    </p>
                                 </div>
-                                <div className="p-8 rounded-3xl bg-white/5 border border-white/5">
-                                    <FileText className="h-8 w-8 text-fuchsia-400 mb-4" />
-                                    <h3 className="text-lg font-bold mb-2">Compliance</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed">Compliant with Indian IT laws and global data protection standards.</p>
+                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors">
+                                    <FileText className="h-8 w-8 text-cyan-600 mb-6" />
+                                    <h3 className="text-xl font-black mb-3 uppercase tracking-wider text-white">
+                                        Compliance
+                                    </h3>
+                                    <p className="text-xs text-zinc-500 leading-relaxed font-medium uppercase tracking-widest">
+                                        Compliant with highest global data protection and IT protocols.
+                                    </p>
                                 </div>
                             </div>
 
                             <section className="space-y-6">
-                                <h2 className="text-2xl font-bold text-white uppercase tracking-wider">1. Information Collection</h2>
-                                <p className="text-slate-400 leading-relaxed">
-                                    We collect information necessary to verify your business identity and facilitate trade. This includes:
+                                <h2 className="text-3xl font-black text-white uppercase tracking-wider">
+                                    1. Data Capture
+                                </h2>
+                                <p className="text-zinc-500 leading-relaxed font-medium text-sm tracking-wide">
+                                    We collect critical data structures necessary to verify authenticity and execute
+                                    secure trade. Parameters include:
                                 </p>
-                                <ul className="list-disc pl-6 text-slate-400 space-y-2">
-                                    <li>Personal contact details (Name, Email, Phone)</li>
-                                    <li>Business registration data (GST, Company Name)</li>
-                                    <li>Sourcing requirements and manufacturing capacity</li>
-                                    <li>Transaction history and communication logs</li>
+                                <ul className="list-none space-y-4 text-zinc-400 text-sm tracking-wide bg-zinc-950 p-8 border border-zinc-900">
+                                    <li className="flex items-start gap-4">
+                                        <div className="h-1.5 w-1.5 bg-cyan-600 mt-2 rounded-full" />
+                                        Identity verification (Name, Comm links)
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <div className="h-1.5 w-1.5 bg-cyan-600 mt-2 rounded-full" />
+                                        Entity metrics (GST, Legal Nomenclature)
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <div className="h-1.5 w-1.5 bg-cyan-600 mt-2 rounded-full" />
+                                        Operational capacity and execution volumes
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <div className="h-1.5 w-1.5 bg-cyan-600 mt-2 rounded-full" />
+                                        Encrypted transaction payloads
+                                    </li>
                                 </ul>
                             </section>
 
                             <section className="space-y-6">
-                                <h2 className="text-2xl font-bold text-white uppercase tracking-wider">2. How We Use Data</h2>
-                                <p className="text-slate-400 leading-relaxed">
-                                    Your data is used solely to match Buyers with relevant Suppliers and to ensure the security of the marketplace. We use anonymized aggregate data to improve our matching algorithms and network logistics.
+                                <h2 className="text-3xl font-black text-white uppercase tracking-wider">
+                                    2. System Utilization
+                                </h2>
+                                <p className="text-zinc-500 leading-relaxed font-medium text-sm tracking-wide">
+                                    Your data drives our hyper-matching engine. It is utilized exclusively to align
+                                    verified Buyers with capable Manufacturers, ensuring rapid deal execution. We map
+                                    anonymized logic vectors to improve network routing.
                                 </p>
-                                <p className="text-slate-400 leading-relaxed">
-                                    Verified sellers' capacity information is shared with high-intent buyers to facilitate requests for quotes (RFQs).
+                                <p className="text-zinc-500 leading-relaxed font-medium text-sm tracking-wide">
+                                    Manufacturer capacity and compliance status are broadcasted to high-intent nodes to
+                                    facilitate immediate RFQ response.
                                 </p>
                             </section>
 
-                            <section className="space-y-6 border-t border-white/10 pt-12">
-                                <h2 className="text-2xl font-bold text-white uppercase tracking-wider">Contact Us</h2>
-                                <p className="text-slate-400 leading-relaxed">
-                                    If you have questions about your data or wish to request data deletion, contact our privacy team at:
+                            <section className="bg-zinc-950 border-t border-b border-zinc-900 py-12 px-6 md:px-12 mt-16 text-center">
+                                <h2 className="text-2xl font-black text-white uppercase tracking-wider mb-4">
+                                    Command Channel
+                                </h2>
+                                <p className="text-zinc-500 text-sm font-medium tracking-wide mb-6">
+                                    Direct inquiries regarding extraction or deletion of entity payload across the
+                                    network:
                                 </p>
-                                <p className="text-cyan-400 font-bold">privacy@bechohub.com</p>
+                                <div className="inline-block px-8 py-4 bg-black border border-cyan-900 text-cyan-600 font-black tracking-widest text-sm uppercase">
+                                    protocol@bechohub.com
+                                </div>
                             </section>
                         </div>
                     </FadeIn>

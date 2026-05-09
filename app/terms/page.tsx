@@ -7,84 +7,129 @@ import { Gavel, Scale, AlertCircle, CheckCircle2 } from "lucide-react";
 
 export default function TermsPage() {
     return (
-        <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-cyan-500/30">
+        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white">
             <Navbar />
 
-            <main className="pt-32 pb-20 px-6">
+            <main className="pt-32 md:pt-48 pb-20 px-6">
                 <div className="max-w-4xl mx-auto">
                     <FadeIn>
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="h-12 w-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20">
-                                <Gavel className="h-6 w-6" />
+                        <div className="flex items-center gap-6 mb-12">
+                            <div className="h-16 w-16 bg-zinc-950 flex items-center justify-center text-cyan-600 border border-zinc-900">
+                                <Gavel className="h-8 w-8" />
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-black tracking-tightest uppercase">Terms of <span className="text-indigo-400">Use.</span></h1>
+                            <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-white">
+                                Operating <br className="md:hidden" />
+                                <span className="text-cyan-600">Terms.</span>
+                            </h1>
                         </div>
 
-                        <div className="prose prose-invert prose-indigo max-w-none space-y-12">
-                            <section className="bg-white/5 p-8 rounded-[32px] border border-white/10">
-                                <h2 className="text-xl font-bold mb-4 uppercase tracking-widest text-indigo-400">Legal Framework</h2>
-                                <p className="text-lg text-slate-400 leading-relaxed font-light">
-                                    bechoHub operates as a **Technology Facilitator** under the Information Technology Act (India), providing a secure, audited environment for B2B commerce. Our legal architecture is built on three pillars:
+                        <div className="prose prose-invert max-w-none space-y-16">
+                            <section className="bg-zinc-950 p-10 md:p-12 border border-zinc-900 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-900/10 rounded-full blur-[80px] pointer-events-none" />
+                                <h2 className="text-2xl font-black mb-6 uppercase tracking-wider text-white">
+                                    Structural Framework
+                                </h2>
+                                <p className="text-sm text-zinc-400 leading-relaxed font-medium uppercase tracking-widest mb-8">
+                                    bechoHub functions as a **Trade Engine**. It provides a secure, audited environment
+                                    for B2B transactions. Our operational architecture is maintained via strict
+                                    enforcement parameters:
                                 </p>
-                                <ul className="mt-6 space-y-4 text-slate-400 font-light">
-                                    <li><strong className="text-white">Commercial Jurisdiction:</strong> All agreements initiated on the platform are governed by the laws of India and are enforceable in Indian Commercial Courts.</li>
-                                    <li><strong className="text-white">Standardized Digital Contracts:</strong> We utilize legally binding digital templates that comply with the Indian Evidence Act for electronic signatures.</li>
-                                    <li><strong className="text-white">Dispute Resolution:</strong> Mandatory arbitration in accordance with the Arbitration and Conciliation Act, providing a faster alternative to traditional litigation.</li>
+                                <ul className="space-y-6 text-zinc-500 font-medium tracking-wide">
+                                    <li className="flex gap-4">
+                                        <Scale className="h-5 w-5 text-cyan-600 mt-1 shrink-0" />
+                                        <span>
+                                            <strong className="text-white">Commercial Jurisdiction:</strong> Agreements
+                                            processed on the network observe global B2B frameworks and domestic
+                                            commercial mandates.
+                                        </span>
+                                    </li>
+                                    <li className="flex gap-4">
+                                        <FileSignature className="h-5 w-5 text-cyan-600 mt-1 shrink-0" />
+                                        <span>
+                                            <strong className="text-white">Encrypted Cryptographic Contracts:</strong>{" "}
+                                            We utilize binding digital signatures authenticating terms before execution
+                                            flow begins.
+                                        </span>
+                                    </li>
+                                    <li className="flex gap-4">
+                                        <AlertCircle className="h-5 w-5 text-cyan-600 mt-1 shrink-0" />
+                                        <span>
+                                            <strong className="text-white">Resolution Protocol:</strong> Expedited
+                                            dispute arbitration logic supersedes traditional litigation paths to protect
+                                            network momentum.
+                                        </span>
+                                    </li>
                                 </ul>
                             </section>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-16">
-                                <div className="p-8 rounded-3xl bg-white/5 border border-white/5 flex gap-4">
-                                    <Scale className="h-6 w-6 text-indigo-400 flex-shrink-0" />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-900 border border-zinc-900 my-16">
+                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors flex flex-col items-start gap-6">
+                                    <div className="p-4 bg-zinc-950 border border-zinc-900">
+                                        <CheckCircle2 className="h-6 w-6 text-cyan-600" />
+                                    </div>
                                     <div>
-                                        <h3 className="font-bold mb-2 uppercase tracking-wide text-sm">Professional Conduct</h3>
-                                        <p className="text-xs text-slate-500 leading-relaxed">All users must engage in fair trade practices and maintain professional communication standards.</p>
+                                        <h3 className="font-black mb-3 uppercase tracking-widest text-lg text-white">
+                                            Entity Conduct
+                                        </h3>
+                                        <p className="text-sm text-zinc-500 leading-relaxed font-medium">
+                                            All network nodes must engage in highly deterministic trade practices.
+                                            Unprofessional comms result in immediate sector isolation.
+                                        </p>
                                     </div>
                                 </div>
-                                <div className="p-8 rounded-3xl bg-white/5 border border-white/5 flex gap-4">
-                                    <AlertCircle className="h-6 w-6 text-cyan-400 flex-shrink-0" />
+                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors flex flex-col items-start gap-6">
+                                    <div className="p-4 bg-zinc-950 border border-zinc-900">
+                                        <ShieldCheck className="h-6 w-6 text-cyan-600" />
+                                    </div>
                                     <div>
-                                        <h3 className="font-bold mb-2 uppercase tracking-wide text-sm">Escrow Protection</h3>
-                                        <p className="text-xs text-slate-500 leading-relaxed">High-value transactions must utilize our secure payment bridge to ensure delivery and payment safety.</p>
+                                        <h3 className="font-black mb-3 uppercase tracking-widest text-lg text-white">
+                                            Escrow Execution
+                                        </h3>
+                                        <p className="text-sm text-zinc-500 leading-relaxed font-medium">
+                                            Capital transactions route through the automated secure proxy layer to
+                                            protect liquidity until physical delivery completes.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
 
                             <section className="space-y-6">
-                                <h2 className="text-2xl font-bold text-white uppercase tracking-wider">1. Acceptance of Terms</h2>
-                                <p className="text-slate-400 leading-relaxed">
-                                    BechoHub provides a platform to connect Buyers and Suppliers. By accessing the site, you acknowledge that you are a business entity or a representative of one. We reserve the right to suspend accounts that provide false business information or GST details.
+                                <h2 className="text-3xl font-black text-white uppercase tracking-wider">
+                                    1. Protocol Initialization
+                                </h2>
+                                <p className="text-zinc-500 leading-relaxed font-medium tracking-wide">
+                                    You acknowledge your status as an authorized corporate operator. We actively
+                                    terminate access for entities transmitting falsified or synthetic authentication
+                                    payloads.
                                 </p>
                             </section>
 
                             <section className="space-y-6">
-                                <h2 className="text-2xl font-bold text-white uppercase tracking-wider">2. Marketplace Rules</h2>
-                                <div className="grid grid-cols-1 gap-4">
+                                <h2 className="text-3xl font-black text-white uppercase tracking-wider">
+                                    2. System Parameters
+                                </h2>
+                                <div className="grid grid-cols-1 gap-px bg-zinc-900 border border-zinc-900">
                                     {[
-                                        "Suppliers must accurately represent their manufacturing capacity.",
-                                        "Buyers must provide authentic and clear sourcing requirements.",
-                                        "Direct circumvention of the platform for transactions initiated via bechoHub is prohibited.",
-                                        "Verified badges are granted subject to ongoing compliance audits."
+                                        "Manufacturers must define absolute, verifiable output capacity constraints.",
+                                        "Sourcing entities must deposit valid, actionable RFQ parameters.",
+                                        "Bypassing network escrow logic after digital handshake initiates an immediate permanent ban.",
+                                        "Clearance levels (badges) require recurring compliance verification.",
                                     ].map((rule, i) => (
-                                        <div key={i} className="flex gap-3 items-start">
-                                            <CheckCircle2 className="h-5 w-5 text-indigo-400 mt-1 flex-shrink-0" />
-                                            <p className="text-slate-400">{rule}</p>
+                                        <div key={i} className="flex gap-4 items-center p-6 bg-black">
+                                            <div className="text-cyan-600 font-black text-lg">0{i + 1}</div>
+                                            <p className="text-zinc-400 font-medium tracking-wide text-sm">{rule}</p>
                                         </div>
                                     ))}
                                 </div>
                             </section>
 
-                            <section className="space-y-6">
-                                <h2 className="text-2xl font-bold text-white uppercase tracking-wider">3. Liability</h2>
-                                <p className="text-slate-400 leading-relaxed">
-                                    While we verify all participants, bechoHub is not liable for the quality of final goods outside the scope of our quality-assurance logistics package. Users are encouraged to perform their own due diligence using the data provided on the platform.
-                                </p>
-                            </section>
-
-                            <section className="space-y-6 border-t border-white/10 pt-12">
-                                <h2 className="text-2xl font-bold text-white uppercase tracking-wider">Legal Notice</h2>
-                                <p className="text-slate-400 leading-relaxed">
-                                    Last updated: January 2026. These terms are subject to change as we expand our infrastructure.
+                            <section className="space-y-6 border-t border-zinc-900 pt-16">
+                                <h2 className="text-xs font-black text-zinc-600 uppercase tracking-[0.4em] mb-4">
+                                    Transmission Halt
+                                </h2>
+                                <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest leading-relaxed">
+                                    Revision Iteration: Alpha Protocol 2026. <br />
+                                    Terms are subject to automatic updates as system architecture expands.
                                 </p>
                             </section>
                         </div>
@@ -94,5 +139,48 @@ export default function TermsPage() {
 
             <Footer />
         </div>
+    );
+}
+
+// Inline fallback for icons missing from lucide-react direct import above
+function FileSignature(props: React.ComponentProps<"svg">) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M20 19.5v.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h5.5" />
+            <path d="m22 7-6-6-4 4 6 6z" />
+            <path d="M12 11v4h4" />
+            <path d="M5.5 15.5 8 18" />
+            <path d="m11 15-2.5 2.5" />
+        </svg>
+    );
+}
+function ShieldCheck(props: React.ComponentProps<"svg">) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 7-2 2.95 0 5 1 7 2a1 1 0 0 1 1 1z" />
+            <path d="m9 12 2 2 4-4" />
+        </svg>
     );
 }
