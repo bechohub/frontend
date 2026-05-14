@@ -7,14 +7,14 @@ import { ShieldCheck, Lock, Eye, FileText } from "lucide-react";
 
 export default function PrivacyPage() {
     return (
-        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white">
+        <div className="min-h-screen bg-zinc-950 text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white">
             <Navbar />
 
             <main className="pt-32 md:pt-48 pb-20 px-6">
                 <div className="max-w-4xl mx-auto">
                     <FadeIn>
                         <div className="flex items-center gap-6 mb-12">
-                            <div className="h-16 w-16 bg-zinc-950 flex items-center justify-center text-cyan-600 border border-zinc-900">
+                            <div className="h-16 w-16 bg-zinc-900 flex items-center justify-center text-cyan-600 border border-zinc-900">
                                 <ShieldCheck className="h-8 w-8" />
                             </div>
                             <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-white">
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
                             </section>
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-900 border border-zinc-900 my-16">
-                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors">
+                                <div className="p-10 bg-zinc-950 border border-transparent hover:border-cyan-900 transition-colors">
                                     <Lock className="h-8 w-8 text-cyan-600 mb-6" />
                                     <h3 className="text-xl font-black mb-3 uppercase tracking-wider text-white">
                                         Encryption
@@ -42,7 +42,7 @@ export default function PrivacyPage() {
                                         All transaction and entity data is encrypted at rest and in transit.
                                     </p>
                                 </div>
-                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors">
+                                <div className="p-10 bg-zinc-950 border border-transparent hover:border-cyan-900 transition-colors">
                                     <Eye className="h-8 w-8 text-cyan-600 mb-6" />
                                     <h3 className="text-xl font-black mb-3 uppercase tracking-wider text-white">
                                         Isolation
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
                                         We strictly isolate data. No unsolicited sharing with third-party networks.
                                     </p>
                                 </div>
-                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors">
+                                <div className="p-10 bg-zinc-950 border border-transparent hover:border-cyan-900 transition-colors">
                                     <FileText className="h-8 w-8 text-cyan-600 mb-6" />
                                     <h3 className="text-xl font-black mb-3 uppercase tracking-wider text-white">
                                         Compliance
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
                                     We collect critical data structures necessary to verify authenticity and execute
                                     secure trade. Parameters include:
                                 </p>
-                                <ul className="list-none space-y-4 text-zinc-400 text-sm tracking-wide bg-zinc-950 p-8 border border-zinc-900">
+                                <ul className="list-none space-y-4 text-zinc-400 text-sm tracking-wide bg-zinc-900 p-8 border border-zinc-900">
                                     <li className="flex items-start gap-4">
                                         <div className="h-1.5 w-1.5 bg-cyan-600 mt-2 rounded-full" />
                                         Identity verification (Name, Comm links)
@@ -105,7 +105,7 @@ export default function PrivacyPage() {
                                 </p>
                             </section>
 
-                            <section className="bg-zinc-950 border-t border-b border-zinc-900 py-12 px-6 md:px-12 mt-16 text-center">
+                            <section className="bg-zinc-900 border-t border-b border-zinc-900 py-12 px-6 md:px-12 mt-16 text-center">
                                 <h2 className="text-2xl font-black text-white uppercase tracking-wider mb-4">
                                     Command Channel
                                 </h2>
@@ -113,7 +113,7 @@ export default function PrivacyPage() {
                                     Direct inquiries regarding extraction or deletion of entity payload across the
                                     network:
                                 </p>
-                                <div className="inline-block px-8 py-4 bg-black border border-cyan-900 text-cyan-600 font-black tracking-widest text-sm uppercase">
+                                <div className="inline-block px-8 py-4 bg-zinc-950 border border-cyan-900 text-cyan-600 font-black tracking-widest text-sm uppercase">
                                     protocol@bechohub.com
                                 </div>
                             </section>

@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 
 export default function BrowseComingSoon() {
     return (
-        <div className="min-h-screen flex flex-col bg-black text-[#f0f0fa] font-sans overflow-x-hidden">
+        <div className="min-h-screen flex flex-col bg-zinc-950 text-[#f0f0fa] font-sans overflow-x-hidden">
             <Navbar />
 
             <main className="flex-grow flex items-center justify-center relative overflow-hidden pt-28 pb-24">
@@ -24,12 +24,12 @@ export default function BrowseComingSoon() {
                 >
                     <div className="mb-6 sm:mb-8 relative group">
                         <div className="absolute inset-0 bg-cyan-600 blur-[30px] sm:blur-[50px] opacity-10 group-hover:opacity-30 transition-opacity duration-1000 rounded-full" />
-                        <div className="relative p-5 sm:p-6 bg-zinc-950/50 border border-zinc-800/50 rounded-full flex items-center justify-center backdrop-blur-md">
+                        <div className="relative p-5 sm:p-6 bg-zinc-900/50 border border-zinc-800/50 rounded-full flex items-center justify-center backdrop-blur-md">
                             <LockKeyhole className="w-8 h-8 sm:w-12 sm:h-12 text-zinc-500" />
                         </div>
                     </div>
 
-                    <div className="inline-flex items-center gap-2 sm:gap-3 border border-zinc-800 bg-zinc-950/50 px-4 py-2 sm:px-5 sm:py-2.5 mb-6 sm:mb-8 uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[8px] sm:text-[10px] text-cyan-600 font-bold backdrop-blur-sm">
+                    <div className="inline-flex items-center gap-2 sm:gap-3 border border-zinc-800 bg-zinc-900/50 px-4 py-2 sm:px-5 sm:py-2.5 mb-6 sm:mb-8 uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[8px] sm:text-[10px] text-cyan-600 font-bold backdrop-blur-sm">
                         <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                         Access Pending
                     </div>

@@ -17,7 +17,7 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
     }
 
     return (
-        <div className="min-h-screen bg-black font-sans text-white selection:bg-cyan-600/30">
+        <div className="min-h-screen bg-zinc-950 font-sans text-white selection:bg-cyan-600/30">
             <Navbar />
 
             <main className="pt-24 md:pt-32 pb-24 border-t border-zinc-900">
@@ -33,7 +33,7 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-zinc-900 border border-zinc-900 mb-16">
                         {/* MAIN CONTENT AREA */}
-                        <div className="lg:col-span-8 bg-black flex flex-col">
+                        <div className="lg:col-span-8 bg-zinc-950 flex flex-col">
                             {/* Hero Banner Space */}
                             <div className="h-64 md:h-96 relative overflow-hidden group border-b border-zinc-900">
                                 <Image
@@ -46,9 +46,9 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
                                     className="object-cover opacity-30 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-50 transition-all duration-1000"
                                     priority
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-end p-8 md:p-12">
+                                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent flex items-end p-8 md:p-12">
                                     <div className="flex items-end gap-6 w-full">
-                                        <div className="h-24 w-24 md:h-32 md:w-32 bg-zinc-950 border border-zinc-800 text-white flex items-center justify-center font-black text-4xl md:text-6xl uppercase tracking-tighter shrink-0">
+                                        <div className="h-24 w-24 md:h-32 md:w-32 bg-zinc-900 border border-zinc-800 text-white flex items-center justify-center font-black text-4xl md:text-6xl uppercase tracking-tighter shrink-0">
                                             {seller.name?.charAt(0)}
                                         </div>
                                         <div className="flex-1 pb-2">
@@ -71,7 +71,7 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
                             </div>
 
                             {/* Metrics Grid */}
-                            <div className="grid grid-cols-2 md:grid-cols-4 border-b border-zinc-900 bg-zinc-950/20">
+                            <div className="grid grid-cols-2 md:grid-cols-4 border-b border-zinc-900 bg-zinc-900/20">
                                 {[
                                     { label: "Performance", value: seller.rating, icon: Star, highlight: false },
                                     { label: "Min Order", value: seller.moq, icon: Award, highlight: false },
@@ -109,7 +109,7 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
                                 </p>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-900 mt-8 border border-zinc-900">
-                                    <div className="bg-black p-8">
+                                    <div className="bg-zinc-950 p-8">
                                         <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-600 mb-6">
                                             Production Vectors
                                         </h3>
@@ -117,14 +117,14 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
                                             {seller.tags.map((t) => (
                                                 <span
                                                     key={t}
-                                                    className="px-4 py-2 bg-zinc-950 text-white text-[10px] uppercase font-black tracking-widest border border-zinc-800 hover:border-cyan-800 transition-colors"
+                                                    className="px-4 py-2 bg-zinc-900 text-white text-[10px] uppercase font-black tracking-widest border border-zinc-800 hover:border-cyan-800 transition-colors"
                                                 >
                                                     {t}
                                                 </span>
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="bg-black p-8">
+                                    <div className="bg-zinc-950 p-8">
                                         <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-600 mb-6">
                                             Compliance Log
                                         </h3>
@@ -149,7 +149,7 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
                         </div>
 
                         {/* SIDEBAR PROTOCOLS */}
-                        <aside className="lg:col-span-4 bg-black flex flex-col border-l border-zinc-900">
+                        <aside className="lg:col-span-4 bg-zinc-950 flex flex-col border-l border-zinc-900">
                             {/* Command Console */}
                             <div className="p-8 md:p-10 relative overflow-hidden flex-1 border-b border-zinc-900">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-900/10 rounded-full blur-[80px] pointer-events-none" />
@@ -164,10 +164,10 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
                                         <MessageSquare className="h-4 w-4" /> Initialize RFQ
                                     </button>
                                     <div className="grid grid-cols-2 gap-4">
-                                        <button className="flex items-center justify-center gap-3 bg-zinc-950 border border-zinc-800 hover:border-cyan-800 py-4 text-[10px] font-black text-white uppercase tracking-[0.2em] transition-colors">
+                                        <button className="flex items-center justify-center gap-3 bg-zinc-900 border border-zinc-800 hover:border-cyan-800 py-4 text-[10px] font-black text-white uppercase tracking-[0.2em] transition-colors">
                                             <PhoneCall className="h-4 w-4 text-cyan-600" /> Voice
                                         </button>
-                                        <button className="flex items-center justify-center gap-3 bg-zinc-950 border border-zinc-800 hover:border-cyan-800 py-4 text-[10px] font-black text-white uppercase tracking-[0.2em] transition-colors">
+                                        <button className="flex items-center justify-center gap-3 bg-zinc-900 border border-zinc-800 hover:border-cyan-800 py-4 text-[10px] font-black text-white uppercase tracking-[0.2em] transition-colors">
                                             <Mail className="h-4 w-4 text-cyan-600" /> Data
                                         </button>
                                     </div>
@@ -194,7 +194,7 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
                             </div>
 
                             {/* Trust Block */}
-                            <div className="p-8 md:p-10 bg-zinc-950/30">
+                            <div className="p-8 md:p-10 bg-zinc-900/30">
                                 <div className="flex items-start gap-4 mb-6">
                                     <div className="p-3 border border-cyan-900/50 bg-cyan-950/20">
                                         <ShieldCheck className="h-6 w-6 text-cyan-500" />

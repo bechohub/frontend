@@ -85,12 +85,12 @@ export default function AdminDashboard() {
 
     if (!isAuthenticated) {
         return (
-            <div className="min-h-screen bg-black flex items-center justify-center p-6 font-sans text-white selection:bg-cyan-600/30">
-                <div className="w-full max-w-md bg-zinc-950 p-10 border border-zinc-900 shadow-2xl overflow-hidden relative group">
+            <div className="min-h-screen bg-zinc-950 flex items-center justify-center p-6 font-sans text-white selection:bg-cyan-600/30">
+                <div className="w-full max-w-md bg-zinc-900 p-10 border border-zinc-900 shadow-2xl overflow-hidden relative group">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-900/10 rounded-full blur-[80px] pointer-events-none" />
 
                     <div className="text-center mb-10 relative z-10">
-                        <div className="inline-flex items-center justify-center h-16 w-16 bg-black border border-cyan-900 text-cyan-600 mb-6">
+                        <div className="inline-flex items-center justify-center h-16 w-16 bg-zinc-950 border border-cyan-900 text-cyan-600 mb-6">
                             <ShieldCheck className="h-8 w-8" />
                         </div>
                         <h1 className="text-3xl font-black text-white tracking-widest uppercase mb-2">
@@ -109,7 +109,7 @@ export default function AdminDashboard() {
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="w-full bg-black border border-zinc-900 py-4 px-5 text-white focus:outline-none focus:border-cyan-600 focus:bg-zinc-950 transition-colors uppercase tracking-widest text-xs font-black placeholder:text-zinc-700"
+                                className="w-full bg-zinc-950 border border-zinc-900 py-4 px-5 text-white focus:outline-none focus:border-cyan-600 focus:bg-zinc-900 transition-colors uppercase tracking-widest text-xs font-black placeholder:text-zinc-700"
                                 placeholder="ENTER ID"
                             />
                         </div>
@@ -122,7 +122,7 @@ export default function AdminDashboard() {
                                     type={showPassword ? "text" : "password"}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full bg-black border border-zinc-900 py-4 px-5 pr-12 text-white focus:outline-none focus:border-cyan-600 focus:bg-zinc-950 transition-colors uppercase tracking-widest text-xs font-black placeholder:text-zinc-700"
+                                    className="w-full bg-zinc-950 border border-zinc-900 py-4 px-5 pr-12 text-white focus:outline-none focus:border-cyan-600 focus:bg-zinc-900 transition-colors uppercase tracking-widest text-xs font-black placeholder:text-zinc-700"
                                     placeholder="ENTER PASSCODE"
                                 />
                                 <button
@@ -221,17 +221,17 @@ export default function AdminDashboard() {
 
     return (
         <div
-            className="min-h-screen bg-black font-sans text-white selection:bg-cyan-600/30"
+            className="min-h-screen bg-zinc-950 font-sans text-white selection:bg-cyan-600/30"
             onClick={() => setShowProfileMenu(false)}
         >
             {/* Top Navigation */}
-            <header className="bg-black border-b border-zinc-900 sticky top-0 z-30">
+            <header className="bg-zinc-950 border-b border-zinc-900 sticky top-0 z-30">
                 <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                         <span className="text-2xl font-black tracking-tighter text-white font-heading">
                             becho<span className="text-cyan-600">Hub</span>
                         </span>
-                        <div className="px-3 py-1 bg-zinc-950 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-600 border border-zinc-900">
+                        <div className="px-3 py-1 bg-zinc-900 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-600 border border-zinc-900">
                             Command Console
                         </div>
                     </div>
@@ -247,7 +247,7 @@ export default function AdminDashboard() {
                         </button>
 
                         {showProfileMenu && (
-                            <div className="absolute top-14 right-0 w-48 bg-zinc-950 border border-zinc-900 p-2 z-50 animate-in fade-in zoom-in-95 duration-200">
+                            <div className="absolute top-14 right-0 w-48 bg-zinc-900 border border-zinc-900 p-2 z-50 animate-in fade-in zoom-in-95 duration-200">
                                 <div className="px-4 py-3 border-b border-zinc-900 mb-1">
                                     <p className="text-xs font-black text-white uppercase tracking-wider">
                                         Root Access
@@ -278,7 +278,7 @@ export default function AdminDashboard() {
                     </div>
                     <button
                         onClick={handleExport}
-                        className="px-6 py-4 bg-zinc-950 border border-zinc-900 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:border-cyan-600 hover:text-cyan-500 transition-colors w-fit"
+                        className="px-6 py-4 bg-zinc-900 border border-zinc-900 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:border-cyan-600 hover:text-cyan-500 transition-colors w-fit"
                     >
                         Export Data Dump
                     </button>
@@ -286,7 +286,7 @@ export default function AdminDashboard() {
 
                 {/* KPI Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-900 border border-zinc-900 mb-12">
-                    <div className="bg-black p-8 relative overflow-hidden group border border-transparent hover:border-cyan-900 transition-colors">
+                    <div className="bg-zinc-950 p-8 relative overflow-hidden group border border-transparent hover:border-cyan-900 transition-colors">
                         <div className="absolute -top-4 -right-4 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                             <Users className="h-32 w-32 text-white" />
                         </div>
@@ -298,7 +298,7 @@ export default function AdminDashboard() {
                             <TrendingUp className="h-3 w-3" /> +{newUsersCount} THREADS ACTIVE
                         </div>
                     </div>
-                    <div className="bg-black p-8 relative overflow-hidden group border border-transparent hover:border-cyan-900 transition-colors">
+                    <div className="bg-zinc-950 p-8 relative overflow-hidden group border border-transparent hover:border-cyan-900 transition-colors">
                         <div className="absolute -top-4 -right-4 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                             <ShoppingBag className="h-32 w-32 text-cyan-600" />
                         </div>
@@ -310,7 +310,7 @@ export default function AdminDashboard() {
                             {totalUsers > 0 ? ((buyers / totalUsers) * 100).toFixed(0) : 0}% OF NETWORK
                         </div>
                     </div>
-                    <div className="bg-black p-8 relative overflow-hidden group border border-transparent hover:border-cyan-900 transition-colors">
+                    <div className="bg-zinc-950 p-8 relative overflow-hidden group border border-transparent hover:border-cyan-900 transition-colors">
                         <div className="absolute -top-4 -right-4 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                             <Factory className="h-32 w-32 text-white" />
                         </div>
@@ -325,28 +325,28 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* User Table Header & Controls */}
-                <div className="bg-black border border-zinc-900 overflow-hidden">
+                <div className="bg-zinc-950 border border-zinc-900 overflow-hidden">
                     <div className="p-6 md:p-8 border-b border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
                         <div className="flex flex-col md:flex-row gap-6 items-center w-full md:w-auto">
                             <h2 className="font-black text-xs uppercase tracking-[0.3em] text-zinc-500">
                                 Node Directory
                             </h2>
-                            <div className="flex bg-zinc-950 border border-zinc-900 p-px">
+                            <div className="flex bg-zinc-900 border border-zinc-900 p-px">
                                 <button
                                     onClick={() => setFilterRole("all")}
-                                    className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-colors ${filterRole === "all" ? "bg-cyan-900 text-white border border-cyan-800" : "text-zinc-600 hover:text-white hover:bg-black"}`}
+                                    className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-colors ${filterRole === "all" ? "bg-cyan-900 text-white border border-cyan-800" : "text-zinc-600 hover:text-white hover:bg-zinc-950"}`}
                                 >
                                     Global
                                 </button>
                                 <button
                                     onClick={() => setFilterRole("buyer")}
-                                    className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-colors ${filterRole === "buyer" ? "bg-cyan-900 text-white border border-cyan-800" : "text-zinc-600 hover:text-white hover:bg-black"}`}
+                                    className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-colors ${filterRole === "buyer" ? "bg-cyan-900 text-white border border-cyan-800" : "text-zinc-600 hover:text-white hover:bg-zinc-950"}`}
                                 >
                                     Buyers
                                 </button>
                                 <button
                                     onClick={() => setFilterRole("seller")}
-                                    className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-colors ${filterRole === "seller" ? "bg-cyan-900 text-white border border-cyan-800" : "text-zinc-600 hover:text-white hover:bg-black"}`}
+                                    className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-colors ${filterRole === "seller" ? "bg-cyan-900 text-white border border-cyan-800" : "text-zinc-600 hover:text-white hover:bg-zinc-950"}`}
                                 >
                                     Sellers
                                 </button>
@@ -359,14 +359,14 @@ export default function AdminDashboard() {
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="QUERY DATABASE..."
-                                className="w-full md:w-72 pl-12 pr-4 py-4 bg-zinc-950 border border-zinc-900 text-xs font-black uppercase tracking-widest text-white outline-none focus:border-cyan-600 transition-colors placeholder:text-zinc-700"
+                                className="w-full md:w-72 pl-12 pr-4 py-4 bg-zinc-900 border border-zinc-900 text-xs font-black uppercase tracking-widest text-white outline-none focus:border-cyan-600 transition-colors placeholder:text-zinc-700"
                             />
                         </div>
                     </div>
 
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left bg-black">
-                            <thead className="bg-zinc-950 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 border-b border-zinc-900">
+                        <table className="w-full text-left bg-zinc-950">
+                            <thead className="bg-zinc-900 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 border-b border-zinc-900">
                                 <tr>
                                     <th className="px-8 py-6">Entity Core</th>
                                     <th className="px-8 py-6">Corporate ID</th>
@@ -379,13 +379,13 @@ export default function AdminDashboard() {
                             <tbody className="divide-y divide-zinc-900">
                                 {loading ? (
                                     <tr>
-                                        <td colSpan={6} className="text-center py-20 bg-black">
+                                        <td colSpan={6} className="text-center py-20 bg-zinc-950">
                                             <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-solid border-zinc-800 border-t-cyan-600 align-[-0.125em]" />
                                         </td>
                                     </tr>
                                 ) : (
                                     filteredProfiles.map((profile) => (
-                                        <tr key={profile.id} className="hover:bg-zinc-950 transition-colors group">
+                                        <tr key={profile.id} className="hover:bg-zinc-900 transition-colors group">
                                             <td className="px-8 py-6">
                                                 <div className="flex items-center gap-4">
                                                     <div className="h-10 w-10 bg-zinc-900 border border-zinc-800 flex items-center justify-center font-black text-zinc-400 text-xs shrink-0">
@@ -410,10 +410,10 @@ export default function AdminDashboard() {
                                                     className={cn(
                                                         "inline-flex items-center px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] border",
                                                         profile.role === "buyer"
-                                                            ? "bg-black text-white border-zinc-800"
+                                                            ? "bg-zinc-950 text-white border-zinc-800"
                                                             : profile.role === "seller"
-                                                              ? "bg-black text-cyan-500 border-cyan-900"
-                                                              : "bg-black text-orange-500 border-orange-900"
+                                                              ? "bg-zinc-950 text-cyan-500 border-cyan-900"
+                                                              : "bg-zinc-950 text-orange-500 border-orange-900"
                                                     )}
                                                 >
                                                     {profile.role === "both"
@@ -447,7 +447,7 @@ export default function AdminDashboard() {
 
                                 {!loading && filteredProfiles.length === 0 && (
                                     <tr>
-                                        <td colSpan={6} className="px-8 py-20 text-center bg-black">
+                                        <td colSpan={6} className="px-8 py-20 text-center bg-zinc-950">
                                             {errorMsg ? (
                                                 <div className="text-orange-500 text-xs font-black uppercase tracking-widest">
                                                     SYSTEM FAULT: {errorMsg}

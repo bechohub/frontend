@@ -43,7 +43,7 @@ const MOCK_USER = {
 
 export default function ProfilePage() {
     return (
-        <div className="min-h-screen bg-black font-sans selection:bg-cyan-600/30 selection:text-white">
+        <div className="min-h-screen bg-zinc-950 font-sans selection:bg-cyan-600/30 selection:text-white">
             <Navbar />
 
             <main className="pt-28 md:pt-36 pb-24">
@@ -53,22 +53,22 @@ export default function ProfilePage() {
                         {/* Background Industrial Gradient glow */}
                         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-900/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
-                        <div className="bg-zinc-950 border border-zinc-900 p-8 md:p-12 relative overflow-hidden group">
+                        <div className="bg-zinc-900 border border-zinc-900 p-8 md:p-12 relative overflow-hidden group">
                             <div className="flex flex-col md:flex-row items-center md:items-start gap-10 relative z-10">
                                 {/* Avatar */}
                                 <div className="relative group/avatar shrink-0">
-                                    <div className="h-32 w-32 md:h-48 md:w-48 border-2 border-zinc-800 bg-black overflow-hidden relative flex items-center justify-center">
+                                    <div className="h-32 w-32 md:h-48 md:w-48 border-2 border-zinc-800 bg-zinc-950 overflow-hidden relative flex items-center justify-center">
                                         <div className="text-5xl md:text-7xl font-black text-zinc-700 font-heading">
                                             {MOCK_USER.name.charAt(0)}
                                         </div>
                                         {/* Camera Overlay */}
-                                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/avatar:opacity-100 flex items-center justify-center transition-all cursor-pointer">
+                                        <div className="absolute inset-0 bg-zinc-950/60 opacity-0 group-hover/avatar:opacity-100 flex items-center justify-center transition-all cursor-pointer">
                                             <Camera className="h-8 w-8 text-cyan-600" />
                                         </div>
                                     </div>
                                     {/* Verification Badge */}
                                     {MOCK_USER.verified && (
-                                        <div className="absolute -bottom-4 -right-4 bg-black p-2 border border-cyan-600">
+                                        <div className="absolute -bottom-4 -right-4 bg-zinc-950 p-2 border border-cyan-600">
                                             <ShieldCheck className="h-8 w-8 text-cyan-500" />
                                         </div>
                                     )}
@@ -92,17 +92,17 @@ export default function ProfilePage() {
                                     </h2>
 
                                     <div className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3">
-                                        <button className="bg-black border border-zinc-800 px-8 py-4 text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:bg-zinc-900 hover:text-white hover:border-zinc-700 transition-all flex items-center gap-3">
+                                        <button className="bg-zinc-950 border border-zinc-800 px-8 py-4 text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:bg-zinc-900 hover:text-white hover:border-zinc-700 transition-all flex items-center gap-3">
                                             <Settings className="h-4 w-4" /> Edit Specs
                                         </button>
-                                        <button className="bg-black border border-zinc-800 px-8 py-4 text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:bg-zinc-900 hover:text-white hover:border-zinc-700 transition-all flex items-center gap-3">
+                                        <button className="bg-zinc-950 border border-zinc-800 px-8 py-4 text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:bg-zinc-900 hover:text-white hover:border-zinc-700 transition-all flex items-center gap-3">
                                             <Share2 className="h-4 w-4" /> Export Token
                                         </button>
                                     </div>
                                 </div>
 
                                 {/* Performance Score Block */}
-                                <div className="bg-black p-8 border border-zinc-900 text-center w-full md:w-64 shrink-0">
+                                <div className="bg-zinc-950 p-8 border border-zinc-900 text-center w-full md:w-64 shrink-0">
                                     <div className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 mb-2">
                                         Trust Protocol
                                     </div>
@@ -126,7 +126,7 @@ export default function ProfilePage() {
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-zinc-900 border border-zinc-900 mb-16">
                         {MOCK_USER.stats.map((stat) => (
                             <ScaleOnHover key={stat.label}>
-                                <div className="bg-black p-8 flex flex-col justify-between h-54 relative group overflow-hidden border border-transparent hover:border-cyan-900 transition-colors">
+                                <div className="bg-zinc-950 p-8 flex flex-col justify-between h-54 relative group overflow-hidden border border-transparent hover:border-cyan-900 transition-colors">
                                     <div className={cn("p-4 w-fit mb-10 border border-zinc-800", stat.bg)}>
                                         <stat.icon className={cn("h-6 w-6", stat.color)} />
                                     </div>
@@ -134,7 +134,9 @@ export default function ProfilePage() {
                                         <div className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-2">
                                             {stat.label}
                                         </div>
-                                        <div className="text-4xl font-black text-white tracking-widest">{stat.value}</div>
+                                        <div className="text-4xl font-black text-white tracking-widest">
+                                            {stat.value}
+                                        </div>
                                     </div>
                                 </div>
                             </ScaleOnHover>
@@ -146,7 +148,7 @@ export default function ProfilePage() {
                         {/* Left: Deep Data */}
                         <div className="lg:col-span-8 space-y-8">
                             {/* Visual Chart Placeholder */}
-                            <div className="bg-zinc-950 p-10 md:p-12 text-white border border-zinc-900 relative">
+                            <div className="bg-zinc-900 p-10 md:p-12 text-white border border-zinc-900 relative">
                                 <div className="flex flex-col md:flex-row items-center justify-between mb-12">
                                     <div className="text-center md:text-left">
                                         <h3 className="text-2xl font-black tracking-widest uppercase mb-2">
@@ -156,11 +158,11 @@ export default function ProfilePage() {
                                             Performance / Last 30 Cycles
                                         </p>
                                     </div>
-                                    <div className="flex bg-black border border-zinc-800 p-px mt-6 md:mt-0">
+                                    <div className="flex bg-zinc-950 border border-zinc-800 p-px mt-6 md:mt-0">
                                         <button className="px-8 py-3 bg-cyan-900 text-white text-[10px] font-black uppercase tracking-widest border border-cyan-800">
                                             Volume
                                         </button>
-                                        <button className="px-8 py-3 text-zinc-500 hover:text-white bg-black hover:bg-zinc-950 text-[10px] font-black uppercase tracking-widest transition-colors">
+                                        <button className="px-8 py-3 text-zinc-500 hover:text-white bg-zinc-950 hover:bg-zinc-900 text-[10px] font-black uppercase tracking-widest transition-colors">
                                             Yield
                                         </button>
                                     </div>
@@ -175,7 +177,7 @@ export default function ProfilePage() {
                                             transition={{ delay: i * 0.05, duration: 1, ease: "easeOut" }}
                                             className="flex-1 bg-cyan-900/40 hover:bg-cyan-600 transition-colors border-t border-cyan-500 relative group/bar"
                                         >
-                                            <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-black border border-zinc-800 text-white px-3 py-2 text-[10px] font-black opacity-0 group-hover/bar:opacity-100 transition-opacity whitespace-nowrap">
+                                            <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-zinc-950 border border-zinc-800 text-white px-3 py-2 text-[10px] font-black opacity-0 group-hover/bar:opacity-100 transition-opacity whitespace-nowrap">
                                                 {h}% YLD
                                             </div>
                                         </motion.div>
@@ -184,7 +186,7 @@ export default function ProfilePage() {
                             </div>
 
                             {/* Verification Center */}
-                            <div className="bg-black border border-zinc-900 p-10">
+                            <div className="bg-zinc-950 border border-zinc-900 p-10">
                                 <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-600 mb-8 border-b border-zinc-900 pb-4">
                                     Identity & Security Status
                                 </h3>
@@ -211,7 +213,7 @@ export default function ProfilePage() {
                                     ].map((item) => (
                                         <div
                                             key={item.label}
-                                            className="flex flex-col md:flex-row md:items-center justify-between p-6 bg-zinc-950 border border-zinc-900 gap-4"
+                                            className="flex flex-col md:flex-row md:items-center justify-between p-6 bg-zinc-900 border border-zinc-900 gap-4"
                                         >
                                             <div>
                                                 <div className="text-sm font-black text-white uppercase tracking-wider mb-1">
@@ -223,8 +225,10 @@ export default function ProfilePage() {
                                             </div>
                                             <span
                                                 className={cn(
-                                                    "text-[10px] font-black uppercase tracking-widest px-4 py-2 border bg-black",
-                                                    item.color === "text-cyan-500" ? "border-cyan-900" : "border-orange-900/50",
+                                                    "text-[10px] font-black uppercase tracking-widest px-4 py-2 border bg-zinc-950",
+                                                    item.color === "text-cyan-500"
+                                                        ? "border-cyan-900"
+                                                        : "border-orange-900/50",
                                                     item.color
                                                 )}
                                             >
@@ -238,7 +242,7 @@ export default function ProfilePage() {
 
                         {/* Right: Social & Activity */}
                         <aside className="lg:col-span-4 space-y-8">
-                            <div className="bg-black border border-zinc-900 p-10 h-full">
+                            <div className="bg-zinc-950 border border-zinc-900 p-10 h-full">
                                 <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 mb-8 flex items-center justify-between border-b border-zinc-900 pb-4">
                                     Network Pulse <ArrowUpRight className="h-4 w-4 text-cyan-600" />
                                 </h3>
@@ -270,7 +274,7 @@ export default function ProfilePage() {
                                     ))}
                                 </div>
 
-                                <button className="w-full mt-12 py-5 bg-zinc-950 border border-zinc-900 text-[10px] font-black uppercase tracking-widest text-white hover:bg-cyan-900 hover:border-cyan-800 transition-colors">
+                                <button className="w-full mt-12 py-5 bg-zinc-900 border border-zinc-900 text-[10px] font-black uppercase tracking-widest text-white hover:bg-cyan-900 hover:border-cyan-800 transition-colors">
                                     Access Full Logs
                                 </button>
                             </div>
