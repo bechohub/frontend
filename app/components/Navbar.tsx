@@ -59,10 +59,10 @@ export default function Navbar() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className={cn(
-                    "pointer-events-auto flex items-center justify-between px-6 py-4 rounded-none transition-all duration-300 border",
+                    "pointer-events-auto flex items-center justify-between px-6 rounded-none transition-all duration-500 border",
                     isScrolled
-                        ? "w-full max-w-7xl bg-zinc-950/90 backdrop-blur-md border-zinc-800 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-                        : "w-full max-w-7xl bg-zinc-950/50 backdrop-blur-md border-zinc-800 shadow-sm"
+                        ? "w-full max-w-7xl py-2 bg-zinc-950/95 backdrop-blur-md border-zinc-800 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+                        : "w-full max-w-7xl py-6 bg-zinc-950/50 backdrop-blur-md border-zinc-800/50 shadow-sm"
                 )}
             >
                 {/* Logo */}
@@ -103,10 +103,10 @@ export default function Navbar() {
                     <Link
                         href={user ? "/profile" : "/signup"}
                         className={cn(
-                            "hidden md:inline-flex items-center justify-center font-bold text-xs uppercase tracking-[0.2em] transition-all",
+                            "hidden md:inline-flex items-center justify-center font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500",
                             isScrolled
-                                ? "bg-cyan-600 text-white px-8 py-3 hover:bg-cyan-700"
-                                : "bg-transparent border border-zinc-700 text-white px-8 py-3 hover:border-white"
+                                ? "bg-cyan-600 text-white px-6 py-2 hover:bg-cyan-500"
+                                : "bg-transparent border border-zinc-700 text-white px-8 py-3 hover:border-white hover:bg-white/5"
                         )}
                     >
                         {user ? "Command Center" : "Join Network"}
