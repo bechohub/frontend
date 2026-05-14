@@ -340,7 +340,7 @@ export default function Home() {
                                         src="/images/agriculture_supplies.png"
                                         alt="Agriculture and Farm Supplies"
                                         fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-[0.85] group-hover:grayscale-0 transition-all duration-1000"
+                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                                     <div className="absolute top-4 right-4 md:top-6 md:right-6">
@@ -370,7 +370,7 @@ export default function Home() {
                                         src="/images/textile_mill.png"
                                         alt="Apparel & textile material"
                                         fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-[0.85] group-hover:grayscale-0 transition-all duration-1000"
+                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                                     <div className="absolute top-4 right-4 md:top-6 md:right-6">
@@ -400,7 +400,7 @@ export default function Home() {
                                         src="/images/chemicals_trade.png"
                                         alt="Chemical & Raw Material"
                                         fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-[0.85] group-hover:grayscale-0 transition-all duration-1000"
+                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                                     <div className="absolute top-4 right-4 md:top-6 md:right-6">
@@ -430,7 +430,7 @@ export default function Home() {
                                         src="/images/construction_materials.png"
                                         alt="Construction and building materials"
                                         fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-[0.85] group-hover:grayscale-0 transition-all duration-1000"
+                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                                     <div className="absolute top-4 right-4 md:top-6 md:right-6">
@@ -460,7 +460,7 @@ export default function Home() {
                                         src="/images/electronics_electrical.png"
                                         alt="Electronics and electrical"
                                         fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-[0.85] group-hover:grayscale-0 transition-all duration-1000"
+                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                                     <div className="absolute top-4 right-4 md:top-6 md:right-6">

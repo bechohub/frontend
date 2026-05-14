@@ -134,7 +134,7 @@ export default function CategoriesPage() {
                                             src={category.image}
                                             alt={category.name}
                                             fill
-                                            className="object-cover opacity-[0.65] grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-[0.95] group-hover:grayscale-0 transition-all duration-1000"
+                                            className="object-cover opacity-[0.65] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
                                         <div className="absolute bottom-0 left-0 p-8 w-full">
