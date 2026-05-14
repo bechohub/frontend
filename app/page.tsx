@@ -330,7 +330,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-16">
                             <FadeIn>
                                 <Link
                                     href="/category/agriculture"
@@ -422,6 +422,36 @@ export default function Home() {
                             </FadeIn>
 
                             <FadeIn delay={0.3}>
+                                <Link
+                                    href="/category/construction"
+                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
+                                >
+                                    <Image
+                                        src="/images/construction_materials.png"
+                                        alt="Construction and building materials"
+                                        fill
+                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-[0.85] group-hover:grayscale-0 transition-all duration-1000"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
+                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
+                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
+                                        <div className="min-w-0 w-full pr-2">
+                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
+                                                Construction
+                                            </h3>
+                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
+                                                Cement, Steel, Machinery
+                                            </p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </FadeIn>
+
+                            <FadeIn delay={0.4}>
                                 <Link
                                     href="/category/electronics"
                                     className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
