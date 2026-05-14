@@ -38,7 +38,7 @@ export default function Hero() {
 
                         <FadeIn delay={0.3}>
                             <p className="mt-6 text-base text-slate-600 sm:text-lg md:mt-8 md:text-xl leading-relaxed lg:mx-0 font-light">
-                                The all-in-one platform for buyers to source smarter and suppliers to grow faster.
+                                The all-in-one platform for buyers to source smarter and sellers to grow faster.
                                 Verified businesses, secure payments, and end-to-end logistics.
                             </p>
                         </FadeIn>

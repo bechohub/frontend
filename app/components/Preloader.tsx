@@ -43,7 +43,7 @@ export default function Preloader() {
                         borderBottomRightRadius: "100px",
                         transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
                     }}
-                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-950 overflow-hidden shadow-2xl shadow-cyan-500/10"
+                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black overflow-hidden shadow-2xl shadow-cyan-900/20"
                 >
                     <div className="relative w-full max-w-md h-64 flex flex-col items-center justify-center">
                         {/* Truck Moving Container */}
@@ -90,9 +90,9 @@ export default function Preloader() {
                                     stiffness: 120,
                                     damping: 20
                                 }}
-                                className="text-6xl md:text-8xl font-black tracking-tightest text-slate-50 block leading-none"
+                                className="text-6xl md:text-8xl font-black tracking-tighter text-white block leading-none font-heading"
                             >
-                                becho<span className="text-cyan-500">Hub</span>
+                                becho<span className="text-cyan-600">Hub</span>
                             </motion.div>
                         </div>
 
@@ -101,7 +101,7 @@ export default function Preloader() {
                             initial={{ scaleX: 0, opacity: 0 }}
                             animate={{ scaleX: 1, opacity: 1 }}
                             transition={{ delay: 0.2, duration: 0.6 }}
-                            className="h-2 bg-slate-800 w-full max-w-[200px] mt-6 rounded-full"
+                            className="h-1 bg-zinc-800 w-full max-w-[200px] mt-6"
                         />
                     </div>
                 </motion.div>

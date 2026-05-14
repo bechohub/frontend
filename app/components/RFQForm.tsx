@@ -3,12 +3,33 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ChevronRight, UploadCloud, ChevronLeft, Send, Sparkles } from "lucide-react";
+import { usePostHog } from "posthog-js/react";
 
 export default function RFQForm() {
     const [step, setStep] = useState(1);
+    const posthog = usePostHog();
 
-    const nextStep = () => setStep((s) => Math.min(s + 1, 3));
-    const prevStep = () => setStep((s) => Math.max(s - 1, 1));
+    const nextStep = () => {
+        setStep((s: number) => {
+            const next = Math.min(s + 1, 3);
+            posthog.capture("rfq_form_step_next", {
+                from_step: s,
+                to_step: next,
+            });
+            return next;
+        });
+    };
+
+    const prevStep = () => {
+        setStep((s: number) => {
+            const prev = Math.max(s - 1, 1);
+            posthog.capture("rfq_form_step_prev", {
+                from_step: s,
+                to_step: prev,
+            });
+            return prev;
+        });
+    };
 
     const steps = [
         { id: 1, name: "Product" },
@@ -21,9 +42,16 @@ export default function RFQForm() {
 
     const handleSubmit = async () => {
         setIsSubmitting(true);
+        posthog.capture("rfq_form_submit_start");
+        
+        // Simulating API call
         await new Promise(resolve => setTimeout(resolve, 2000));
+        
         setIsSubmitting(false);
         setIsSubmitted(true);
+        posthog.capture("rfq_form_submit_success", {
+            timestamp: new Date().toISOString(),
+        });
     };
 
     if (isSubmitted) {

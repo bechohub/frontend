@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { cn } from "@/app/utils/cn";
+import { cn } from "@/lib/utils";
 
 // Apple-like smooth spring/ease
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1]; // easeOutQuint-ish
@@ -44,7 +44,7 @@ export const SlideUp = ({
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay, ease: smoothEase }}
+            transition={{ duration: 0.5, delay, ease: smoothEase }}
             className={className}
         >
             {children}
@@ -81,18 +81,12 @@ export const StaggerContainer = ({
     );
 };
 
-export const StaggerItem = ({
-    children,
-    className,
-}: {
-    children: React.ReactNode;
-    className?: string;
-}) => {
+export const StaggerItem = ({ children, className }: { children: React.ReactNode; className?: string }) => {
     return (
         <motion.div
             variants={{
                 hidden: { opacity: 0, y: 20 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
             }}
             className={className}
         >
@@ -101,13 +95,7 @@ export const StaggerItem = ({
     );
 };
 
-export const ScaleOnHover = ({
-    children,
-    className
-}: {
-    children: React.ReactNode;
-    className?: string
-}) => {
+export const ScaleOnHover = ({ children, className }: { children: React.ReactNode; className?: string }) => {
     return (
         <motion.div
             whileHover={{ scale: 1.02 }}
@@ -117,28 +105,18 @@ export const ScaleOnHover = ({
         >
             {children}
         </motion.div>
-    )
-}
+    );
+};
 
 import { useState, useEffect, useRef } from "react";
 
-export const TextScramble = ({
-    text,
-    className,
-    delay = 0
-}: {
-    text: string;
-    className?: string;
-    delay?: number;
-}) => {
+export const TextScramble = ({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) => {
     const [displayText, setDisplayText] = useState("");
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const duration = 2000;
     const speed = 50;
 
     useEffect(() => {
         let frame = 0;
-        let timeout: NodeJS.Timeout;
 
         const startScramble = () => {
             const interval = setInterval(() => {
@@ -161,7 +139,7 @@ export const TextScramble = ({
             }, speed);
         };
 
-        timeout = setTimeout(startScramble, delay * 1000);
+        const timeout = setTimeout(startScramble, delay * 1000);
         return () => {
             clearTimeout(timeout);
         };
@@ -170,13 +148,7 @@ export const TextScramble = ({
     return <span className={className}>{displayText}</span>;
 };
 
-export const Magnetic = ({
-    children,
-    intensity = 0.5
-}: {
-    children: React.ReactElement;
-    intensity?: number;
-}) => {
+export const Magnetic = ({ children, intensity = 0.5 }: { children: React.ReactElement; intensity?: number }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 

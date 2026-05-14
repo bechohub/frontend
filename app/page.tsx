@@ -1,266 +1,536 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import {
-  ArrowRight,
-  CheckCircle2,
-  ShieldCheck,
-  TrendingUp,
-  Building2,
-  Users2,
-  ChevronRight,
-  Menu,
-  X,
-  Plus,
-  Zap,
-  Star,
-  Globe,
-  ArrowUpRight,
-  Gavel,
-  Factory
-} from "lucide-react";
-import { FadeIn, StaggerContainer, StaggerItem, SlideUp, Magnetic } from "./components/Animators";
-import Footer from "./components/Footer";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, ShieldCheck, CheckCircle2, Key, FastForward } from "lucide-react";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+// We keep a simple FadeIn for blocks
+const FadeIn = ({
+    children,
+    delay = 0,
+    className = "",
+}: {
+    children: React.ReactNode;
+    delay?: number;
+    className?: string;
+}) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+        className={className}
+    >
+        {children}
+    </motion.div>
+);
 
 export default function Home() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"],
+    });
 
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 250]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const blurValue = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(10px)"]);
+    const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+    const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
-  return (
-    <div className="min-h-[100svh] bg-white text-slate-900 font-sans selection:bg-cyan-100 selection:text-cyan-950 overflow-x-hidden" ref={containerRef}>
-      <Navbar />
+    return (
+        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans overflow-x-hidden" ref={containerRef}>
+            <Navbar />
 
-      <main>
-        {/* Hero Section - Clean Light */}
-        <section className="relative pt-40 pb-24 md:pt-64 md:pb-40 px-6 overflow-hidden min-h-[100svh] flex flex-col justify-center items-center">
-          {/* subtle awwwards grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
-          
-          {/* Ambient Backgrounds - Lightened & Disabled on Mobile for Performance */}
-          <motion.div 
-             animate={{ rotate: 360, scale: [1, 1.1, 1] }} 
-             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-             className="hidden md:block absolute top-[10%] left-[20%] w-[600px] h-[600px] bg-cyan-200/20 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" 
-          />
-          <motion.div 
-             animate={{ rotate: -360, scale: [1, 1.2, 1] }} 
-             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-             className="hidden md:block absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-fuchsia-200/20 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" 
-          />
+            <main>
+                {/* 1. HERO SECTION */}
+                <section className="relative h-screen w-full flex items-center overflow-hidden bg-black">
+                    <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0 z-0">
+                        <Image
+                            src="/images/hero_industrial.png"
+                            alt="Industrial scale B2B trade"
+                            fill
+                            className="object-cover opacity-30 mix-blend-luminosity grayscale"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+                    </motion.div>
 
-          <motion.div style={{ y: heroY, opacity: heroOpacity, filter: blurValue }} className="max-w-7xl w-full mx-auto text-center relative z-10 flex flex-col items-center">
-            <StaggerContainer>
-              <StaggerItem>
-                <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[120px] font-black tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 font-heading text-slate-950 px-4">
-                  The Future of <br className="hidden sm:block" />
-                  <span className="relative">
-                    Indian B2B.
-                    <motion.svg className="absolute w-full h-4 -bottom-2 left-0 text-cyan-500" viewBox="0 0 100 20" preserveAspectRatio="none">
-                      <motion.path 
-                        d="M0 10 Q 50 20 100 10" 
-                        fill="transparent" 
-                        stroke="currentColor" 
-                        strokeWidth="3"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }}
-                      />
-                    </motion.svg>
-                  </span>
-                </h1>
-              </StaggerItem>
+                    <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex flex-col items-start mt-10">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                            <div className="inline-block border border-zinc-800 bg-zinc-950/50 px-4 py-2 mb-8 uppercase tracking-[0.3em] text-xs text-cyan-600 font-bold backdrop-blur-sm">
+                                Next-Gen B2B Trade Engine
+                            </div>
+                            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[110px] font-black tracking-tighter leading-[0.85] uppercase mb-8 max-w-6xl text-white">
+                                Close Real Deals.
+                                <br />
+                                <span className="text-cyan-700">Not Just Leads.</span>
+                            </h1>
+                            <p className="text-lg md:text-2xl text-zinc-400 max-w-2xl font-medium tracking-widest mb-12 uppercase leading-snug">
+                                Verified buyers. Trusted suppliers. Secure transactions.
+                            </p>
 
-              <StaggerItem>
-                <div className="mb-14 flex justify-center gap-3 sm:gap-4 md:gap-5 flex-wrap">
-                  {["Connect.", "Trade.", "Grow."].map((word, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                      transition={{
-                        delay: 0.8 + i * 0.15,
-                        duration: 0.8,
-                        ease: [0.2, 0.65, 0.3, 0.9],
-                      }}
-                      className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-space font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 drop-shadow-sm selection:text-fuchsia-900"
-                    >
-                      {word}
-                    </motion.span>
-                  ))}
-                </div>
-              </StaggerItem>
-
-              <StaggerItem>
-                <p className="text-lg sm:text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto mb-14 font-light leading-relaxed px-2 md:px-0">
-                  The safest way to buy directly from the source. We connect you with verified factories across India via our <span className="text-slate-900 font-medium italic">escrow-backed</span> security protocol.
-                </p>
-              </StaggerItem>
-
-              <StaggerItem>
-                <div className="flex justify-center mb-16 sm:mb-24 px-4 w-full h-[80px]">
-                  <Magnetic intensity={0.2}>
-                    <Link
-                      href="/signup"
-                      className="group inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-14 py-5 bg-slate-950 text-white rounded-full font-black text-xs md:text-sm uppercase tracking-widest sm:tracking-[0.25em] hover:bg-slate-900 transition-all active:scale-95 shadow-2xl shadow-slate-300 gap-3 sm:gap-4 overflow-hidden relative whitespace-nowrap"
-                    >
-                      <span className="relative z-10">Get Started</span>
-                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center relative z-10 group-hover:bg-white group-hover:text-slate-950 transition-colors duration-300 shrink-0">
-                        <ArrowRight className="h-4 w-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                      </div>
-                    </Link>
-                  </Magnetic>
-                </div>
-              </StaggerItem>
-            </StaggerContainer>
-          </motion.div>
-        </section>
-        {/* Brand New: USP & Infrastructure Deep-Dive - Moved Up for Visibility */}
-        <section className="py-32 md:py-48 px-6 bg-slate-950 text-white overflow-hidden relative rounded-t-[40px] md:rounded-t-[80px] -mt-10 z-20 shadow-[0_-20px_60px_rgba(0,0,0,0.1)]">
-          <motion.div 
-             animate={{ rotate: 360, scale: [1, 1.2, 1] }} 
-             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-             className="hidden md:block absolute top-0 right-0 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none" 
-          />
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-              <div>
-                <StaggerContainer>
-                  <StaggerItem>
-                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-500 mb-8 block">Zero Risk Trade</span>
-                  </StaggerItem>
-                  <StaggerItem>
-                    <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-[90px] font-black tracking-tightest uppercase mb-12 leading-[0.85] text-slate-50 break-words">
-                      Reliability <br /> as a Service.
-                    </h2>
-                  </StaggerItem>
-                  <StaggerItem>
-                    <p className="text-xl md:text-2xl text-slate-400 font-light leading-relaxed mb-16 max-w-xl">
-                      We've built a multi-layered security protocol to ensure your capital and your reputation are always protected.
-                    </p>
-                  </StaggerItem>
-                  <StaggerItem>
-                    <Magnetic intensity={0.15}>
-                      <Link
-                        href="/about"
-                        className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-widest text-white group"
-                      >
-                        View Technical Manifest <ArrowRight className="h-4 w-4 group-hover:translate-x-3 transition-transform text-cyan-500" />
-                      </Link>
-                    </Magnetic>
-                  </StaggerItem>
-                </StaggerContainer>
-              </div>
-
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-4">
-                  <StaggerItem>
-                    <div className="p-10 rounded-[40px] bg-white/[0.02] border border-white/5 md:backdrop-blur-sm group hover:bg-white/[0.04] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/20 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <h4 className="text-3xl font-black mb-4 uppercase tracking-tight text-cyan-500 relative z-10">Safe Escrow</h4>
-                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] relative z-10">We hold your money safely. Pay only after you verify the quality.</p>
+                            <div className="flex flex-col sm:flex-row gap-6">
+                                <Link
+                                    href="/signup?role=seller"
+                                    className="group relative inline-flex items-center justify-center px-10 py-5 bg-cyan-700 text-white font-bold uppercase tracking-[0.2em] text-sm hover:bg-cyan-600 transition-colors duration-300"
+                                >
+                                    Become a Supplier
+                                    <ArrowRight className="ml-4 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </div>
+                        </motion.div>
                     </div>
-                  </StaggerItem>
-                  <StaggerItem>
-                    <div className="p-10 rounded-[40px] bg-white/[0.02] border border-white/5 md:backdrop-blur-sm group hover:bg-white/[0.04] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/20 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <h4 className="text-3xl font-black mb-4 uppercase tracking-tight text-indigo-500 relative z-10">Legal Cover</h4>
-                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] relative z-10">Every trade is protected by strong, Indian-law contracts.</p>
+                </section>
+
+                {/* 2. TRUST SECTION */}
+                <section className="py-24 bg-black border-y border-zinc-900 relative z-20">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="text-center mb-20">
+                            <FadeIn>
+                                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight mb-4 text-white">
+                                    Every Business is <span className="text-zinc-600">Verified.</span>
+                                    <br />
+                                    Every Deal is <span className="text-zinc-600">Protected.</span>
+                                </h2>
+                            </FadeIn>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            {[
+                                {
+                                    icon: ShieldCheck,
+                                    title: "Verified Suppliers",
+                                    desc: "Rigorous KYC & active verification. No shell companies.",
+                                },
+                                {
+                                    icon: CheckCircle2,
+                                    title: "Verified Buyers",
+                                    desc: "High intent, financially vetted procurement teams.",
+                                },
+                                {
+                                    icon: Key,
+                                    title: "Secure Escrow",
+                                    desc: "Your capital is locked safely until fulfillment.",
+                                },
+                                {
+                                    icon: FastForward,
+                                    title: "Faster Closures",
+                                    desc: "From RFQ to PO in days, not months. Zero friction.",
+                                },
+                            ].map((item, i) => (
+                                <FadeIn key={i} delay={i * 0.1} className="h-full">
+                                    <div className="h-full p-8 border border-zinc-800 bg-zinc-950/30 flex flex-col items-start hover:bg-zinc-900/50 hover:border-zinc-700 transition-all duration-300">
+                                        <div className="p-3 bg-cyan-950/30 border border-cyan-900/30 mb-6 group-hover:bg-cyan-900/50 transition-colors">
+                                            <item.icon className="h-8 w-8 text-cyan-600" />
+                                        </div>
+                                        <h3 className="text-lg font-black uppercase tracking-widest mb-4 text-white">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-zinc-500 font-medium text-sm tracking-wide leading-relaxed">
+                                            {item.desc}
+                                        </p>
+                                    </div>
+                                </FadeIn>
+                            ))}
+                        </div>
                     </div>
-                  </StaggerItem>
-                </div>
-                <div className="space-y-4 mt-4 sm:mt-0 sm:pt-8 md:pt-20">
-                  <StaggerItem>
-                    <div className="p-10 rounded-[40px] bg-white/[0.02] border border-white/5 md:backdrop-blur-sm group hover:bg-white/[0.04] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <h4 className="text-3xl font-black mb-4 uppercase tracking-tight text-blue-500 relative z-10">Buy Direct</h4>
-                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] relative z-10">Skip the middlemen. We connect you straight to the factory floor.</p>
+                </section>
+
+                {/* 3. HOW IT WORKS (SIMPLIFIED) */}
+                <section className="py-32 bg-black">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+                            {/* For Buyers */}
+                            <FadeIn>
+                                <div className="space-y-12">
+                                    <div className="border-b-2 border-zinc-900 pb-8">
+                                        <div className="text-cyan-700 text-sm font-black tracking-[0.3em] uppercase mb-4">
+                                            Command Center
+                                        </div>
+                                        <h3 className="text-5xl font-black uppercase tracking-tighter text-white">
+                                            For Buyers
+                                        </h3>
+                                    </div>
+                                    <div className="space-y-10">
+                                        {[
+                                            {
+                                                step: "01",
+                                                title: "Post Requirement",
+                                                desc: "Define your specs in under 30 seconds.",
+                                            },
+                                            {
+                                                step: "02",
+                                                title: "Get Verified Suppliers",
+                                                desc: "Smart matching brings the best directly to you.",
+                                            },
+                                            {
+                                                step: "03",
+                                                title: "Close Deal Securely",
+                                                desc: "Execute contracts and pay via built-in Escrow.",
+                                            },
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex gap-8 items-start group">
+                                                <span className="text-4xl font-black text-zinc-800 group-hover:text-cyan-600 transition-colors leading-none">
+                                                    {item.step}
+                                                </span>
+                                                <div>
+                                                    <h4 className="text-xl font-bold uppercase tracking-widest mb-3 text-white">
+                                                        {item.title}
+                                                    </h4>
+                                                    <p className="text-zinc-400 font-medium tracking-wide">
+                                                        {item.desc}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </FadeIn>
+
+                            {/* For Sellers */}
+                            <FadeIn delay={0.2}>
+                                <div className="space-y-12">
+                                    <div className="border-b-2 border-zinc-900 pb-8">
+                                        <div className="text-cyan-700 text-sm font-black tracking-[0.3em] uppercase mb-4">
+                                            Sales Engine
+                                        </div>
+                                        <h3 className="text-5xl font-black uppercase tracking-tighter text-white">
+                                            For Sellers
+                                        </h3>
+                                    </div>
+                                    <div className="space-y-10">
+                                        {[
+                                            {
+                                                step: "01",
+                                                title: "Get High-Intent Buyers",
+                                                desc: "No spam. Only verified RFQs with real intent score.",
+                                            },
+                                            {
+                                                step: "02",
+                                                title: "Send Quotes Fast",
+                                                desc: "Quick quote system baked right in to your dashboard.",
+                                            },
+                                            {
+                                                step: "03",
+                                                title: "Get Paid Securely",
+                                                desc: "Funds held in Escrow. Zero default risk on payouts.",
+                                            },
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex gap-8 items-start group">
+                                                <span className="text-4xl font-black text-zinc-800 group-hover:text-cyan-600 transition-colors leading-none">
+                                                    {item.step}
+                                                </span>
+                                                <div>
+                                                    <h4 className="text-xl font-bold uppercase tracking-widest mb-3 text-white">
+                                                        {item.title}
+                                                    </h4>
+                                                    <p className="text-zinc-400 font-medium tracking-wide">
+                                                        {item.desc}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </FadeIn>
+                        </div>
                     </div>
-                  </StaggerItem>
-                  <StaggerItem>
-                    <div className="p-10 rounded-[40px] bg-white/[0.02] border border-white/5 md:backdrop-blur-sm group hover:bg-white/[0.04] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/20 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <h4 className="text-3xl font-black mb-4 uppercase tracking-tight text-fuchsia-500 relative z-10">Done For You</h4>
-                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] relative z-10">We handle quality checks and shipping to your doorstep.</p>
+                </section>
+
+                {/* 4. PROBLEM VS SOLUTION */}
+                <section className="py-40 bg-zinc-950 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+
+                    <div className="max-w-7xl mx-auto px-6 relative z-10">
+                        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-center mb-24 max-w-4xl mx-auto leading-tight text-white">
+                            STOP WASTING TIME ON <span className="text-cyan-700">FAKE LEADS.</span>
+                        </h2>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-900 border border-zinc-900">
+                            <FadeIn className="bg-black">
+                                <div className="p-12 md:p-16 h-full">
+                                    <h3 className="text-3xl font-black uppercase tracking-widest text-zinc-600 mb-12 flex items-center gap-4">
+                                        <span className="text-zinc-800">✕</span> The Old Way
+                                    </h3>
+                                    <ul className="space-y-8">
+                                        {[
+                                            "Spam buyer leads & unqualified RFQs",
+                                            "Zero trust or physical verification",
+                                            "Endless non-transparent price wars",
+                                            "No payment security or legal cover",
+                                            "Weeks of follow-ups to finalize a deal",
+                                        ].map((text, i) => (
+                                            <li
+                                                key={i}
+                                                className="flex items-start gap-5 text-zinc-500 font-medium tracking-wide text-lg"
+                                            >
+                                                <div className="h-1.5 w-1.5 mt-2.5 rounded-full bg-zinc-800 shrink-0" />
+                                                {text}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </FadeIn>
+
+                            <FadeIn delay={0.2} className="bg-black">
+                                <div className="p-12 md:p-16 relative overflow-hidden h-full">
+                                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none" />
+                                    <h3 className="text-3xl font-black tracking-widest text-white mb-12 flex items-center gap-4 relative z-10">
+                                        <span className="text-cyan-600">✓</span>
+                                        <span className="flex items-center gap-2">
+                                            <span className="font-heading lowercase tracking-tighter">
+                                                becho<span className="text-cyan-600">Hub</span>
+                                            </span>
+                                            <span className="uppercase">WAY</span>
+                                        </span>
+                                    </h3>
+                                    <ul className="space-y-8 relative z-10">
+                                        {[
+                                            "Verified buyers only, intent scored",
+                                            "Smart matchmaking by precise spec",
+                                            "Premium pricing protected by Escrow",
+                                            "100% Secure payments and legal cover",
+                                            "Deals close in 48 hours autonomously",
+                                        ].map((text, i) => (
+                                            <li
+                                                key={i}
+                                                className="flex items-start gap-5 text-white font-bold tracking-wide text-lg"
+                                            >
+                                                <div className="p-0.5 bg-cyan-600/20 border border-cyan-600/50 rounded-full mt-1 shrink-0">
+                                                    <CheckCircle2 className="h-4 w-4 text-cyan-600" />
+                                                </div>
+                                                {text}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </FadeIn>
+                        </div>
                     </div>
-                  </StaggerItem>
-                </div>
-              </StaggerContainer>
-            </div>
+                </section>
 
-            {/* Protocol Matrix - Proper Full Width & Heavy visibility */}
-            <FadeIn delay={0.2}>
-              <div className="mt-32 p-8 md:p-16 rounded-[40px] md:rounded-[64px] bg-white/[0.02] border border-white/5 md:backdrop-blur-md relative overflow-hidden group hover:border-white/10 transition-colors duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                {/* 5. CATEGORY FOCUS */}
+                <section className="py-32 bg-black border-t border-zinc-900">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-20">
+                            <div>
+                                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4 text-white">
+                                    Commodities.
+                                </h2>
+                                <p className="text-zinc-500 tracking-[0.2em] uppercase font-bold text-sm">
+                                    Deep liquidity in strategic sectors
+                                </p>
+                            </div>
+                        </div>
 
-                <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
-                  <div className="shrink-0 text-center lg:text-left">
-                    <span className="text-[10px] font-black uppercase tracking-[0.5em] text-cyan-500 block mb-4">How it works</span>
-                    <h4 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-black tracking-tightest uppercase text-white leading-[0.85] break-words">Trade <br /> Steps.</h4>
-                  </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
+                            <FadeIn>
+                                <Link
+                                    href="/category/agriculture"
+                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-950"
+                                >
+                                    <Image
+                                        src="/images/agriculture_supplies.png"
+                                        alt="Agriculture and Farm Supplies"
+                                        fill
+                                        className="object-cover opacity-40 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-1000"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
+                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
+                                        <div className="min-w-0 w-full pr-2">
+                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
+                                                Agriculture
+                                            </h3>
+                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
+                                                Tea, Grain, Spices
+                                            </p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </FadeIn>
 
-                  <div className="flex-1 w-full flex flex-col md:flex-row gap-6">
-                    {[
-                      { label: "01 / You Pay", sub: "We hold your money safely until delivery." },
-                      { label: "02 / We Check", sub: "We inspect the goods at the factory floor." },
-                      { label: "03 / Release", sub: "Factory is paid only after quality is verified." }
-                    ].map((step, i) => (
-                      <div key={i} className="flex-1 bg-white/[0.03] p-10 md:p-12 rounded-[32px] border border-transparent hover:border-white/10 flex flex-col items-center lg:items-start text-center lg:text-left hover:bg-white/[0.05] hover:-translate-y-2 transition-all duration-500 cursor-default">
-                        <h5 className="text-sm md:text-base font-black uppercase tracking-widest text-cyan-500 mb-4">{step.label}</h5>
-                        <p className="text-[11px] md:text-xs text-slate-400 font-bold uppercase tracking-wider leading-relaxed">{step.sub}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
+                            <FadeIn delay={0.1}>
+                                <Link
+                                    href="/category/textile"
+                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-950"
+                                >
+                                    <Image
+                                        src="/images/textile_mill.png"
+                                        alt="Apparel & textile material"
+                                        fill
+                                        className="object-cover opacity-40 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-1000"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
+                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
+                                        <div className="min-w-0 w-full pr-2">
+                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
+                                                Textile
+                                            </h3>
+                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
+                                                Yarn, Fabric, Garments
+                                            </p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </FadeIn>
 
+                            <FadeIn delay={0.2}>
+                                <Link
+                                    href="/category/chemicals"
+                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-950"
+                                >
+                                    <Image
+                                        src="/images/chemicals_trade.png"
+                                        alt="Chemical & Raw Material"
+                                        fill
+                                        className="object-cover opacity-40 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-1000"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
+                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
+                                        <div className="min-w-0 w-full pr-2">
+                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
+                                                Chemicals
+                                            </h3>
+                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
+                                                Industrial, Organic, Polymers
+                                            </p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </FadeIn>
 
+                            <FadeIn delay={0.3}>
+                                <Link
+                                    href="/category/electronics"
+                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-950"
+                                >
+                                    <Image
+                                        src="/images/electronics_electrical.png"
+                                        alt="Electronics and electrical"
+                                        fill
+                                        className="object-cover opacity-40 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-1000"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
+                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
+                                        <div className="min-w-0 w-full pr-2">
+                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
+                                                Electronics
+                                            </h3>
+                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
+                                                Components, Devices, Wiring
+                                            </p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </FadeIn>
+                        </div>
 
+                        <FadeIn delay={0.5} className="flex justify-center">
+                            <Link
+                                href="/categories"
+                                className="group inline-flex items-center justify-center px-10 py-5 border border-zinc-800 bg-zinc-950/50 hover:bg-zinc-900 text-white font-bold uppercase tracking-[0.2em] text-xs transition-colors duration-300"
+                            >
+                                Explore All Categories
+                                <ArrowRight className="ml-4 h-4 w-4 group-hover:translate-x-1 transition-transform text-cyan-600" />
+                            </Link>
+                        </FadeIn>
+                    </div>
+                </section>
 
+                {/* 6. OUR GUARANTEE */}
+                <section className="py-32 bg-zinc-950 border-y border-zinc-900 relative">
+                    <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-16 md:gap-8">
+                        <FadeIn className="text-center md:text-left w-full border-b border-zinc-800 pb-16 md:border-b-0 md:pb-0 md:border-r md:pr-8">
+                            <h3 className="text-7xl md:text-8xl lg:text-[120px] font-black text-white mb-4 tracking-tighter leading-none">
+                                100<span className="text-cyan-700">%</span>
+                            </h3>
+                            <p className="text-zinc-500 font-bold uppercase tracking-[0.3em] text-sm text-balance">
+                                Verified Network
+                            </p>
+                        </FadeIn>
+                        <FadeIn
+                            delay={0.1}
+                            className="text-center md:text-left w-full border-b border-zinc-800 pb-16 md:border-b-0 md:pb-0 md:border-r md:px-8"
+                        >
+                            <h3 className="text-7xl md:text-8xl lg:text-[120px] font-black text-white mb-4 tracking-tighter leading-none">
+                                0<span className="text-4xl md:text-6xl text-cyan-700">%</span>
+                            </h3>
+                            <p className="text-zinc-500 font-bold uppercase tracking-[0.3em] text-sm text-balance">
+                                Fake Leads
+                            </p>
+                        </FadeIn>
+                        <FadeIn delay={0.2} className="text-center md:text-left w-full md:pl-8">
+                            <h3 className="text-7xl md:text-8xl lg:text-[120px] font-black text-white mb-4 tracking-tighter leading-none">
+                                24<span className="text-4xl md:text-6xl text-cyan-700">/7</span>
+                            </h3>
+                            <p className="text-zinc-500 font-bold uppercase tracking-[0.3em] text-sm text-balance">
+                                Trade Monitoring
+                            </p>
+                        </FadeIn>
+                    </div>
+                </section>
 
-        {/* Final CTA - Ultra Minimal with Parallax Scale effect */}
-        <section className="py-20 md:pt-40 md:pb-40 px-6">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95, y: 50 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 lg:py-32 rounded-[40px] md:rounded-[80px] bg-slate-950 text-white text-center relative overflow-hidden group shadow-2xl shadow-slate-900/50">
-              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] pointer-events-none mix-blend-overlay" />
-              
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-              />
+                {/* 7. FINAL CTA */}
+                <section className="relative min-h-[80vh] bg-black flex justify-center items-center overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                        <Image
+                            src="/images/container_ship.png"
+                            alt="Global Logistics"
+                            fill
+                            className="object-cover opacity-40 grayscale mix-blend-luminosity"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+                    </div>
 
-              <div className="relative z-10 flex flex-col items-center">
-                <h2 className="text-4xl sm:text-5xl md:text-[90px] lg:text-[120px] font-black tracking-tighter uppercase mb-10 sm:mb-14 leading-[0.8] text-slate-50">Build the <br /> Future.</h2>
-                <div className="flex justify-center w-full px-2 sm:px-4">
-                  <Magnetic intensity={0.2}>
-                    <Link href="/signup" className="px-8 md:px-16 py-4 md:py-6 bg-white text-slate-950 rounded-full font-black text-[10px] sm:text-xs md:text-sm uppercase tracking-widest md:tracking-[0.2em] hover:bg-cyan-400 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] transition-all duration-300 whitespace-nowrap inline-flex justify-center items-center shrink-0">
-                      Get Started Now
-                    </Link>
-                  </Magnetic>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-      </main>
+                    <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
+                        <FadeIn>
+                            <h2 className="text-5xl md:text-7xl lg:text-[100px] font-black tracking-tighter uppercase mb-16 leading-[0.85] text-white">
+                                START YOUR <br className="hidden md:block" />
+                                FIRST DEAL <span className="text-cyan-600 block sm:inline">TODAY.</span>
+                            </h2>
 
-      <Footer />
-    </div>
-  );
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                                <Link
+                                    href="/signup?role=seller"
+                                    className="group inline-flex items-center justify-center px-12 py-6 bg-cyan-700 text-white font-black uppercase tracking-[0.2em] text-sm hover:bg-cyan-600 transition-colors duration-300"
+                                >
+                                    Join as Supplier
+                                    <ArrowRight className="ml-4 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </div>
+                        </FadeIn>
+                    </div>
+                </section>
+            </main>
+
+            <Footer />
+        </div>
+    );
 }

@@ -1,11 +1,15 @@
 @import "tailwindcss";
 
-:root {
-  --background: #020617;
-  --foreground: #f8fafc;
+@theme {
+  --color-zinc-950: #09090b;
 }
 
-/* Hide scrollbar for awwwards smooth sexy vibe */
+:root {
+  --background: #000000;
+  --foreground: #f0f0fa;
+}
+
+/* Hide scrollbar for clean futuristic vibe */
 ::-webkit-scrollbar {
   display: none;
 }
@@ -17,11 +21,7 @@ body {
 
 @layer base {
   body {
-    @apply bg-white text-slate-900 antialiased;
+    @apply bg-black text-[#f0f0fa] antialiased selection:bg-cyan-600/30 selection:text-white;
     font-feature-settings: "cv11", "ss01";
   }
-}
-
-::selection {
-  @apply bg-cyan-400/30 text-cyan-200;
 }
