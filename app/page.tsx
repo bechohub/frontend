@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowRight, ShieldCheck, CheckCircle2, Key, FastForward } from "lucide-react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -28,6 +28,60 @@ const FadeIn = ({
         {children}
     </motion.div>
 );
+
+const CommodityCard = ({
+    href,
+    src,
+    alt,
+    title,
+    subtitle,
+    delay,
+}: {
+    href: string;
+    src: string;
+    alt: string;
+    title: string;
+    subtitle: string;
+    delay: number;
+}) => {
+    const ref = useRef(null);
+    // On mobile screens, trigger 'active' state when scrolling through the middle of the screen
+    const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+
+    return (
+        <FadeIn delay={delay}>
+            <Link
+                ref={ref}
+                href={href}
+                data-active={isInView}
+                className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
+            >
+                <Image
+                    src={src}
+                    alt={alt}
+                    fill
+                    className="object-cover opacity-[0.55] grayscale mix-blend-luminosity transition-all duration-1000 group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 md:data-[active=true]:mix-blend-luminosity md:data-[active=true]:scale-100 md:data-[active=true]:opacity-[0.55] md:data-[active=true]:grayscale data-[active=true]:mix-blend-normal data-[active=true]:scale-105 data-[active=true]:opacity-[1] data-[active=true]:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
+                <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                    <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center transition-colors duration-500 group-hover:bg-cyan-600 group-hover:border-cyan-600 md:data-[active=true]:bg-transparent md:data-[active=true]:border-zinc-700 data-[active=true]:bg-cyan-600 data-[active=true]:border-cyan-600">
+                        <ArrowRight className="text-white w-3 h-3 -rotate-45 transition-transform duration-500 group-hover:rotate-0 md:data-[active=true]:-rotate-45 data-[active=true]:rotate-0" />
+                    </div>
+                </div>
+                <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
+                    <div className="min-w-0 w-full pr-2">
+                        <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white transition-colors duration-500 group-hover:text-cyan-500 md:data-[active=true]:text-white data-[active=true]:text-cyan-500 truncate">
+                            {title}
+                        </h3>
+                        <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
+                            {subtitle}
+                        </p>
+                    </div>
+                </div>
+            </Link>
+        </FadeIn>
+    );
+};
 
 export default function Home() {
     const containerRef = useRef(null);
@@ -331,155 +385,46 @@ export default function Home() {
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-16">
-                            <FadeIn>
-                                <Link
-                                    href="/category/agriculture"
-                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
-                                >
-                                    <Image
-                                        src="/images/agriculture_supplies.png"
-                                        alt="Agriculture and Farm Supplies"
-                                        fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
-                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
-                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                                        </div>
-                                    </div>
-                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
-                                        <div className="min-w-0 w-full pr-2">
-                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
-                                                Agriculture
-                                            </h3>
-                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
-                                                Tea, Grain, Spices
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </FadeIn>
-
-                            <FadeIn delay={0.1}>
-                                <Link
-                                    href="/category/textile"
-                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
-                                >
-                                    <Image
-                                        src="/images/textile_mill.png"
-                                        alt="Apparel & textile material"
-                                        fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
-                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
-                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                                        </div>
-                                    </div>
-                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
-                                        <div className="min-w-0 w-full pr-2">
-                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
-                                                Textile
-                                            </h3>
-                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
-                                                Yarn, Fabric, Garments
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </FadeIn>
-
-                            <FadeIn delay={0.2}>
-                                <Link
-                                    href="/category/chemicals"
-                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
-                                >
-                                    <Image
-                                        src="/images/chemicals_trade.png"
-                                        alt="Chemical & Raw Material"
-                                        fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
-                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
-                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                                        </div>
-                                    </div>
-                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
-                                        <div className="min-w-0 w-full pr-2">
-                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
-                                                Chemicals
-                                            </h3>
-                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
-                                                Industrial, Organic, Polymers
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </FadeIn>
-
-                            <FadeIn delay={0.3}>
-                                <Link
-                                    href="/category/construction"
-                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
-                                >
-                                    <Image
-                                        src="/images/construction_materials.png"
-                                        alt="Construction and building materials"
-                                        fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
-                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
-                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                                        </div>
-                                    </div>
-                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
-                                        <div className="min-w-0 w-full pr-2">
-                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
-                                                Construction
-                                            </h3>
-                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
-                                                Cement, Steel, Machinery
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </FadeIn>
-
-                            <FadeIn delay={0.4}>
-                                <Link
-                                    href="/category/electronics"
-                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
-                                >
-                                    <Image
-                                        src="/images/electronics_electrical.png"
-                                        alt="Electronics and electrical"
-                                        fill
-                                        className="object-cover opacity-[0.55] grayscale mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-[1] group-hover:grayscale-0 transition-all duration-1000"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
-                                    <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                                        <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
-                                            <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                                        </div>
-                                    </div>
-                                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
-                                        <div className="min-w-0 w-full pr-2">
-                                            <h3 className="text-lg xl:text-xl font-black uppercase tracking-wider mb-1 text-white group-hover:text-cyan-500 transition-colors duration-500 truncate">
-                                                Electronics
-                                            </h3>
-                                            <p className="text-zinc-400 font-bold tracking-[0.2em] uppercase text-[8px] md:text-[9px] truncate">
-                                                Components, Devices, Wiring
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </FadeIn>
+                            <CommodityCard
+                                href="/category/agriculture"
+                                src="/images/agriculture_supplies.png"
+                                alt="Agriculture"
+                                title="Agriculture"
+                                subtitle="Tea, Grain, Spices"
+                                delay={0}
+                            />
+                            <CommodityCard
+                                href="/category/textile"
+                                src="/images/textile_mill.png"
+                                alt="Textile"
+                                title="Textile"
+                                subtitle="Yarn, Fabric, Garments"
+                                delay={0.1}
+                            />
+                            <CommodityCard
+                                href="/category/chemicals"
+                                src="/images/chemicals_trade.png"
+                                alt="Chemicals"
+                                title="Chemicals"
+                                subtitle="Industrial, Organic, Polymers"
+                                delay={0.2}
+                            />
+                            <CommodityCard
+                                href="/category/construction"
+                                src="/images/construction_materials.png"
+                                alt="Construction"
+                                title="Construction"
+                                subtitle="Cement, Steel, Machinery"
+                                delay={0.3}
+                            />
+                            <CommodityCard
+                                href="/category/electronics"
+                                src="/images/electronics_electrical.png"
+                                alt="Electronics"
+                                title="Electronics"
+                                subtitle="Components, Devices, Wiring"
+                                delay={0.4}
+                            />
                         </div>
 
                         <FadeIn delay={0.5} className="flex justify-center">
