@@ -11,7 +11,7 @@ export default function Preloader() {
         let timer: NodeJS.Timeout;
 
         const completeLoading = () => {
-            // Minimal artificial delay to ensure the truck animation has played sufficiently 
+            // Minimal artificial delay to ensure the truck animation has played sufficiently
             // and the browser has painted completely before removing the curtain
             timer = setTimeout(() => {
                 setIsLoading(false);
@@ -41,9 +41,9 @@ export default function Preloader() {
                         y: "-100%",
                         borderBottomLeftRadius: "100px",
                         borderBottomRightRadius: "100px",
-                        transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
+                        transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
                     }}
-                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black overflow-hidden shadow-2xl shadow-cyan-900/20"
+                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-zinc-950 overflow-hidden shadow-2xl shadow-cyan-900/20"
                 >
                     <div className="relative w-full max-w-md h-64 flex flex-col items-center justify-center">
                         {/* Truck Moving Container */}
@@ -52,7 +52,7 @@ export default function Preloader() {
                                 initial={{ x: "-150%", opacity: 0 }}
                                 animate={{
                                     x: ["-100%", "0%", "100%"],
-                                    opacity: [0, 1, 1, 0]
+                                    opacity: [0, 1, 1, 0],
                                 }}
                                 transition={{
                                     duration: 2.0,
@@ -88,7 +88,7 @@ export default function Preloader() {
                                     duration: 0.5,
                                     type: "spring",
                                     stiffness: 120,
-                                    damping: 20
+                                    damping: 20,
                                 }}
                                 className="text-6xl md:text-8xl font-black tracking-tighter text-white block leading-none font-heading"
                             >

@@ -87,12 +87,12 @@ const categories = [
 
 export default function CategoriesPage() {
     return (
-        <main className="min-h-screen bg-black text-zinc-400 selection:bg-cyan-900 selection:text-cyan-50">
+        <main className="min-h-screen bg-zinc-950 text-zinc-400 selection:bg-cyan-900 selection:text-cyan-50">
             <Navbar />
 
             {/* HEADER */}
             <section className="pt-40 pb-20 px-6 border-b border-zinc-900 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-zinc-900/40 via-black to-black -z-10" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-zinc-900/40 via-zinc-950 to-zinc-950 -z-10" />
                 <div className="max-w-7xl mx-auto">
                     <FadeIn>
                         <p className="text-cyan-600 font-bold tracking-[0.2em] uppercase text-sm mb-4">
@@ -110,7 +110,7 @@ export default function CategoriesPage() {
                             <input
                                 type="text"
                                 placeholder="Search for commodities, materials, or parts..."
-                                className="w-full bg-zinc-950 border border-zinc-800 text-white px-6 py-4 pl-12 focus:outline-none focus:border-cyan-600 transition-colors placeholder:text-zinc-600"
+                                className="w-full bg-zinc-900 border border-zinc-800 text-white px-6 py-4 pl-12 focus:outline-none focus:border-cyan-600 transition-colors placeholder:text-zinc-600"
                             />
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-600" />
                         </div>
@@ -119,7 +119,7 @@ export default function CategoriesPage() {
             </section>
 
             {/* CATEGORIES GRID */}
-            <section className="py-24 px-6 bg-black">
+            <section className="py-24 px-6 bg-zinc-950">
                 <div className="max-w-7xl mx-auto space-y-32">
                     {categories.map((category, index) => (
                         <FadeIn key={category.id} delay={0.1 * (index % 3)}>
@@ -128,7 +128,7 @@ export default function CategoriesPage() {
                                 <div className="w-full lg:w-1/2">
                                     <Link
                                         href={`/category/${category.id}`}
-                                        className="group block relative h-[400px] md:h-[500px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-950"
+                                        className="group block relative h-[400px] md:h-[500px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
                                     >
                                         <Image
                                             src={category.image}
@@ -136,7 +136,7 @@ export default function CategoriesPage() {
                                             fill
                                             className="object-cover opacity-50 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-1000"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
                                         <div className="absolute bottom-0 left-0 p-8 w-full">
                                             <div className="w-12 h-12 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500 mb-6">
                                                 <ArrowRight className="text-white w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />

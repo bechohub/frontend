@@ -40,12 +40,12 @@ export default function Home() {
     const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
     return (
-        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans overflow-x-hidden" ref={containerRef}>
+        <div className="min-h-screen bg-zinc-950 text-[#f0f0fa] font-sans overflow-x-hidden" ref={containerRef}>
             <Navbar />
 
             <main>
                 {/* 1. HERO SECTION */}
-                <section className="relative h-screen w-full flex items-center overflow-hidden bg-black">
+                <section className="relative h-screen w-full flex items-center overflow-hidden bg-zinc-950">
                     <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0 z-0">
                         <Image
                             src="/images/hero_industrial.png"
@@ -54,8 +54,8 @@ export default function Home() {
                             className="object-cover opacity-30 mix-blend-luminosity grayscale"
                             priority
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent" />
                     </motion.div>
 
                     <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex flex-col items-start mt-10">
@@ -64,7 +64,7 @@ export default function Home() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                         >
-                            <div className="inline-block border border-zinc-800 bg-zinc-950/50 px-4 py-2 mb-8 uppercase tracking-[0.3em] text-xs text-cyan-600 font-bold backdrop-blur-sm">
+                            <div className="inline-block border border-zinc-800 bg-zinc-900/50 px-4 py-2 mb-8 uppercase tracking-[0.3em] text-xs text-cyan-600 font-bold backdrop-blur-sm">
                                 Next-Gen B2B Trade Engine
                             </div>
                             <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[110px] font-black tracking-tighter leading-[0.85] uppercase mb-8 max-w-6xl text-white">
@@ -90,7 +90,7 @@ export default function Home() {
                 </section>
 
                 {/* 2. TRUST SECTION */}
-                <section className="py-24 bg-black border-y border-zinc-900 relative z-20">
+                <section className="py-24 bg-zinc-950 border-y border-zinc-900 relative z-20">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="text-center mb-20">
                             <FadeIn>
@@ -126,7 +126,7 @@ export default function Home() {
                                 },
                             ].map((item, i) => (
                                 <FadeIn key={i} delay={i * 0.1} className="h-full">
-                                    <div className="h-full p-8 border border-zinc-800 bg-zinc-950/30 flex flex-col items-start hover:bg-zinc-900/50 hover:border-zinc-700 transition-all duration-300">
+                                    <div className="h-full p-8 border border-zinc-800 bg-zinc-900/30 flex flex-col items-start hover:bg-zinc-900/50 hover:border-zinc-700 transition-all duration-300">
                                         <div className="p-3 bg-cyan-950/30 border border-cyan-900/30 mb-6 group-hover:bg-cyan-900/50 transition-colors">
                                             <item.icon className="h-8 w-8 text-cyan-600" />
                                         </div>
@@ -144,7 +144,7 @@ export default function Home() {
                 </section>
 
                 {/* 3. HOW IT WORKS (SIMPLIFIED) */}
-                <section className="py-32 bg-black">
+                <section className="py-32 bg-zinc-950">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
                             {/* For Buyers */}
@@ -245,7 +245,7 @@ export default function Home() {
                 </section>
 
                 {/* 4. PROBLEM VS SOLUTION */}
-                <section className="py-40 bg-zinc-950 relative overflow-hidden">
+                <section className="py-40 bg-zinc-900 relative overflow-hidden">
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
                     <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -254,7 +254,7 @@ export default function Home() {
                         </h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-900 border border-zinc-900">
-                            <FadeIn className="bg-black">
+                            <FadeIn className="bg-zinc-950">
                                 <div className="p-12 md:p-16 h-full">
                                     <h3 className="text-3xl font-black uppercase tracking-widest text-zinc-600 mb-12 flex items-center gap-4">
                                         <span className="text-zinc-800">✕</span> The Old Way
@@ -279,7 +279,7 @@ export default function Home() {
                                 </div>
                             </FadeIn>
 
-                            <FadeIn delay={0.2} className="bg-black">
+                            <FadeIn delay={0.2} className="bg-zinc-950">
                                 <div className="p-12 md:p-16 relative overflow-hidden h-full">
                                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none" />
                                     <h3 className="text-3xl font-black tracking-widest text-white mb-12 flex items-center gap-4 relative z-10">
@@ -317,7 +317,7 @@ export default function Home() {
                 </section>
 
                 {/* 5. CATEGORY FOCUS */}
-                <section className="py-32 bg-black border-t border-zinc-900">
+                <section className="py-32 bg-zinc-950 border-t border-zinc-900">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="flex flex-col md:flex-row justify-between items-end mb-20">
                             <div>
@@ -334,7 +334,7 @@ export default function Home() {
                             <FadeIn>
                                 <Link
                                     href="/category/agriculture"
-                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-950"
+                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
                                 >
                                     <Image
                                         src="/images/agriculture_supplies.png"
@@ -342,7 +342,7 @@ export default function Home() {
                                         fill
                                         className="object-cover opacity-40 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-1000"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                                     <div className="absolute top-4 right-4 md:top-6 md:right-6">
                                         <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
                                             <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
@@ -364,7 +364,7 @@ export default function Home() {
                             <FadeIn delay={0.1}>
                                 <Link
                                     href="/category/textile"
-                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-950"
+                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
                                 >
                                     <Image
                                         src="/images/textile_mill.png"
@@ -372,7 +372,7 @@ export default function Home() {
                                         fill
                                         className="object-cover opacity-40 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-1000"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                                     <div className="absolute top-4 right-4 md:top-6 md:right-6">
                                         <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
                                             <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
@@ -394,7 +394,7 @@ export default function Home() {
                             <FadeIn delay={0.2}>
                                 <Link
                                     href="/category/chemicals"
-                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-950"
+                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
                                 >
                                     <Image
                                         src="/images/chemicals_trade.png"
@@ -402,7 +402,7 @@ export default function Home() {
                                         fill
                                         className="object-cover opacity-40 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-1000"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                                     <div className="absolute top-4 right-4 md:top-6 md:right-6">
                                         <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
                                             <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
@@ -424,7 +424,7 @@ export default function Home() {
                             <FadeIn delay={0.3}>
                                 <Link
                                     href="/category/electronics"
-                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-950"
+                                    className="group block relative h-[300px] md:h-[400px] border border-zinc-800 hover:border-zinc-500 transition-colors duration-500 overflow-hidden bg-zinc-900"
                                 >
                                     <Image
                                         src="/images/electronics_electrical.png"
@@ -432,7 +432,7 @@ export default function Home() {
                                         fill
                                         className="object-cover opacity-40 grayscale mix-blend-luminosity group-hover:scale-105 group-hover:opacity-70 group-hover:grayscale-0 transition-all duration-1000"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                                     <div className="absolute top-4 right-4 md:top-6 md:right-6">
                                         <div className="w-8 h-8 rounded-full border border-zinc-700 flex flex-col justify-center items-center group-hover:bg-cyan-600 group-hover:border-cyan-600 transition-colors duration-500">
                                             <ArrowRight className="text-white w-3 h-3 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
@@ -455,7 +455,7 @@ export default function Home() {
                         <FadeIn delay={0.5} className="flex justify-center">
                             <Link
                                 href="/categories"
-                                className="group inline-flex items-center justify-center px-10 py-5 border border-zinc-800 bg-zinc-950/50 hover:bg-zinc-900 text-white font-bold uppercase tracking-[0.2em] text-xs transition-colors duration-300"
+                                className="group inline-flex items-center justify-center px-10 py-5 border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 text-white font-bold uppercase tracking-[0.2em] text-xs transition-colors duration-300"
                             >
                                 Explore All Categories
                                 <ArrowRight className="ml-4 h-4 w-4 group-hover:translate-x-1 transition-transform text-cyan-600" />
@@ -465,7 +465,7 @@ export default function Home() {
                 </section>
 
                 {/* 6. OUR GUARANTEE */}
-                <section className="py-32 bg-zinc-950 border-y border-zinc-900 relative">
+                <section className="py-32 bg-zinc-900 border-y border-zinc-900 relative">
                     <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-16 md:gap-8">
                         <FadeIn className="text-center md:text-left w-full border-b border-zinc-800 pb-16 md:border-b-0 md:pb-0 md:border-r md:pr-8">
                             <h3 className="text-7xl md:text-8xl lg:text-[120px] font-black text-white mb-4 tracking-tighter leading-none">
@@ -498,7 +498,7 @@ export default function Home() {
                 </section>
 
                 {/* 7. FINAL CTA */}
-                <section className="relative min-h-[80vh] bg-black flex justify-center items-center overflow-hidden">
+                <section className="relative min-h-[80vh] bg-zinc-950 flex justify-center items-center overflow-hidden">
                     <div className="absolute inset-0 z-0">
                         <Image
                             src="/images/container_ship.png"
@@ -506,7 +506,7 @@ export default function Home() {
                             fill
                             className="object-cover opacity-40 grayscale mix-blend-luminosity"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent" />
                     </div>
 
                     <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
