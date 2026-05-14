@@ -61,8 +61,8 @@ export default function Navbar() {
                 className={cn(
                     "pointer-events-auto flex items-center justify-between px-6 rounded-none transition-all duration-500 border",
                     isScrolled
-                        ? "w-full max-w-7xl py-2 bg-zinc-950/95 backdrop-blur-md border-zinc-800 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-                        : "w-full max-w-7xl py-6 bg-zinc-950/50 backdrop-blur-md border-zinc-800/50 shadow-sm"
+                        ? "w-[95%] md:w-[80%] max-w-5xl py-4 bg-zinc-950/95 backdrop-blur-md border-zinc-800 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+                        : "w-full max-w-7xl py-4 bg-zinc-950/50 backdrop-blur-md border-transparent shadow-sm"
                 )}
             >
                 {/* Logo */}
@@ -105,7 +105,7 @@ export default function Navbar() {
                         className={cn(
                             "hidden md:inline-flex items-center justify-center font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500",
                             isScrolled
-                                ? "bg-cyan-600 text-white px-6 py-2 hover:bg-cyan-500"
+                                ? "bg-cyan-600 text-white px-8 py-3 hover:bg-cyan-500"
                                 : "bg-transparent border border-zinc-700 text-white px-8 py-3 hover:border-white hover:bg-white/5"
                         )}
                     >
