@@ -138,7 +138,7 @@ function SignUpForm() {
     };
 
     return (
-        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white overflow-hidden flex flex-col relative z-0">
+        <div className="min-h-screen bg-zinc-950 text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white overflow-hidden flex flex-col relative z-0">
             {/* Background Ambience */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
                 <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-cyan-900/10 rounded-full blur-[120px]" />
@@ -146,7 +146,7 @@ function SignUpForm() {
             </div>
 
             {/* Header / Navigation */}
-            <header className="sticky top-0 z-50 w-full p-6 md:p-10 flex justify-between items-center transition-opacity duration-500 bg-black/50 backdrop-blur-xl border-b border-zinc-900">
+            <header className="sticky top-0 z-50 w-full p-6 md:p-10 flex justify-between items-center transition-opacity duration-500 bg-zinc-950/50 backdrop-blur-xl border-b border-zinc-900">
                 <Link
                     href="/"
                     className="text-2xl font-black tracking-tighter text-white font-heading hover:opacity-80 transition-opacity"
@@ -159,9 +159,7 @@ function SignUpForm() {
                             <div
                                 key={i}
                                 className={`h-1.5 rounded-none transition-all duration-500 ${
-                                    i + 1 <= step
-                                        ? "w-8 md:w-10 bg-cyan-500"
-                                        : "w-4 md:w-6 bg-zinc-800"
+                                    i + 1 <= step ? "w-8 md:w-10 bg-cyan-500" : "w-4 md:w-6 bg-zinc-800"
                                 }`}
                             />
                         ))}
@@ -194,7 +192,7 @@ function SignUpForm() {
                                         setUserType("buyer");
                                         setTimeout(nextStep, 150);
                                     }}
-                                    className="group p-10 md:p-14 bg-black hover:bg-zinc-950 transition-all text-left relative overflow-hidden active:scale-[0.98]"
+                                    className="group p-10 md:p-14 bg-zinc-950 hover:bg-zinc-900 transition-all text-left relative overflow-hidden active:scale-[0.98]"
                                 >
                                     <div className="h-16 w-16 bg-zinc-900 flex items-center justify-center mb-10 border border-zinc-800 group-hover:bg-cyan-950 group-hover:border-cyan-900 transition-colors">
                                         <ShoppingBag className="h-8 w-8 text-zinc-500 group-hover:text-cyan-500 transition-colors" />
@@ -215,7 +213,7 @@ function SignUpForm() {
                                         setUserType("seller");
                                         setTimeout(nextStep, 150);
                                     }}
-                                    className="group p-10 md:p-14 bg-black hover:bg-zinc-950 transition-all text-left relative overflow-hidden active:scale-[0.98]"
+                                    className="group p-10 md:p-14 bg-zinc-950 hover:bg-zinc-900 transition-all text-left relative overflow-hidden active:scale-[0.98]"
                                 >
                                     <div className="h-16 w-16 bg-zinc-900 flex items-center justify-center mb-10 border border-zinc-800 group-hover:bg-cyan-950 group-hover:border-cyan-900 transition-colors">
                                         <Factory className="h-8 w-8 text-zinc-500 group-hover:text-cyan-500 transition-colors" />
@@ -266,7 +264,7 @@ function SignUpForm() {
                                             value={formData.firstName}
                                             onChange={handleInputChange}
                                             placeholder="John Doe"
-                                            className="w-full bg-zinc-950 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
+                                            className="w-full bg-zinc-900 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
                                         />
                                     </div>
                                 </div>
@@ -282,7 +280,7 @@ function SignUpForm() {
                                             value={formData.email}
                                             onChange={handleInputChange}
                                             placeholder="john@company.com"
-                                            className="w-full bg-zinc-950 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
+                                            className="w-full bg-zinc-900 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
                                         />
                                         {formData.email && !isValidEmail(formData.email) && (
                                             <p className="text-red-500 text-xs font-bold mt-2 ml-2 uppercase tracking-wider">
@@ -302,7 +300,7 @@ function SignUpForm() {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             placeholder="+91 98765 43210"
-                                            className="w-full bg-zinc-950 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
+                                            className="w-full bg-zinc-900 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
                                         />
                                         {formData.phone && !isValidPhone(formData.phone) && (
                                             <p className="text-red-500 text-xs font-bold mt-2 ml-2 uppercase tracking-wider">
@@ -323,7 +321,7 @@ function SignUpForm() {
                                             value={formData.password}
                                             onChange={handleInputChange}
                                             placeholder="Min. 8 characters"
-                                            className="w-full bg-zinc-950 border border-zinc-900 py-5 pl-14 pr-12 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
+                                            className="w-full bg-zinc-900 border border-zinc-900 py-5 pl-14 pr-12 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
                                         />
                                         <button
                                             type="button"
@@ -382,7 +380,7 @@ function SignUpForm() {
                                             value={formData.companyName}
                                             onChange={handleInputChange}
                                             placeholder="Acme Manufacturing Ltd"
-                                            className="w-full bg-zinc-950 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
+                                            className="w-full bg-zinc-900 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
                                         />
                                     </div>
                                 </div>
@@ -399,9 +397,11 @@ function SignUpForm() {
                                                     name="category"
                                                     value={formData.category}
                                                     onChange={handleInputChange}
-                                                    className="w-full bg-zinc-950 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium appearance-none"
+                                                    className="w-full bg-zinc-900 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium appearance-none"
                                                 >
-                                                    <option value="" className="text-zinc-600">Select Commodity</option>
+                                                    <option value="" className="text-zinc-600">
+                                                        Select Commodity
+                                                    </option>
                                                     {INDUSTRY_CATEGORIES.filter((c) => c.id !== "all").map((c) => (
                                                         <option key={c.id} value={c.id}>
                                                             {c.name}
@@ -424,7 +424,7 @@ function SignUpForm() {
                                                         className={`py-5 px-4 font-black uppercase tracking-widest transition-all text-xs ${
                                                             formData.businessScale === vol
                                                                 ? "bg-cyan-700 text-white border-t border-cyan-500/50"
-                                                                : "bg-black text-zinc-500 hover:text-white hover:bg-zinc-950"
+                                                                : "bg-zinc-950 text-zinc-500 hover:text-white hover:bg-zinc-900"
                                                         }`}
                                                     >
                                                         {vol}
@@ -445,9 +445,11 @@ function SignUpForm() {
                                                     name="category"
                                                     value={formData.category}
                                                     onChange={handleInputChange}
-                                                    className="w-full bg-zinc-950 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium appearance-none"
+                                                    className="w-full bg-zinc-900 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium appearance-none"
                                                 >
-                                                    <option value="" className="text-zinc-600">Select Production Focus</option>
+                                                    <option value="" className="text-zinc-600">
+                                                        Select Production Focus
+                                                    </option>
                                                     {INDUSTRY_CATEGORIES.filter((c) => c.id !== "all").map((c) => (
                                                         <option key={c.id} value={c.id}>
                                                             {c.name}
@@ -475,7 +477,7 @@ function SignUpForm() {
                                                         className={`py-5 px-4 font-black uppercase tracking-widest transition-all text-[10px] sm:text-xs ${
                                                             formData.businessScale === cap
                                                                 ? "bg-cyan-700 text-white border-t border-cyan-500/50"
-                                                                : "bg-black text-zinc-500 hover:text-white hover:bg-zinc-950"
+                                                                : "bg-zinc-950 text-zinc-500 hover:text-white hover:bg-zinc-900"
                                                         }`}
                                                     >
                                                         {cap}
@@ -494,7 +496,7 @@ function SignUpForm() {
                                                     value={formData.gstNumber}
                                                     onChange={handleInputChange}
                                                     placeholder="22AAAAA0000A1Z5"
-                                                    className="w-full bg-zinc-950 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium uppercase"
+                                                    className="w-full bg-zinc-900 border border-zinc-900 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-600/20 outline-none transition-all text-white placeholder:text-zinc-600 font-medium uppercase"
                                                 />
                                             </div>
                                             <p className="text-xs text-cyan-500 font-bold tracking-wider mt-2 ml-2">
@@ -546,7 +548,7 @@ export default function SignUp() {
     return (
         <Suspense
             fallback={
-                <div className="min-h-screen bg-black flex items-center justify-center text-white font-black uppercase tracking-[0.3em]">
+                <div className="min-h-screen bg-zinc-950 flex items-center justify-center text-white font-black uppercase tracking-[0.3em]">
                     Initializing...
                 </div>
             }

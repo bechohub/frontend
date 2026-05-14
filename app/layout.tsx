@@ -90,7 +90,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <PHProvider>
                 <body
-                    className={`${inter.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased font-sans bg-black text-[#f0f0fa] selection:bg-cyan-600/30 selection:text-white`}
+                    className={`${inter.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased font-sans bg-zinc-950 text-[#f0f0fa] selection:bg-cyan-600/30 selection:text-white`}
                     suppressHydrationWarning
                 >
                     <PostHogPageview />

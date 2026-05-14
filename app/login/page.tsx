@@ -37,7 +37,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white overflow-hidden flex flex-col relative z-0">
+        <div className="min-h-screen bg-zinc-950 text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white overflow-hidden flex flex-col relative z-0">
             {/* Background Ambience */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
                 <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-cyan-900/10 rounded-full blur-[120px]" />
@@ -45,7 +45,7 @@ export default function LoginPage() {
             </div>
 
             {/* Header / Navigation */}
-            <header className="sticky top-0 z-50 w-full p-6 md:p-10 flex justify-between items-center transition-opacity duration-500 border-b border-zinc-900 bg-black/50 backdrop-blur-md">
+            <header className="sticky top-0 z-50 w-full p-6 md:p-10 flex justify-between items-center transition-opacity duration-500 border-b border-zinc-900 bg-zinc-950/50 backdrop-blur-md">
                 <Link
                     href="/"
                     className="text-2xl font-black tracking-tighter text-white font-heading hover:opacity-80 transition-opacity"
@@ -72,7 +72,7 @@ export default function LoginPage() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="john@company.com"
-                                    className="w-full bg-zinc-950 border border-zinc-800 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-600/10 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
+                                    className="w-full bg-zinc-900 border border-zinc-800 py-5 pl-14 pr-5 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-600/10 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
                                     required
                                     autoComplete="email"
                                 />
@@ -89,7 +89,7 @@ export default function LoginPage() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Your password"
-                                    className="w-full bg-zinc-950 border border-zinc-800 py-5 pl-14 pr-12 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-600/10 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
+                                    className="w-full bg-zinc-900 border border-zinc-800 py-5 pl-14 pr-12 focus:bg-zinc-900 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-600/10 outline-none transition-all text-white placeholder:text-zinc-600 font-medium"
                                     required
                                     autoComplete="current-password"
                                 />

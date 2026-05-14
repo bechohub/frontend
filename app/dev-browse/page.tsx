@@ -29,13 +29,13 @@ export default function BrowsePage() {
     }, [searchQuery, selectedCategory]);
 
     return (
-        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white">
+        <div className="min-h-screen bg-zinc-950 text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white">
             <Navbar />
 
             <main className="pt-28 md:pt-36 pb-24">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Persistent Search Bar under Dark Theme */}
-                    <div className="sticky top-[88px] z-40 bg-black/90 backdrop-blur-md py-6 border-b border-zinc-900 mb-12">
+                    <div className="sticky top-[88px] z-40 bg-zinc-950/90 backdrop-blur-md py-6 border-b border-zinc-900 mb-12">
                         <div className="flex flex-col gap-6">
                             {/* Search Input */}
                             <div className="relative group w-full">
@@ -45,7 +45,7 @@ export default function BrowsePage() {
                                     placeholder="SEARCH NETWORK COMMAND..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full bg-zinc-950 border border-zinc-800 py-5 pl-16 pr-6 outline-none focus:bg-zinc-900 focus:border-cyan-600 transition-all font-black text-sm uppercase tracking-widest text-white placeholder:text-zinc-600"
+                                    className="w-full bg-zinc-900 border border-zinc-800 py-5 pl-16 pr-6 outline-none focus:bg-zinc-900 focus:border-cyan-600 transition-all font-black text-sm uppercase tracking-widest text-white placeholder:text-zinc-600"
                                 />
                             </div>
 
@@ -61,7 +61,7 @@ export default function BrowsePage() {
                                                 className={`flex items-center gap-3 px-6 py-4 uppercase tracking-widest text-[10px] font-black transition-colors ${
                                                     selectedCategory === cat.id
                                                         ? "bg-cyan-700 text-white"
-                                                        : "bg-zinc-950 border border-zinc-900 text-zinc-500 hover:text-white hover:border-zinc-700"
+                                                        : "bg-zinc-900 border border-zinc-900 text-zinc-500 hover:text-white hover:border-zinc-700"
                                                 }`}
                                             >
                                                 <Icon className="h-4 w-4" />
@@ -76,7 +76,7 @@ export default function BrowsePage() {
 
                     {/* Quick Action RFQ Bar */}
                     <FadeIn delay={0.1}>
-                        <div className="border border-zinc-800 bg-zinc-950/50 p-8 md:p-12 mb-16 flex flex-col md:flex-row items-center justify-between text-white relative overflow-hidden group">
+                        <div className="border border-zinc-800 bg-zinc-900/50 p-8 md:p-12 mb-16 flex flex-col md:flex-row items-center justify-between text-white relative overflow-hidden group">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-900/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-cyan-900/20 transition-colors" />
                             <div className="mb-8 md:mb-0 relative z-10">
                                 <h2 className="text-3xl md:text-5xl font-black mb-4 flex items-center gap-4 tracking-tighter uppercase text-white">
@@ -117,7 +117,7 @@ export default function BrowsePage() {
                             <StaggerContainer key={`results-${selectedCategory}-${searchQuery}`} className="space-y-4">
                                 {filteredSellers.map((seller) => (
                                     <StaggerItem key={seller.id}>
-                                        <div className="group bg-black border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 p-6 md:p-8 relative">
+                                        <div className="group bg-zinc-950 border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 p-6 md:p-8 relative">
                                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-l-2 border-transparent group-hover:border-cyan-600 pl-4 md:pl-8 -ml-6 md:-ml-8 transition-colors">
                                                 {/* Left: Branding & Core Info */}
                                                 <div className="lg:col-span-4 border-b border-zinc-900 lg:border-none pb-6 lg:pb-0">
@@ -134,7 +134,7 @@ export default function BrowsePage() {
                                                                 </div>
                                                             )}
                                                         </div>
-                                                        <div className="flex items-center gap-2 text-[10px] text-zinc-500 font-bold uppercase tracking-[0.2em] bg-zinc-950 px-3 py-1 border border-zinc-900">
+                                                        <div className="flex items-center gap-2 text-[10px] text-zinc-500 font-bold uppercase tracking-[0.2em] bg-zinc-900 px-3 py-1 border border-zinc-900">
                                                             <MapPin className="h-3 w-3 text-cyan-600" />{" "}
                                                             {seller.location}
                                                         </div>
@@ -146,7 +146,7 @@ export default function BrowsePage() {
 
                                                 {/* Center: Specs */}
                                                 <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                                                    <div className="bg-zinc-950 border border-zinc-900 p-4">
+                                                    <div className="bg-zinc-900 border border-zinc-900 p-4">
                                                         <div className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 mb-1">
                                                             MOQ Spec
                                                         </div>
@@ -154,7 +154,7 @@ export default function BrowsePage() {
                                                             {seller.moq}
                                                         </div>
                                                     </div>
-                                                    <div className="bg-zinc-950 border border-zinc-900 p-4">
+                                                    <div className="bg-zinc-900 border border-zinc-900 p-4">
                                                         <div className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 mb-1">
                                                             Output Cap
                                                         </div>
@@ -183,10 +183,10 @@ export default function BrowsePage() {
                                                         </span>
                                                     </button>
                                                     <div className="grid grid-cols-2 gap-3">
-                                                        <button className="flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-950 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 hover:border-zinc-500 hover:text-white transition-colors">
+                                                        <button className="flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 hover:border-zinc-500 hover:text-white transition-colors">
                                                             <PhoneCall className="h-3 w-3 text-cyan-600" /> Comm
                                                         </button>
-                                                        <button className="flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-950 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 hover:border-zinc-500 hover:text-white transition-colors">
+                                                        <button className="flex items-center justify-center gap-2 border border-zinc-800 bg-zinc-900 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 hover:border-zinc-500 hover:text-white transition-colors">
                                                             <Mail className="h-3 w-3 text-cyan-600" /> Ping
                                                         </button>
                                                     </div>
@@ -203,7 +203,7 @@ export default function BrowsePage() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 className="py-32 text-center"
                             >
-                                <div className="inline-flex items-center justify-center h-24 w-24 bg-zinc-950 text-zinc-700 mb-8 border border-zinc-800">
+                                <div className="inline-flex items-center justify-center h-24 w-24 bg-zinc-900 text-zinc-700 mb-8 border border-zinc-800">
                                     <Search className="h-10 w-10 text-zinc-600" />
                                 </div>
                                 <h3 className="text-3xl font-black text-white uppercase tracking-wider mb-4">

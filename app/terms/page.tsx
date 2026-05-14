@@ -7,14 +7,14 @@ import { Gavel, Scale, AlertCircle, CheckCircle2 } from "lucide-react";
 
 export default function TermsPage() {
     return (
-        <div className="min-h-screen bg-black text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white">
+        <div className="min-h-screen bg-zinc-950 text-[#f0f0fa] font-sans selection:bg-cyan-600/30 selection:text-white">
             <Navbar />
 
             <main className="pt-32 md:pt-48 pb-20 px-6">
                 <div className="max-w-4xl mx-auto">
                     <FadeIn>
                         <div className="flex items-center gap-6 mb-12">
-                            <div className="h-16 w-16 bg-zinc-950 flex items-center justify-center text-cyan-600 border border-zinc-900">
+                            <div className="h-16 w-16 bg-zinc-900 flex items-center justify-center text-cyan-600 border border-zinc-900">
                                 <Gavel className="h-8 w-8" />
                             </div>
                             <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-white">
@@ -24,7 +24,7 @@ export default function TermsPage() {
                         </div>
 
                         <div className="prose prose-invert max-w-none space-y-16">
-                            <section className="bg-zinc-950 p-10 md:p-12 border border-zinc-900 relative overflow-hidden group">
+                            <section className="bg-zinc-900 p-10 md:p-12 border border-zinc-900 relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-900/10 rounded-full blur-[80px] pointer-events-none" />
                                 <h2 className="text-2xl font-black mb-6 uppercase tracking-wider text-white">
                                     Structural Framework
@@ -63,8 +63,8 @@ export default function TermsPage() {
                             </section>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-900 border border-zinc-900 my-16">
-                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors flex flex-col items-start gap-6">
-                                    <div className="p-4 bg-zinc-950 border border-zinc-900">
+                                <div className="p-10 bg-zinc-950 border border-transparent hover:border-cyan-900 transition-colors flex flex-col items-start gap-6">
+                                    <div className="p-4 bg-zinc-900 border border-zinc-900">
                                         <CheckCircle2 className="h-6 w-6 text-cyan-600" />
                                     </div>
                                     <div>
@@ -77,8 +77,8 @@ export default function TermsPage() {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="p-10 bg-black border border-transparent hover:border-cyan-900 transition-colors flex flex-col items-start gap-6">
-                                    <div className="p-4 bg-zinc-950 border border-zinc-900">
+                                <div className="p-10 bg-zinc-950 border border-transparent hover:border-cyan-900 transition-colors flex flex-col items-start gap-6">
+                                    <div className="p-4 bg-zinc-900 border border-zinc-900">
                                         <ShieldCheck className="h-6 w-6 text-cyan-600" />
                                     </div>
                                     <div>
@@ -115,7 +115,7 @@ export default function TermsPage() {
                                         "Bypassing network escrow logic after digital handshake initiates an immediate permanent ban.",
                                         "Clearance levels (badges) require recurring compliance verification.",
                                     ].map((rule, i) => (
-                                        <div key={i} className="flex gap-4 items-center p-6 bg-black">
+                                        <div key={i} className="flex gap-4 items-center p-6 bg-zinc-950">
                                             <div className="text-cyan-600 font-black text-lg">0{i + 1}</div>
                                             <p className="text-zinc-400 font-medium tracking-wide text-sm">{rule}</p>
                                         </div>
