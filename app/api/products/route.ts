@@ -33,7 +33,10 @@ export async function GET(request: Request) {
         return NextResponse.json({ success: true, count: data.length, data });
     } catch (error: unknown) {
         console.error("API Error [Products]:", error);
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+        return NextResponse.json(
+            { success: false, error: error instanceof Error ? error.message : "Unknown error" },
+            { status: 500 }
+        );
     }
 }
 
@@ -79,6 +82,9 @@ export async function POST(request: Request) {
         return NextResponse.json({ success: true, data }, { status: 201 });
     } catch (error: unknown) {
         console.error("API Error [Products]:", error);
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+        return NextResponse.json(
+            { success: false, error: error instanceof Error ? error.message : "Unknown error" },
+            { status: 500 }
+        );
     }
 }
