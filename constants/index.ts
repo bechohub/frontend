@@ -9,15 +9,6 @@ export const INDUSTRY_CATEGORIES = [
     { id: "footwear", name: "Footwear & Leather", icon: "ShoppingBag" },
 ] as const;
 
-export type IndustryId = (typeof INDUSTRY_CATEGORIES)[number]["id"];
-
-// Roles
-export const USER_ROLES = [
-    { id: "buyer", label: "Buyer", description: "Source products from manufacturers." },
-    { id: "seller", label: "Seller", description: "List products and receive RFQs." },
-    { id: "both", label: "Hybrid", description: "Access both buyer and seller features." },
-] as const;
-
 import { Globe, Users2, Zap, Factory, Briefcase, ShoppingBag } from "lucide-react";
 
 // Helper to get Lucide icon from string for SSR compatibility
@@ -39,7 +30,3 @@ export const getIndustryIcon = (iconName: string) => {
             return Globe;
     }
 };
-
-// Form Defaults & Constraints
-export const MAX_FILE_UPLOAD_SIZE = 5 * 1024 * 1024; // 5MB
-export const DEFAULT_PAGE_SIZE = 12;

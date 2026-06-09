@@ -45,6 +45,7 @@ export default function AdminDashboard() {
         // Check session storage on mount
         const session = sessionStorage.getItem("admin_session");
         if (session === "active") {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setIsAuthenticated(true);
         }
         setAuthLoading(false);

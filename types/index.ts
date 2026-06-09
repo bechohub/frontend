@@ -37,26 +37,3 @@ export interface Seller extends Profile {
     description: string;
     location: string;
 }
-
-// RFQ Model (Matches Supabase 'rfqs' table)
-export interface RFQ {
-    id: string;
-    user_id: string;
-    title: string;
-    description: string;
-    category: IndustryCategory;
-    quantity: number;
-    unit: string;
-    budget?: number;
-    deadline?: string;
-    status: "open" | "closed" | "awarded";
-    created_at: string;
-}
-
-// Server Action Response Generic
-export interface ActionResponse<T = unknown> {
-    success: boolean;
-    data?: T;
-    error?: string;
-    message?: string;
-}

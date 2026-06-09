@@ -1,7 +1,6 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
-import { headers } from "next/headers";
 
 export async function signup(prevState: unknown, formData: FormData) {
     const supabase = await createClient();

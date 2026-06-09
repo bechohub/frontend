@@ -3,7 +3,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { FadeIn, StaggerContainer, StaggerItem } from "../components/Animators";
-import { Zap, Globe, Users, TrendingUp, ArrowRight } from "lucide-react";
+import { Zap, Globe, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function AboutPage() {

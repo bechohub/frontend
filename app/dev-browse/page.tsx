@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Search, Filter, Star, MapPin, ArrowUpRight, Package, PhoneCall, Mail, CheckCircle } from "lucide-react";
+import { Search, Filter, MapPin, ArrowUpRight, Package, PhoneCall, Mail, CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // New Centralized Imports
