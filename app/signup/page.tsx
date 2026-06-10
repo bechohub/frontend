@@ -521,12 +521,15 @@ function SignUpForm() {
                     {step === 4 && (
                         <FormSuccess
                             title={
-                                (
-                                    <span>
-                                        Welcome to <br />
-                                        <span className="text-cyan-600">bechoHub.</span>
+                                <span>
+                                    <span className="block font-heading text-white tracking-[0.08em] uppercase leading-tight drop-shadow-[0_6px_18px_rgba(6,182,212,0.06)] mb-0">
+                                        Welcome
                                     </span>
-                                ) as unknown as string
+                                    <span className="block font-heading text-white tracking-[0.08em] uppercase leading-tight -mt-4">
+                                        To
+                                    </span>
+                                    <span className="block text-cyan-600 -mt-3 text-[1.05em]">bechoHub.</span>
+                                </span>
                             }
                             subtitle="Your entity application is under evaluation. A clearance call will be placed within Phase 1 (24h)."
                             actionLabel="Enter Protocol"

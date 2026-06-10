@@ -42,3 +42,4 @@ next-env.d.ts
 
 # branding assets
 brand_assets/
+app/dev-welcome/
