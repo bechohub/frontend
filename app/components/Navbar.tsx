@@ -89,19 +89,8 @@ export default function Navbar() {
 
                 {/* Right Action */}
                 <div className="flex-1 flex items-center justify-end gap-4">
-                    {/* Dashboard Icon - Only visible when logged in */}
-                    {user && (
-                        <Link
-                            href="/profile"
-                            title="Command Center"
-                            className="flex items-center justify-center p-2 border border-zinc-800 hover:bg-zinc-900 transition-all text-white group"
-                        >
-                            <User className="h-4 w-4 group-hover:text-cyan-500 transition-colors" />
-                        </Link>
-                    )}
-
                     <Link
-                        href={user ? "/profile" : "/signup"}
+                        href={user ? "/post-requirement" : "/signup"}
                         className={cn(
                             "hidden md:inline-flex items-center justify-center font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500",
                             isScrolled
@@ -109,7 +98,7 @@ export default function Navbar() {
                                 : "bg-transparent border border-zinc-700 text-white px-8 py-3 hover:border-white hover:bg-white/5"
                         )}
                     >
-                        {user ? "Command Center" : "Join Network"}
+                        {user ? "Post Requirement" : "Join Network"}
                     </Link>
 
                     {/* Mobile Menu Trigger */}
@@ -143,23 +132,14 @@ export default function Navbar() {
                                     {link.name}
                                 </Link>
                             ))}
-                            {user && (
-                                <Link
-                                    href="/profile"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-2xl font-black text-cyan-600 uppercase tracking-wider hover:text-cyan-500 transition-colors"
-                                >
-                                    Command Center
-                                </Link>
-                            )}
                         </div>
                         <hr className="border-zinc-900" />
                         <Link
-                            href={user ? "/profile" : "/signup"}
+                            href={user ? "/post-requirement" : "/signup"}
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="w-full py-5 bg-cyan-600 hover:bg-cyan-700 text-white text-center font-black uppercase tracking-[0.2em] text-sm transition-colors"
                         >
-                            {user ? "Access Protocol" : "Join Network Now"}
+                            {user ? "Post Requirement" : "Join Network Now"}
                         </Link>
                     </motion.div>
                 )}
