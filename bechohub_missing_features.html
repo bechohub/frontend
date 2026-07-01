@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bechohub - Deep Tech Architecture & Mobile-Ready Launch Strategy</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-dark: #020617;
+            --secondary: #334155;
+            --accent: #3b82f6;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --danger: #ef4444;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --senior-color: #7c3aed;
+            --junior-color: #0ea5e9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        p.subtitle {
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .alert-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .alert-box h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .task-group {
+            margin-bottom: 2rem;
+        }
+
+        .task-group h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tech-spec {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.85rem;
+            color: #334155;
+            border-left: 3px solid #94a3b8;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-size: 0.95rem;
+        }
+
+        li::before {
+            content: '♦';
+            position: absolute;
+            left: 0;
+            color: #94a3b8;
+            font-size: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tag.senior { background-color: #f3e8ff; color: var(--senior-color); border: 1px solid #e9d5ff; }
+        .tag.junior { background-color: #e0f2fe; color: var(--junior-color); border: 1px solid #bae6fd; }
+
+        .footer-note {
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bechohub: Core Architecture & Task Division</h1>
+            <p class="subtitle">Omni-Channel Strategy (Web + Future Mobile App)</p>
+        </header>
+
+        <div class="alert-box">
+            <h3>Architecting for Mobile & Web Simultaneously</h3>
+            <p>Because the next product is a mobile app (React Native / Flutter), the Node.js backend must be treated as a pure, headless API from Day 1. We cannot rely on web-specific paradigms (like relying solely on HTTP-only cookies). We must implement strict <strong>API Versioning</strong>, <strong>Payload Optimization</strong> for slow mobile networks, and <strong>Device Agnostic Authentication</strong>. Below is the deep-tech breakdown of how tasks are divided to ensure the backend scales for both.</p>
+        </div>
+
+        <div class="grid">
+            
+            <!-- SENIOR TASKS -->
+            <div class="card" style="border-top: 4px solid var(--senior-color);">
+                <h2><span>Architecture & DevOps</span> <span class="tag senior">Supratim (Senior)</span></h2>
+                
+                <div class="task-group">
+                    <h3>1. API Versioning & Routing</h3>
+                    <div class="tech-spec">
+                        Implementation: Move all routes under /api/v1/*. Mobile apps cannot be force-updated easily. If we change a schema in month 3, v1 must remain active for older app versions while the web moves to v2.
+                    </div>
+                    <ul>
+                        <li><strong>Router Refactor:</strong> Restructure `src/routes` to enforce versioning (`/v1/auth`, `/v1/products`).</li>
+                        <li><strong>Stateless Architecture:</strong> Ensure zero in-memory state in the Express app so it can scale horizontally across multiple instances (Render/AWS ECS) when mobile load hits.</li>
+                    </ul>
+                </div>
+
+                <div class="task-group">
+                    <h3>2. Omni-Channel Authentication & Security</h3>
+                    <div class="tech-spec">
+                        Implementation: Mobile apps rely on Bearer JWTs in the Authorization header. The auth middleware must robustly decode Supabase JWTs regardless of whether they come from a cookie (web) or header (mobile).
+                    </div>
+                    <ul>
+                        <li><strong>Advanced Rate Limiting:</strong> Implement `express-rate-limit` backed by Redis (or a DB table) using a composite key: `IP Address + Device ID / User ID`. Mobile apps can sometimes bug out and spam APIs; IP-only blocks will punish NAT users.</li>
+                        <li><strong>CORS & Helmet:</strong> Lock down CORS strictly to the Next.js frontend origin, but allow mobile app user-agents/origins via dynamic config. Implement `helmet` for header security.</li>
+                        <li><strong>Push Notification Schema:</strong> Expand Prisma schema with a `UserDevice` model to store FCM/APNs tokens for mobile push notifications later.</li>
+                    </ul>
+                </div>
+
+                <div class="task-group">
+                    <h3>3. Database Optimization & Pagination</h3>
+                    <div class="tech-spec">
+                        Implementation: Offset pagination (LIMIT/OFFSET) scales poorly on large tables and causes duplicate items in mobile infinite-scroll feeds if new items are added during scroll.
+                    </div>
+                    <ul>
+                        <li><strong>Cursor-Based Pagination:</strong> Implement cursor-based pagination in Prisma for the `products` and `inquiries` queries to ensure buttery smooth infinite scrolling on mobile.</li>
+                        <li><strong>Database Indexing:</strong> Review Prisma schema to ensure compound indices exist for common queries (e.g., `@@index([sellerId, status])`).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- JUNIOR TASKS -->
+            <div class="card" style="border-top: 4px solid var(--junior-color);">
+                <h2><span>Implementation & Features</span> <span class="tag junior">Shinjan (Junior)</span></h2>
+                
+                <div class="task-group">
+                    <h3>1. Payload-Optimized Controllers</h3>
+                    <div class="tech-spec">
+                        Implementation: Mobile networks drop packets. Returning a 50KB JSON payload when the mobile app only needs 3 fields is an anti-pattern.
+                    </div>
+                    <ul>
+                        <li><strong>Sparse Fieldsets / DTOs:</strong> Write Express controllers that allow clients to specify what fields they need, or strictly enforce Data Transfer Objects (DTOs) that strip out unnecessary relational data before sending the response.</li>
+                        <li><strong>Inquiry & Lead Gen API:</strong> Build the CRUD routes for the new `Inquiry` model (Buyer asks Seller for a quote), ensuring the JSON response is minimal.</li>
+                    </ul>
+                </div>
+
+                <div class="task-group">
+                    <h3>2. Advanced Image Processing (CDN Prep)</h3>
+                    <div class="tech-spec">
+                        Implementation: Serving a 4MB 4K image to a mobile device will crash the app or eat data. Multer + Sharp must generate multiple variants.
+                    </div>
+                    <ul>
+                        <li><strong>Multi-Resolution Uploads:</strong> Configure Sharp middleware to take a seller's product image and generate three sizes: `thumbnail` (200x200), `mobile` (800x800), and `desktop` (1200x1200).</li>
+                        <li><strong>WebP Format:</strong> Force conversion of all uploaded images to `.webp` format in Sharp to reduce payload size by 30-50% for mobile clients.</li>
+                    </ul>
+                </div>
+
+                <div class="task-group">
+                    <h3>3. Frontend & Dashboard Delivery</h3>
+                    <div class="tech-spec">
+                        Implementation: Next.js frontend acting as the primary client while mobile is being developed.
+                    </div>
+                    <ul>
+                        <li><strong>Responsive Web UI:</strong> Build out the missing Seller Dashboard and RFQ/Inquiry modals in Next.js, ensuring they are perfectly responsive (since web mobile traffic will exist before the native app).</li>
+                        <li><strong>Deep Linking Prep:</strong> Ensure frontend routes (like `/product/123`) directly match the API entity IDs, so sharing links between mobile and web users works seamlessly.</li>
+                        <li><strong>Email Hooks:</strong> Wire up Resend/SendGrid for critical notifications (e.g., "New Inquiry Received") since push notifications won't exist until the mobile app launches.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-note">
+            <strong>The Omni-Channel Goal:</strong> By enforcing API versioning, cursor pagination, and multi-resolution images now, the backend will literally not need to be touched when the mobile development begins. It will be plug-and-play.
+        </div>
+    </div>
+</body>
+</html>
