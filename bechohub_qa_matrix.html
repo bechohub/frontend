@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bechohub Exhaustive QA Matrix</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --supratim-color: #4f46e5;
+            --shinjan-color: #059669;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 40px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 15px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .dev-section {
+            margin-bottom: 50px;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid;
+        }
+
+        .dev-supratim {
+            background-color: #eef2ff;
+            border-color: var(--supratim-color);
+        }
+
+        .dev-shinjan {
+            background-color: #ecfdf5;
+            border-color: var(--shinjan-color);
+        }
+
+        .dev-section h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dev-supratim h2 { color: var(--supratim-color); }
+        .dev-shinjan h2 { color: var(--shinjan-color); }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .task-item:hover {
+            background: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .task-checkbox {
+            margin-top: 5px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .task-desc {
+            font-size: 0.95rem;
+            color: #475569;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Bechohub: Exhaustive QA Matrix</h1>
+    <p class="subtitle">Pre-Launch Testing Checklist for the Engineering Team</p>
+
+    <!-- Supratim's Section -->
+    <div class="dev-section dev-supratim">
+        <h2>👨‍💻 Supratim (Senior Dev: Architecture, Security & DB)</h2>
+        
+        <div class="category-title">1. Database Integrity & Constraints</div>
+        <ul class="task-list">
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Cascade Deletions</span>
+                    <p class="task-desc">Manually delete a User from the database. Verify that their SellerProfile, Products, and Inquiries are all deleted automatically via Prisma Cascade rules to prevent orphaned records.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Null Reference Handling</span>
+                    <p class="task-desc">Delete a Product that has active Inquiries. Verify that the Inquiry is NOT deleted, but its productId becomes null (as per onDelete: SetNull in schema), so conversation history isn't lost.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">UUID Validation</span>
+                    <p class="task-desc">Attempt to fetch /api/products/12345 (a non-UUID string). Verify the Zod schema catches it and returns a 400 Bad Request before Prisma throws a database error.</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="category-title">2. Security & Penetration Testing</div>
+        <ul class="task-list">
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Rate Limit Stress Test</span>
+                    <p class="task-desc">Use a script (or Apache JMeter) to send 150 requests within 1 minute to /api/auth/login. Verify that exactly request #101 receives a 429 Too Many Requests status.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">CORS Bypass Check</span>
+                    <p class="task-desc">Use curl from your terminal to hit a protected API endpoint with an Origin: https://malicious-site.com header. Verify the backend explicitly rejects the connection.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">JWT Forgery</span>
+                    <p class="task-desc">Take a valid JWT token, paste it into jwt.io, change the user role from BUYER to ADMIN, re-sign it with a fake secret, and send it to the API. Verify the jsonwebtoken verifier rejects it with a 401 Invalid Token.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">SQL/NoSQL Injection</span>
+                    <p class="task-desc">Inject {"$gt": ""} or ' OR 1=1;-- into search query parameters or the inquiry message body. Verify Zod sanitizes or rejects it.</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="category-title">3. Image Processing & Storage</div>
+        <ul class="task-list">
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">File Size Limits</span>
+                    <p class="task-desc">Attempt to upload an 8MB image to the Create Product endpoint. Verify Multer rejects it (since the limit is set to 6MB in config).</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">File Count Limits</span>
+                    <p class="task-desc">Attempt to upload 12 images at once. Verify it throws an error (limit is 10).</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Malicious File Types</span>
+                    <p class="task-desc">Rename an .exe or .sh script to virus.jpg and attempt to upload it. Verify that Sharp (or Multer) rejects the file because the actual MIME type/buffer header is invalid.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Shinjan's Section -->
+    <div class="dev-section dev-shinjan">
+        <h2>👨‍💻 Shinjan (Junior Dev: UI/UX State, Middleware & Edge Cases)</h2>
+
+        <div class="category-title">1. Advanced Routing & Middleware</div>
+        <ul class="task-list">
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Deep Linking Lockout</span>
+                    <p class="task-desc">Log out completely. Copy a direct link to a deeply nested protected page (e.g., /seller/products/edit/uuid). Paste it into the URL bar. Verify Next.js middleware instantly redirects to /login without flashing the protected UI.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Post-Login Redirection</span>
+                    <p class="task-desc">If a user is redirected to /login from /seller/dashboard, verify that after they log in, they are sent back to /seller/dashboard instead of the generic homepage.</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="category-title">2. Form State & Optimistic UI Updates</div>
+        <ul class="task-list">
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Double Submit Prevention</span>
+                    <p class="task-desc">Go to the "Submit Inquiry" form. Click the "Send" button 5 times very fast. Verify that the button enters a loading state immediately after the first click, and only one inquiry is created in the database.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Network Failure Recovery</span>
+                    <p class="task-desc">Turn off your Wi-Fi. Try to submit a product. Verify the frontend displays a graceful "Network Error" toast instead of crashing or showing a white screen.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Input Sanitization (XSS)</span>
+                    <p class="task-desc">In the Product Description or Inquiry message box, type &lt;script&gt;alert('hack')&lt;/script&gt;. Verify that when this text is rendered on the frontend later, it is rendered as plain text and the script does not execute.</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="category-title">3. Mobile Web App Constraints</div>
+        <ul class="task-list">
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Touch Targets</span>
+                    <p class="task-desc">Open the app on a mobile device (or dev tools). Verify all buttons (especially "Contact Supplier") are at least 44x44px tall to prevent misclicks.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Virtual Keyboard UI</span>
+                    <p class="task-desc">On mobile, tap into the Inquiry text area. Verify the screen scrolls appropriately so the keyboard does not cover the text box you are typing in.</p>
+                </div>
+            </li>
+            <li class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <div class="task-content">
+                    <span class="task-title">Image Carousels</span>
+                    <p class="task-desc">On mobile, verify product image galleries support swipe-to-scroll rather than forcing the user to click tiny arrow buttons.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
