@@ -48,6 +48,42 @@ const nextConfig: NextConfig = {
                 },
             ],
         },
+        {
+            source: "/profile/:path*",
+            headers: [
+                {
+                    key: "Cache-Control",
+                    value: "no-store, max-age=0",
+                },
+            ],
+        },
+        {
+            source: "/seller/:path*",
+            headers: [
+                {
+                    key: "Cache-Control",
+                    value: "no-store, max-age=0",
+                },
+            ],
+        },
+        {
+            source: "/admin/:path*",
+            headers: [
+                {
+                    key: "Cache-Control",
+                    value: "no-store, max-age=0",
+                },
+            ],
+        },
+        {
+            source: "/rfq/:path*",
+            headers: [
+                {
+                    key: "Cache-Control",
+                    value: "no-store, max-age=0",
+                },
+            ],
+        },
     ],
 };
 
