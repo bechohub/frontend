@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { Eye, EyeOff, ShieldCheck, Briefcase } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export default function LoginPage() {
+function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const nextUrl = searchParams.get("next");
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -28,9 +30,14 @@ export default function LoginPage() {
         }
         if (result.roles && result.roles.length === 1) {
             localStorage.setItem("lastRole", result.roles[0]);
-            router.push(`/${result.roles[0]}`);
+            if (nextUrl && nextUrl.startsWith("/")) {
+                router.replace(nextUrl);
+            } else {
+                router.replace(`/${result.roles[0]}`);
+            }
         } else if (result.roles && result.roles.length > 1) {
-            router.push("/role-selection");
+            const redirectUrl = nextUrl ? `/role-selection?next=${encodeURIComponent(nextUrl)}` : "/role-selection";
+            router.replace(redirectUrl);
         } else {
             setError("Unknown error. Please try again.");
         }
@@ -139,5 +146,19 @@ export default function LoginPage() {
                 <div className="text-[12vw] font-black tracking-tighter text-zinc-900 opacity-20">bechoHub</div>
             </div>
         </div>
+    );
+}
+
+export default function LoginPage() {
+    return (
+        <Suspense
+            fallback={
+                <div className="min-h-screen bg-zinc-950 flex items-center justify-center text-white font-bold tracking-widest">
+                    LOADING PROTOCOL...
+                </div>
+            }
+        >
+            <LoginForm />
+        </Suspense>
     );
 }

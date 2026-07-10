@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const roles = [
     {
@@ -47,9 +47,11 @@ const roles = [
     },
 ];
 
-export default function RoleSelection() {
+function RoleSelectionForm() {
     const [lastRole, setLastRole] = useState<string | null>(null);
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const nextUrl = searchParams.get("next");
 
     useEffect(() => {
         const stored = localStorage.getItem("lastRole");
@@ -63,7 +65,11 @@ export default function RoleSelection() {
 
     const handleSelect = (role: string) => {
         localStorage.setItem("lastRole", role);
-        router.push(`/${role}`);
+        if (nextUrl && nextUrl.startsWith(`/${role}`)) {
+            router.replace(nextUrl);
+        } else {
+            router.replace(`/${role}`);
+        }
     };
 
     return (
@@ -90,5 +96,17 @@ export default function RoleSelection() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function RoleSelection() {
+    return (
+        <Suspense
+            fallback={
+                <div className="min-h-screen flex items-center justify-center bg-gray-50 text-gray-900">Loading...</div>
+            }
+        >
+            <RoleSelectionForm />
+        </Suspense>
     );
 }
