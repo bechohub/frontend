@@ -46,6 +46,25 @@ export async function updateSession(request: NextRequest) {
         return NextResponse.redirect(url);
     }
 
+    if (user && isProtectedRoute) {
+        // Enforce RBAC via lightweight DB query
+        const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single();
+
+        const role = profile?.role;
+
+        // Enforce boundaries between /seller and /buyer
+        if (url.pathname.startsWith("/seller") && role !== "seller" && role !== "both") {
+            url.pathname = "/profile";
+            return NextResponse.redirect(url);
+        }
+
+        // Restrict /admin access
+        if (url.pathname.startsWith("/admin") && role !== "admin") {
+            url.pathname = "/profile";
+            return NextResponse.redirect(url);
+        }
+    }
+
     if (user && isAuthRoute) {
         url.pathname = "/profile";
         return NextResponse.redirect(url);
