@@ -42,8 +42,10 @@ export async function updateSession(request: NextRequest) {
     const isAuthRoute = url.pathname.startsWith("/login") || url.pathname.startsWith("/signup");
 
     if (!user && isProtectedRoute) {
-        url.pathname = "/login";
-        return NextResponse.redirect(url);
+        const redirectUrl = request.nextUrl.clone();
+        redirectUrl.pathname = "/login";
+        redirectUrl.searchParams.set("next", request.nextUrl.pathname + request.nextUrl.search);
+        return NextResponse.redirect(redirectUrl);
     }
 
     if (user && isProtectedRoute) {
@@ -54,13 +56,13 @@ export async function updateSession(request: NextRequest) {
 
         // Enforce boundaries between /seller and /buyer
         if (url.pathname.startsWith("/seller") && role !== "seller" && role !== "both") {
-            url.pathname = "/profile";
+            url.pathname = "/unauthorized";
             return NextResponse.redirect(url);
         }
 
         // Restrict /admin access
         if (url.pathname.startsWith("/admin") && role !== "admin") {
-            url.pathname = "/profile";
+            url.pathname = "/unauthorized";
             return NextResponse.redirect(url);
         }
     }
