@@ -33,9 +33,7 @@ export default function AdminDashboard() {
     const [errorMsg, setErrorMsg] = useState<string | null>(null);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
 
-    // Auth State
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [authLoading, setAuthLoading] = useState(true); // Initial check
 
@@ -74,11 +72,11 @@ export default function AdminDashboard() {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        if (username === "Adminhumein" && password === "Chalhatmaalikhu") {
+        if (password === "Chalhatmaalikhu") {
             sessionStorage.setItem("admin_session", "active");
             setIsAuthenticated(true);
         } else {
-            alert("Invalid Credentials! Access Denied.");
+            alert("Invalid Passcode! Access Denied.");
         }
     };
 
@@ -102,18 +100,6 @@ export default function AdminDashboard() {
                         </p>
                     </div>
                     <form onSubmit={handleLogin} className="space-y-6 relative z-10">
-                        <div>
-                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-1 mb-2 block">
-                                Operator ID
-                            </label>
-                            <input
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                className="w-full bg-zinc-950 border border-zinc-900 py-4 px-5 text-white focus:outline-none focus:border-cyan-600 focus:bg-zinc-900 transition-colors uppercase tracking-widest text-xs font-black placeholder:text-zinc-700"
-                                placeholder="ENTER ID"
-                            />
-                        </div>
                         <div>
                             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-1 mb-2 block">
                                 Passcode

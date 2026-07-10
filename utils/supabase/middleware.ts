@@ -34,10 +34,7 @@ export async function updateSession(request: NextRequest) {
 
     const url = request.nextUrl.clone();
     const isProtectedRoute =
-        url.pathname.startsWith("/profile") ||
-        url.pathname.startsWith("/seller") ||
-        url.pathname.startsWith("/admin") ||
-        url.pathname.startsWith("/rfq");
+        url.pathname.startsWith("/profile") || url.pathname.startsWith("/seller") || url.pathname.startsWith("/rfq");
 
     const isAuthRoute = url.pathname.startsWith("/login") || url.pathname.startsWith("/signup");
 
@@ -56,12 +53,6 @@ export async function updateSession(request: NextRequest) {
 
         // Enforce boundaries between /seller and /buyer
         if (url.pathname.startsWith("/seller") && role !== "seller" && role !== "both") {
-            url.pathname = "/unauthorized";
-            return NextResponse.redirect(url);
-        }
-
-        // Restrict /admin access
-        if (url.pathname.startsWith("/admin") && role !== "admin") {
             url.pathname = "/unauthorized";
             return NextResponse.redirect(url);
         }
