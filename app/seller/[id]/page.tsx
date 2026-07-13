@@ -5,6 +5,7 @@ import { Star, MapPin, ShieldCheck, MessageSquare, PhoneCall, Mail, Award, Arrow
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import ProductGallery from "@/app/components/ProductGallery";
 
 export default async function SellerPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = await params;
@@ -107,6 +108,11 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
                                 <p className="text-zinc-400 text-sm leading-loose font-medium tracking-wide mb-12 max-w-3xl">
                                     {seller.description}
                                 </p>
+
+                                {/* Product Gallery Showcase */}
+                                <div className="mb-12 border-t border-zinc-900 pt-12">
+                                    <ProductGallery images={seller.images} />
+                                </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-900 mt-8 border border-zinc-900">
                                     <div className="bg-zinc-950 p-8">

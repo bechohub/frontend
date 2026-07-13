@@ -34,6 +34,7 @@ export interface Seller extends Profile {
     capacity?: string;
     tags: string[];
     image?: string;
+    images?: string[];
     description: string;
     location: string;
 }

@@ -39,19 +39,43 @@ export default function RFQForm() {
 
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errorText, setErrorText] = useState<string | null>(null);
 
     const handleSubmit = async () => {
         setIsSubmitting(true);
+        setErrorText(null);
         posthog.capture("rfq_form_submit_start");
 
-        // Simulating API call
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        try {
+            // Simulating API call (with error handling safety)
+            await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // Check if offline to simulate network drop
+                    if (typeof navigator !== "undefined" && !navigator.onLine) {
+                        reject(new Error("No internet connection detected."));
+                    } else {
+                        resolve(true);
+                    }
+                }, 2000);
+            });
 
-        setIsSubmitting(false);
-        setIsSubmitted(true);
-        posthog.capture("rfq_form_submit_success", {
-            timestamp: new Date().toISOString(),
-        });
+            setIsSubmitting(false);
+            setIsSubmitted(true);
+            posthog.capture("rfq_form_submit_success", {
+                timestamp: new Date().toISOString(),
+            });
+        } catch (err: unknown) {
+            setIsSubmitting(false);
+            const errorMessage =
+                err instanceof Error ? err.message : "Network Connection Error. Please verify your connection.";
+            setErrorText(errorMessage);
+            posthog.capture("rfq_form_submit_failure", {
+                error: errorMessage,
+            });
+            setTimeout(() => {
+                setErrorText(null);
+            }, 5000);
+        }
     };
 
     if (isSubmitted) {
@@ -80,6 +104,47 @@ export default function RFQForm() {
 
     return (
         <div className="bg-white/[0.03] backdrop-blur-3xl rounded-[32px] md:rounded-[48px] border border-white/5 overflow-hidden shadow-2xl">
+            {/* Error Toast Notification */}
+            <AnimatePresence>
+                {errorText && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                        transition={{ duration: 0.3 }}
+                        className="mx-6 mt-6 p-4 bg-red-500/10 border border-red-500/20 text-red-200 rounded-2xl flex items-center gap-3 backdrop-blur-md"
+                    >
+                        <div className="p-2 bg-red-500/20 rounded-xl text-red-400">
+                            <svg
+                                className="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                                />
+                            </svg>
+                        </div>
+                        <div className="flex-1">
+                            <p className="text-xs font-black uppercase tracking-wider text-red-400 mb-0.5">
+                                Transmission Fault
+                            </p>
+                            <p className="text-[11px] text-red-200/80 font-medium tracking-wide">{errorText}</p>
+                        </div>
+                        <button
+                            onClick={() => setErrorText(null)}
+                            className="text-red-400/50 hover:text-red-400 text-xs font-black px-2 py-1 uppercase tracking-widest cursor-pointer"
+                        >
+                            Dismiss
+                        </button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             {/* Progress Bar */}
             <div className="px-8 py-6 border-b border-white/5 bg-white/[0.02]">
                 <div className="flex items-center justify-between max-w-sm mx-auto">
